@@ -28,20 +28,14 @@ main > div{
 }
 
 h1{
-  padding: 0px
+  padding:0px;
 }
 
 h3{
   margin-top: 20px;
 }
 
-input#in1{
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-}
-
-input#in2{
+input#in1, input#in2{
   padding: 10px;
   margin-top: 10px;
   border-radius: 10px;
@@ -85,4 +79,24 @@ a.lin2, a.lin3{
 
 a.lin2:hover, a.lin3:hover{
   text-decoration: underline;
+}
+
+.switch{ 
+  position: relative;
+  width: 20px;
+  height: 10px;
+  left: 20%;
+  margin: 8px auto 0px;
+}
+
+.switch button{
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.029) url(./img/olho.svg) no-repeat center;
+  border: 0px;
+  border-radius: 50%;
+  background-size: 25px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-130%);
 }
