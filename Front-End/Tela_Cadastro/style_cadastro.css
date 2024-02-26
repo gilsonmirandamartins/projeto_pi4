@@ -82,6 +82,11 @@ button{
 
 .gen01{
   margin-top: 20px;
-  margin-right: 120px;
-  margin-bottom: 40px;
+  margin-right: 110px;
+  margin-bottom: 60px;
+
+}
+
+select{
+  margin-left: 10px;
 }
