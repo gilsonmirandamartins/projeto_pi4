@@ -21,32 +21,26 @@
             <label for="">Login:</label>
             <input type="text" class="login" name="login" placeholder="Crie um login">
 
-            <label for="">Data de nascimento:</label>
-            <input type="date" class="dtNasc" name="nascimento" value="" placeholder="">
-            
-            <label for="">Genero:</label>
-            <div class="genero">
-                <p>Masculino</p>
-                
-                <div>
-                <input type="radio" class="sexo" name="sexo" value="masculino" checked>
-            </div>
-                <p>Feminino</p>
-            <div>
-                <input type="radio" class="sexo" name="sexo" value="feminino">
-                </div>
-            </div>
-
             <label for="">Senha:</label>
             <input type="password" class="Crie uma senha" name="senha" placeholder="Senha">
-            
-            <label for="">Telefone:</label>
-            <input type="tel" class="tel" name="tel" placeholder="Numero para contato">
 
-            <div class="btReset">
-                <input type="reset">
+            <label for="">Data de nascimento:</label>
+            <input type="date" class="dtNasc" name="nascimento" value="" placeholder="">
+
+            <label for="">Telefone:</label>
+            <input type="tel" class="tel" name="tel" placeholder="(85)99999-9999">
+
+            <div class="gen01">
+                <label>Gênero</label>
+                <select name="Selecione" id="">
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Não binário</option>
+                    <option>Outros</option>
+                </select>
             </div>
-            <button>Cadastrar</button>
+
+            <button type="submit">Cadastrar</button>
         </form>
     </div>
 </body>
