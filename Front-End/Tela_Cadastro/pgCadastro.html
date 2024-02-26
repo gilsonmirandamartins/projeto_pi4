@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    <title>Projeto_api</title>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Cadastro</h1>
+        <form action="">
+            <label for="">Nome:</label>
+            <input type="text" class="nome" name="nome" placeholder="Digite seu nome">
+
+            <label for="">Email:</label>
+            <input type="text" class="email" name="email" placeholder="Digite seu Email">
+            
+            <label for="">Login:</label>
+            <input type="text" class="login" name="login" placeholder="Crie um login">
+
+            <label for="">Data de nascimento:</label>
+            <input type="date" class="dtNasc" name="nascimento" value="" placeholder="">
+            
+            <label for="">Genero:</label>
+            <div class="genero">
+                <p>Masculino</p>
+                
+                <div>
+                <input type="radio" class="sexo" name="sexo" value="masculino" checked>
+            </div>
+                <p>Feminino</p>
+            <div>
+                <input type="radio" class="sexo" name="sexo" value="feminino">
+                </div>
+            </div>
+
+            <label for="">Senha:</label>
+            <input type="password" class="Crie uma senha" name="senha" placeholder="Senha">
+            
+            <label for="">Telefone:</label>
+            <input type="tel" class="tel" name="tel" placeholder="Numero para contato">
+
+            <div class="btReset">
+                <input type="reset">
+            </div>
+            <button>Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>
