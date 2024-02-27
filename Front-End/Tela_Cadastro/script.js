@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const Ilogin = document.querySelector(".login");
     const Isenha = document.querySelector(".senha");
     const IdataNasc = document.querySelector(".dataNasc");
-    const Idataregistro = document.querySelector(".dataRegistro"); // Corrigido o nome da variável
+    const Idataregistro = document.querySelector(".dataRegistro");
 
     function cadastrar() {
         fetch("http://localhost:8081/usuarios", {
