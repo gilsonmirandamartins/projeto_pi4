@@ -15,24 +15,29 @@
         <div>
             <h1>Crendencias do usuário</h1>
             <form action="">
-                <div>
+                <div class="dados">
                     <label>Digite seu nome ou email</label>
-                    &#x1F9B1
-                    <input type="text" name="nome" id="in1">
-                </div>
-                <div>
-                    <label>Digite sua senha</label>
-                    &#x1F512
-                    <input type="password" name="senha" id="in2">
-                    <div class="switch">
-                        <button onclick="toggleSenha()">
-                        </button>
+                    <div class="input_Nome">
+                        &#x1F9B1
+                        <input type="text" name="nome" id="in1" required>
                     </div>
                 </div>
-                <input type="submit" name="acessor" value="Acessar" class="lin1">
+                <div class="dados">
+                    <label>Digite sua senha</label>
+                    <div class="input">
+                        &#x1F512
+                        <div class="input-button">
+                            <input type="password" name="senha" id="in2" required>
+                            <button type="button" onclick="toggleSenha()">
+                                <img src="../img/olho.svg" alt="olho">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="lin1">Acessar</button>
+                <a href="" class="lin2">Esqueceu sua senha?</a>
+                <a href="" class="lin3">Cadastre-se</a>
             </form>
-            <a href="" class="lin2">Esqueceu sua senha?</a>
-            <a href="" class="lin3">Cadastre-se</a>
         </div>
     </main>
 </body>
