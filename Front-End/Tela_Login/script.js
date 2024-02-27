@@ -4,7 +4,7 @@ const Isenha = document.getElementById("in2");
 const formulario = document.getElementById("formulario");
 
 function logar(){
-    fetch("http://localhost:8080/logar",
+    fetch("http://localhost:8081/usuarios",
     {
         headers:{
             'Accept': 'application/json',
