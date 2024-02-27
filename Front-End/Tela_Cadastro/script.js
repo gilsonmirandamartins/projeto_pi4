@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const Idataregistro = document.querySelector(".dataRegistro");
 
     function cadastrar() {
-        fetch("http://localhost:8081/usuarios", {
+        fetch("http://localhost:8081/usuarios", { //Conexão com a api
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify({
+            body: JSON.stringify({ //variavés em conformidade com a api, não esquecer da logica do ATIVO
                 nome: Inome.value,
                 senha: Isenha.value,
                 login: Ilogin.value,
