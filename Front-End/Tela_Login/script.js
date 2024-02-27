@@ -36,11 +36,14 @@ formulario.addEventListener('submit', function (event){
 
 function toggleSenha() {
     var in2Input = document.getElementById("in2");
+    var icon = document.getElementById("icon");
 
     if (in2Input.type === "password") {
         in2Input.type = "text";
+        icon.classList.add("hide");
     } else {
         in2Input.type = "password";
+        icon.classList.remove("hide");
     }
 }
   
