@@ -106,10 +106,23 @@ a.lin2:hover, a.lin3:hover{
 }
 
 .input button{
-  width: 32px;
-  height: 32px;
-  border: 0px;
+  width: 30px;
+  height: 30px;
+  border: 0;
   background: none;
+}
+
+#icon{
+  background-image: url('../img/olhoHide.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+#icon.hide{
+  background-image: url('../img/olho.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .input, .input_Nome{
