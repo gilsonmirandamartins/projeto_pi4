@@ -1,7 +1,5 @@
 package br.com.projetoint.projeto.controller;
 
-// Geraldo, olamundo
-
 import java.util.List;
 import java.util.Optional;
 

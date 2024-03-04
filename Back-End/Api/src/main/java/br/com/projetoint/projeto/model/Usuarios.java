@@ -1,16 +1,13 @@
 package br.com.projetoint.projeto.model;
 
-// Geraldo
-
 import java.time.LocalDate;
-import java.util.Date;
 
-import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
@@ -26,58 +23,66 @@ public class Usuarios {
 	@Column(name = "senha", length = 10, nullable = true)
 	private String senha;
 
-	@Column(name = "dataNasc", nullable = false)
+	/*@Column(name = "dataNasc", nullable = false)
 	private Date dataNasc;
 
 	@Column(name = "dataRegistro", nullable = false)
-	private Date dataRegistro;
+	private Date dataRegistro;*/
 
-	public Integer getId() {
-		return id;
-	}
+	@Column(name = "dataNasc", nullable = false)
+private LocalDate dataNasc;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+@Column(name = "dataCadastro", nullable = false)
+private LocalDate dataCadastro;
 
-	public String getNome() {
-		return nome;
-	}
+public Integer getId() {
+	return id;
+}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+public void setId(Integer id) {
+	this.id = id;
+}
 
-	public String getLogin() {
-		return login;
-	}
+public String getNome() {
+	return nome;
+}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+public void setNome(String nome) {
+	this.nome = nome;
+}
 
-	public String getSenha() {
-		return senha;
-	}
+public String getLogin() {
+	return login;
+}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+public void setLogin(String login) {
+	this.login = login;
+}
 
-	public Date getDataNasc() {
-		return dataNasc;
-	}
+public String getSenha() {
+	return senha;
+}
 
-	public void setDataNasc(Date dataNasc) {
-		this.dataNasc = dataNasc;
-	}
+public void setSenha(String senha) {
+	this.senha = senha;
+}
 
-	public Date getDataRegistro() {
-		return dataRegistro;
-	}
+public LocalDate getDataNasc() {
+	return dataNasc;
+}
 
-	public void setDataRegistro(Date dataRegistro) {
-		this.dataRegistro = dataRegistro;
-	}
+public void setDataNasc(LocalDate dataNasc) {
+	this.dataNasc = dataNasc;
+}
+
+public LocalDate getDataCadastro() {
+	return dataCadastro;
+}
+
+public void setDataCadastro(LocalDate dataCadastro) {
+	this.dataCadastro = dataCadastro;
+}
+
+	
 
 }
