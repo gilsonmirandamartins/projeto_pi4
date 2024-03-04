@@ -24,8 +24,15 @@
             <label for=""><strong>Data de nascimento:</strong></label>
             <input type="date" class="dataNasc" name="nascimento" value="" placeholder="">
 
-            <label for=""><strong>Data do Primeiro registro:</strong></label>
-            <input type="date" class="dataRegistro" name="data do registro" value="" placeholder="">
+            <label for=""><strong>Data do Cadastro:</strong></label>
+            <input type="date" class="dataCadastro" name="data do cadastro" value="" placeholder="">
+
+            <label for=""><strong>Manter cadastro ativo?</strong></label>
+<select class="ativo" name="ativo" required>
+    <option value="true">Sim</option>
+    <option value="false">Não</option>
+</select>
+
 
             <button type="submit"><strong>Cadastrar</strong></button>
         </form>

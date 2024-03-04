@@ -5,25 +5,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const Isenha = document.querySelector(".senha");
     const IdataNasc = document.querySelector(".dataNasc");
     const Idataregistro = document.querySelector(".dataRegistro");
+    const Iativo = document.querySelector(".ativo");
 
-    function cadastrar() {
-        fetch("http://localhost:8081/usuarios", { //Conexão com a api
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify({ //variavés em conformidade com a api, não esquecer da logica do ATIVO
-                nome: Inome.value,
-                senha: Isenha.value,
-                login: Ilogin.value,
-                dataNasc: IdataNasc.value,
-                dataRegistro: Idataregistro.value,
-            })
+function cadastrar() {
+    const dataCadastro = new Date();  // para data e hora atual
+    const ativoValue = Iativo.value === "true"; // Converte a string para booleano
+
+    fetch("http://localhost:8081/usuarios", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({
+            nome: Inome.value,
+            senha: Isenha.value,
+            login: Ilogin.value,
+            dataNascimento: IdataNasc.value,
+            dataCadastro: dataCadastro.toISOString(), // Converte a data
+            ativo: ativoValue
         })
-            .then(function (res) { console.log(res) })
-            .catch(function (res) { console.log(res) });
-    }
+    })
+    .then(function (res) { console.log(res) })
+    .catch(function (res) { console.log(res) });
+}
+
+    
 
     function limpar() {
         Inome.value = "";
