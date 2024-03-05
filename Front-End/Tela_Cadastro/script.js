@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function cadastrar() {
     const dataCadastro = new Date();  // para data e hora atual
-    const ativoValue = Iativo.value === "true"; // Converte a string para booleano
+    const ativoValue = Iativo.value === "true"; // Converte para booleano
 
     fetch("http://localhost:8081/usuarios", {
         headers: {
