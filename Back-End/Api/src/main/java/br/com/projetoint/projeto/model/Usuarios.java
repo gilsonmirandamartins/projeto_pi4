@@ -18,71 +18,69 @@ public class Usuarios {
 	private Integer id;
 	@Column(name = "nome", length = 200, nullable = true)
 	private String nome;
-	@Column(name = "login", length = 15, nullable = true)
+	@Column(name = "login", length = 30, nullable = true)
 	private String login;
 	@Column(name = "senha", length = 10, nullable = true)
 	private String senha;
 
-	/*@Column(name = "dataNasc", nullable = false)
-	private Date dataNasc;
-
-	@Column(name = "dataRegistro", nullable = false)
-	private Date dataRegistro;*/
+	/*
+	 * @Column(name = "dataNasc", nullable = false) private Date dataNasc;
+	 * 
+	 * @Column(name = "dataRegistro", nullable = false) private Date dataRegistro;
+	 */
 
 	@Column(name = "dataNasc", nullable = false)
-private LocalDate dataNasc;
+	private LocalDate dataNasc;
 
-@Column(name = "dataCadastro", nullable = false)
-private LocalDate dataCadastro;
+	@Column(name = "dataCadastro", nullable = false)
+	private LocalDate dataCadastro;
 
-public Integer getId() {
-	return id;
-}
+	public Integer getId() {
+		return id;
+	}
 
-public void setId(Integer id) {
-	this.id = id;
-}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-public String getNome() {
-	return nome;
-}
+	public String getNome() {
+		return nome;
+	}
 
-public void setNome(String nome) {
-	this.nome = nome;
-}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-public String getLogin() {
-	return login;
-}
+	public String getLogin() {
+		return login;
+	}
 
-public void setLogin(String login) {
-	this.login = login;
-}
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-public String getSenha() {
-	return senha;
-}
+	public String getSenha() {
+		return senha;
+	}
 
-public void setSenha(String senha) {
-	this.senha = senha;
-}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
-public LocalDate getDataNasc() {
-	return dataNasc;
-}
+	public LocalDate getDataNasc() {
+		return dataNasc;
+	}
 
-public void setDataNasc(LocalDate dataNasc) {
-	this.dataNasc = dataNasc;
-}
+	public void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc = dataNasc;
+	}
 
-public LocalDate getDataCadastro() {
-	return dataCadastro;
-}
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
 
-public void setDataCadastro(LocalDate dataCadastro) {
-	this.dataCadastro = dataCadastro;
-}
-
-	
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
 
 }
