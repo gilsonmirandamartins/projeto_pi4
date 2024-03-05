@@ -26,7 +26,7 @@ function cadastrar() {
             ativo: ativoValue
         })
     })
-    .then(function (res) { console.log(res) })
+    .then(function (res) { console.log(res) }) //teste para ver se recuperei a api
     .catch(function (res) { console.log(res) });
 }
 
