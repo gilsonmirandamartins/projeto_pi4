@@ -14,5 +14,6 @@
             "database": "bd_usuarios",
             "username": "usuarios"
         }
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
