@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar conta</title>
     <link rel="stylesheet" href="style_confirmacao.css">
+    <script src="./confirmar.js" defer></script>
 </head>
 <body>
     <div class="box">
-        <h1>Confirmar sua conta</h1>
+        <h1>Recuperar senha</h1>
         <form action="">
             <label for=""><strong>Email de login:</strong></label>
             <input type="text" class="login" name="login" placeholder="Digite seu login" required>
 
             <label for=""><strong>Data de nascimento:</strong></label>
             <input type="date" class="dataNasc" name="nascimento" value="" placeholder="" required>
+
+            <label for=""><strong>Nova senha:</strong></label>
+            <input type="password" class="crie_uma_senha" name="senha" placeholder="Digite a nova senha">
 
             <button type="submit"><strong>Confirmar</strong></button>
         </form>
