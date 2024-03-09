@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar_credenciais</title>
-    <link rel="stylesheet" href="style_verificação.css">
-    <script src="./script_verificação.js" defer></script>
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" href="style_confirmacao.css">
+    <script src="./confirmar.js" defer></script>
 </head>
 <body>
     <div class="box">
         <h1>Recuperar senha</h1>
-        <form action="">
-            <label for=""><strong>Email de login:</strong></label>
-            <input type="text" class="login" name="login" placeholder="Digite seu login" required>
+        <form id="recoverForm">
+            <label for="login"><strong>Email de login:</strong></label>
+            <input type="text" id="login" class="login" name="login" placeholder="Digite seu login" required>
 
-            <label for=""><strong>Data de nascimento:</strong></label>
-            <input type="date" class="dataNasc" name="nascimento" value="" placeholder="" required>
-            
+            <label for="nascimento"><strong>Data de nascimento:</strong></label>
+            <input type="date" id="nascimento" class="dataNasc" name="nascimento" value="" placeholder="" required>
+
             <button type="submit"><strong>Confirmar</strong></button>
         </form>
+        <div id="resultado"></div>
     </div>
 </body>
 </html>

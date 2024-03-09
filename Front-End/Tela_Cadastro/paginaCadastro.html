@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_cadastro.css">
+    <script src="./script.js" defer></script>
+    <title>Cadastramento</title>
+</head>
+<body>
+    <div class="box">
+        <h1>Cadastro</h1>
+        <form action="">
+            <label for=""><strong>Nome:</strong></label>
+            <input type="text" class="nome" name="nome" placeholder="Digite seu nome" required>
+            
+            <label for=""><strong>Email de login:</strong></label>
+            <input type="text" class="login" name="login" placeholder="Crie um login">
+
+            <label for=""><strong>Senha:</strong></label>
+            <input type="password" class="Crie uma senha" name="senha" placeholder="Senha">
+
+            <label for=""><strong>Data de nascimento:</strong></label>
+            <input type="date" class="dataNasc" name="nascimento" value="" placeholder="">
+            <!--
+            <label for=""><strong>Data do Cadastro:</strong></label>
+            <input type="date" class="dataCadastro" name="data do cadastro" value="" placeholder="">
+                -->
+            <label for=""><strong>Manter cadastro ativo?</strong></label>
+<select class="ativo" name="ativo" required>
+    <option value="true">Sim</option>
+    <option value="false">Não</option>
+</select>
+
+            <button type="submit"><strong>Cadastrar</strong></button>
+        </form>
+    </div>
+</body>
+</html>
