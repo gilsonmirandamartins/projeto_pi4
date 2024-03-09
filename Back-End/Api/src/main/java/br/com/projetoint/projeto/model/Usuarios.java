@@ -92,6 +92,11 @@ public class Usuarios {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
+
+    public void save(Usuarios usuario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 	
 	
 
