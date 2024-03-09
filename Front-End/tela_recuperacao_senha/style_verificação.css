@@ -61,11 +61,6 @@ input:focus{
 }
 
 button{
-    /*
-  display: block;
-  text-align: center;
-  margin: auto;   */
-  
   background-color: rgb(5, 135, 228);
   color: aliceblue;
   font-weight: bolder;

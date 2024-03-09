@@ -12,7 +12,6 @@ function cadastrar() {
 
     const ativoValue = Iativo.value === "true"; // Converte para booleano
 
-
     fetch("http://localhost:8081/usuarios", {
         headers: {
             'Accept': 'application/json',
@@ -32,8 +31,6 @@ function cadastrar() {
     .then(function (res) { console.log(res) }) //teste para ver se recuperei a api
     .catch(function (res) { console.log(res) });
 }
-
-    
 
     function limpar() {
         Inome.value = "";

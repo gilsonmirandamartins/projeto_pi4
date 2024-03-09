@@ -60,7 +60,7 @@ input:focus{
   background: #e9d2c0;
 }
 
-button{
+button{ 
   background-color: rgb(5, 135, 228);
   color: aliceblue;
   font-weight: bolder;
@@ -81,4 +81,3 @@ button{
   margin-bottom: 60px;
 
 }
-

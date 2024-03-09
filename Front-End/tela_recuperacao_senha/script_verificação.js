@@ -7,10 +7,7 @@ const Isenha = document.querySelector(".senha");
 
 function confirmar (){
 
-
-
 }
-
 
 function limpar (){
     Ilogin.value = "";
