@@ -47,7 +47,12 @@ form{
   gap: 20px;
 }
 
-input#in1, input#in2{
+input#in1{
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input#in2{
   padding: 10px;
   border-radius: 10px;
 }
@@ -116,6 +121,8 @@ a.lin2:hover, a.lin3:hover{
   background-image: url('../img/olhoHide.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  border: none;
+  padding: 0;
   cursor: pointer;
 }
 
