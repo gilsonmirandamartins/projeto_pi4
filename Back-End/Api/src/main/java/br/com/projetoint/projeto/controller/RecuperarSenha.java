@@ -1,10 +1,12 @@
 package br.com.projetoint.projeto.controller;
 
+
 import java.util.Date;
 
 public class RecuperarSenha {
     private String login;
     private Date dataNascimento;
+    
     public String getLogin() {
         return login;
     }
