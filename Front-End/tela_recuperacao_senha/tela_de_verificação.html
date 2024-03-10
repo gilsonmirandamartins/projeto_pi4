@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Senha</title>
-    <link rel="stylesheet" href="style_confirmacao.css">
-    <script src="./confirmar.js" defer></script>
+    <title>Recuperação de Senha</title>
+    <link rel="stylesheet" href="/Front-End/tela_recuperacao_senha/style_verificação.css">
+    <script src="/Front-End/tela_recuperacao_senha/script_verificação.js" defer></script>
 </head>
-<body>
-    <div class="box">
-        <h1>Recuperar senha</h1>
-        <form id="recoverForm">
-            <label for="login"><strong>Email de login:</strong></label>
-            <input type="text" id="login" class="login" name="login" placeholder="Digite seu login" required>
 
-            <label for="nascimento"><strong>Data de nascimento:</strong></label>
-            <input type="date" id="nascimento" class="dataNasc" name="nascimento" value="" placeholder="" required>
-
-            <button type="submit"><strong>Confirmar</strong></button>
-        </form>
-        <div id="resultado"></div>
-    </div>
+<body class="pag2main">
+    <main>
+        <div>
+            <h1>Recuperação de Senha</h1>
+            <form id="recoverForm">
+                <div class="dados">
+                    <label>Digite seu login</label>
+                    <div class="input_Nome">
+                        &#x1F9B1
+                        <input type="text" name="login" id="login" required>
+                    </div>
+                </div>
+                <div class="dados">
+                    <label>Digite sua data de nascimento</label>
+                    <div class="input">
+                        &#x1F4C5
+                        <input type="date" name="nascimento" id="nascimento" required>
+                    </div>
+                </div>
+                <button type="submit" class="lin1">Recuperar Senha</button>
+                <div id="resultado"></div>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
