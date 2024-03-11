@@ -37,12 +37,11 @@ public class UsuarioController {
         if (usuarioExistente != null) {
             throw new RuntimeException("Este login já está em uso.");
         }
-        
-        // Se o login não existe, salvar o usuário
-        Usuarios usuarioNovo = dao.save(usuarios);
-        return usuarioNovo;
+        else {
+            Usuarios usuarioNovo = dao.save(usuarios);
+            return usuarioNovo;
+        }
     }
-
 
     @PutMapping
     public Usuarios editarUsuario(@RequestBody Usuarios usuarios) {
