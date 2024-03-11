@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (response.ok) {
-                window.location.href = "http://127.0.0.1:5500/Front-End/tela_teste/teste_index.html"
+                window.location.href = "http://127.0.0.1:5500/Front-End/Home/home.html"
             } else {
                 alert('Credenciais inválidas. Tente novamente.');
             }
