@@ -32,8 +32,15 @@ public class UsuarioController {
 
     @PostMapping
     public Usuarios criarUsuario(@RequestBody Usuarios usuarios) {
-        Usuarios usuarioNovo = dao.save(usuarios);
-        return usuarioNovo;
+        // Verificar se o login já existe
+        Usuarios usuarioExistente = dao.findByLogin(usuarios.getLogin());
+        if (usuarioExistente != null) {
+            throw new RuntimeException("Este login já está em uso.");
+        }
+        else {
+            Usuarios usuarioNovo = dao.save(usuarios);
+            return usuarioNovo;
+        }
     }
 
     @PutMapping
