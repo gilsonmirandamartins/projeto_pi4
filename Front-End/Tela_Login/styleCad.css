@@ -8,137 +8,131 @@
 }
 
 body{
-  margin: auto;
-  max-width: 800px;
-  min-width: 350px;
+  background-color: #24343c;
   display: flex;
   justify-content: center;
-  background: linear-gradient(to right, #FD6454, #FF8252, #FF9C51, #FFB051);
-  background-size: cover; 
+  align-items: center;
 }
 
-main > div{
-  display: block;
-  text-align: center;
-  max-width: 800px;
-  min-width: 350px;
-  margin: 50% auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.603);
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 30px;
+}
+
+.Tela_login{
+  background-color: #14242c;
+  width: 400px;
+  height: 432px;
+  color: #d6dce7;
   border-radius: 10px;
 }
 
 .dados{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
-}
-
-h1{
-  padding: 10px 0px;
 }
 
 form{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
 }
 
-input#in1{
+figure{
   padding: 10px;
-  border-radius: 10px;
 }
 
-input#in2{
-  padding: 10px;
-  border-radius: 10px;
+figure img{
+  width: 30px;
+  height: 30px;
 }
 
-.lin1{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-
-  background-color: rgb(5, 135, 228);
-  color: aliceblue;
-  font-weight: bolder;
-
-  height: 5px;
-  max-width: 250px;
-  min-width: 250px;
-  padding: 15px 0px;
-
-  text-decoration: none;
-  border-radius: 0px;
-  box-shadow: black 1px 1px 3px ;
-}
-
-a.lin2, a.lin3{
-  display: block;
-  text-align: center;
-  margin: auto;
-  text-decoration: none;
-
-  color: rgb(31, 30, 30);
-  font-weight: bolder;
-  height: 20px;
-  max-width: 800px;
-  min-width: 250px;
-}
-
-a.lin2:hover, a.lin3:hover{
-  text-decoration: underline;
-}
-
-.dados{
-  width: 250px;
-}
-
-.input-button, input{
-  background-color: white;
-  border: 2px solid black;
+.input{
+  width: 350px;
+  height: 60px;
+  background-color: #14242c;
+  border: 2px solid #d6dce7;
   border-radius: 10px;
   display: flex;
   align-items: center;
 }
 
-.input-button input{
-  border: 0;
+.input input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #14242c;
+  color: #d6dce7;
+}
+
+.input_Nome input{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .input button{
   width: 30px;
   height: 30px;
+  margin: 5px;
   border: 0;
   background: none;
 }
 
+input::placeholder{
+  font-size: 16px;
+  color: #d6dce7;
+}
+
+input:focus{
+  outline: none;
+}
+
 #icon{
-  background-image: url('../img/olhoHide.svg');
+  background-image: url('../img/visibility_off_white_24dp.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  border: none;
-  padding: 0;
   cursor: pointer;
 }
 
 #icon.hide{
-  background-image: url('../img/olho.svg');
+  background-image: url('../img/visibility_white_24dp.svg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.input, .input_Nome{
+.Esqueceu_Senha{
+  text-align: end;
+  text-decoration: none;
+  color: #b1b5be;
+}
+
+.button_submit{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 0px;
+  color: aliceblue;
+  background-color: rgb(5, 135, 228);
+  cursor: pointer;
 }
 
-.input_Nome input{
-  width:222px;
+.button_submit:hover{
+  background-color: rgb(3, 78, 133);
+}
+
+.section_cadastro{
+  text-align: center;
+}
+
+.Link_cadastro{
+  text-decoration: none;
+  color: rgb(5, 135, 228);
 }
