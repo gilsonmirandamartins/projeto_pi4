@@ -9,34 +9,39 @@
 </head>
     <!--Tela de login para logar ou se cadastrar-->
 
-<body class="pag2main">
-    <main>
-        <div>
-            <h1>Crendencias do usuário</h1>
-            <form action="">
-                <div class="dados">
-                    <label>Digite seu nome ou email</label>
-                    <div class="input_Nome">
-                        &#x1F9B1
-                        <input type="text" name="nome" id="in1" required>
+<body>
+    <main class="Tela_login">
+        <h1>Login</h1>
+        <form>
+            <div class="dados">
+                <label>Login:</label>
+                <div class="input_Nome input">
+                    <figure>
+                        <img src="../img/email_white_24dp.svg" alt="Imagem email">
+                    </figure>
+                    <input type="text" name="nome" id="in1" required placeholder="E-mail">
+                </div>
+            </div>
+            <div class="dados">
+                <label>Senha:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/lock_white_24dp.svg" alt="Imagem Cadeado">
+                    </figure>
+                    <input type="password" name="senha" id="in2" placeholder="Senha" required>
+                    <div class="input_button">
+                        <button type="button" onclick="toggleSenha()" id="icon">
+                        </button>
                     </div>
                 </div>
-                <div class="dados">
-                    <label>Digite sua senha</label>
-                    <div class="input">
-                        &#x1F512
-                        <div class="input-button">
-                            <input type="password" name="senha" id="in2" required>
-                            <button type="button" onclick="toggleSenha()" id="icon">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="lin1">Acessar</button>
-                <a href="/Front-End/tela_recuperacao_senha/tela_de_verificação.html" class="lin2">Esqueceu sua senha?</a>
-                <a href="/Front-End/Tela_Cadastro/paginaCadastro.html" class="lin3">Cadastre-se</a>
-            </form>
-        </div>
+                <a href="../tela_recuperacao_senha/tela_de_verificação.html" class="Esqueceu_Senha">Esqueceu sua senha?</a>
+            </div>
+            <button type="submit" class="button_submit">Acessar</button>
+            <p class="section_cadastro">
+                Não tem uma conta?
+                <a href="../Tela_Cadastro/paginaCadastro.html" class="Link_cadastro">Cadastre-se</a>
+            </p>
+        </form>
     </main>
 </body>
 </html>
