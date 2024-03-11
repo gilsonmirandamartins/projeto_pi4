@@ -20,5 +20,4 @@ public class RecuperarSenha {
         this.dataNascimento = dataNascimento;
     }
     
-
 }
