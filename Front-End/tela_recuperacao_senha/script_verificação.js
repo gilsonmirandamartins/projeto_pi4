@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ login: login, dataNascimento: nascimento })
-
         })
         .then(response => {
             if (!response.ok) {
@@ -23,17 +22,16 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(resposta => {
-            document.getElementById("resultado").innerHTML = resposta.mensagem;
-        
+            document.getElementById("resultado").innerHTML = resposta;
+
             // Verificar se a resposta foi bem-sucedida antes de redirecionar
-            if (resposta.sucesso === "false") {
-                console.log('Recuperação de senha falhou');
+            if (resposta.includes("Acesso liberado")) {
+                // Redirecionar para a próxima página
+                window.location.href = "/Front-End/tela_recuperacao_senha/nova_senha.html";
             } else {
-                // Redirecionar para a nova página
-                window.location.href = "http://127.0.0.1:5500/Front-End/tela_recuperacao_senha/nova_senha.html";
+                console.log('Recuperação de senha falhou');
             }
         })
-        
         .catch(error => {
             console.error('Erro ao recuperar senha:', error);
             alert('Ocorreu um erro ao recuperar a senha. Por favor, tente novamente mais tarde.');
