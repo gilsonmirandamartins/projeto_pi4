@@ -68,6 +68,8 @@ figure img{
   border: none;
   background-color: #14242c;
   color: #d6dce7;
+  -webkit-box-shadow: 0 0 0 30px #14242c inset;
+  -webkit-text-fill-color: #d6dce7 !important;
 }
 
 .input_Nome input{
