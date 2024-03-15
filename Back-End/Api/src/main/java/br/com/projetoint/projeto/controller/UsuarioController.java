@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projetoint.projeto.DAO.IUsuario;
 import br.com.projetoint.projeto.model.Usuarios;
 
 @RestController
-//@CrossOrigin("*")
+// @CrossOrigin("*")
 @CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -36,7 +35,7 @@ public class UsuarioController {
 
     @PostMapping
     public Usuarios criarUsuario(@RequestBody Usuarios usuarios) {
-        // Verificar se o login já existe
+
         Usuarios usuarioExistente = dao.findByLogin(usuarios.getLogin());
         if (usuarioExistente != null) {
             throw new RuntimeException("Este login já está em uso.");
@@ -60,22 +59,19 @@ public class UsuarioController {
     }
 
     @PostMapping("/recuperar-senha")
-    public ResponseEntity<String> verificarAcesso(@RequestBody Usuarios dadosUsuario) {
-        
+    public ResponseEntity<?> verificarAcesso(@RequestBody Usuarios dadosUsuario) {
         Usuarios usuarioNoBanco = dao.findByLoginAndDataNascimento(
                 dadosUsuario.getLogin(),
                 dadosUsuario.getDataNascimento());
-    
+
         if (usuarioNoBanco != null) {
-            
-            return ResponseEntity.ok("Acesso liberado para edição de senha.");
+
+            return ResponseEntity.ok().body("{\"message\": \"Acesso liberado para edição de senha.\"}");
         } else {
-            
+
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("Acesso negado. Login ou data de nascimento incorretos.");
+                    .body("{\"error\": \"Acesso negado. Login ou data de nascimento incorretos.\"}");
         }
-    }@RequestMapping(value = "/recuperar-senha", method = RequestMethod.OPTIONS)
-    public ResponseEntity<?> handleOptions() {
-        return ResponseEntity.ok().build();
     }
+
 }
