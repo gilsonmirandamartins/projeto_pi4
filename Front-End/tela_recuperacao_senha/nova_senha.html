@@ -10,13 +10,12 @@
 <body>
     <div class="box">
         <h1>Recuperar senha</h1>
-        <form action="">
-
-            <label for=""><strong>Nova senha:</strong></label>
-            <input type="password" class="crie_uma_senha" name="senha" placeholder="Digite a nova senha">
-
+        <form id="formSenha" action="">
+            <label for="novaSenha"><strong>Nova senha:</strong></label>
+            <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite a nova senha">
             <button type="submit"><strong>Confirmar</strong></button>
         </form>
+        <div id="mensagem"></div> <!-- Elemento para exibir mensagem de sucesso -->
     </div>
 </body>
 </html>
