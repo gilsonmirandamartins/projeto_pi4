@@ -8,29 +8,34 @@
     <script src="/Front-End/tela_recuperacao_senha/script_verificação.js" defer></script>
 </head>
 
-<body class="pag2main">
-    <main>
-        <div>
-            <h1>Recuperação de Senha</h1>
-            <form id="recoverForm">
-                <div class="dados">
-                    <label>Digite seu login</label>
-                    <div class="input_Nome">
-                        &#x1F9B1
-                        <input type="text" name="login" id="login" required>
-                    </div>
+<body>
+    <main class="tela_recuperacao_senha">
+        <h1>Recuperação de Senha</h1>
+        <form id="recoverForm">
+            <div class="dados">
+                <label>Digite seu login</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/email_white_24dp.svg" alt="Icone email">
+                    </figure>
+                    <input type="text" name="login" id="login" placeholder="Digite seu e-mail" required>
                 </div>
-                <div class="dados">
-                    <label>Digite sua data de nascimento</label>
-                    <div class="input">
-                        &#x1F4C5
-                        <input type="date" name="nascimento" id="nascimento" required>
-                    </div>
+            </div>
+            <div class="dados">
+                <label>Digite sua data de nascimento</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/calendar_month_white_24dp.svg" alt="Icone calendario">
+                    </figure>
+                    <input type="date" name="nascimento" id="nascimento" required>
                 </div>
-                <button type="submit" class="lin1">Recuperar Senha</button>
-                <div id="resultado"></div>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="lin1">Redefinir Senha</button>
+            <p class="section_login">
+                Lembrou da Senha? <a href="../Tela_Login/index.html" class="Link_login">Faça seu login</a>
+            </p>
+            <div id="resultado"></div>
+        </form>
     </main>
 </body>
 </html>
