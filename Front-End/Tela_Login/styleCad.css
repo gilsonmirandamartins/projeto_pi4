@@ -37,6 +37,7 @@ body{
 form{
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 20px;
 }
 
@@ -108,16 +109,17 @@ input:focus{
   background-size: cover;
 }
 
-.Esqueceu_Senha{
-  text-align: end;
+form .Esqueceu_Senha{
   text-decoration: none;
   color: #b1b5be;
+  width: 160px;
 }
 
 .button_submit{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 350px;
   padding: 15px;
   font-size: 15px;
   border-radius: 10px;
@@ -133,6 +135,7 @@ input:focus{
 
 .section_cadastro{
   text-align: center;
+  width: 100%;
 }
 
 .Link_cadastro{
