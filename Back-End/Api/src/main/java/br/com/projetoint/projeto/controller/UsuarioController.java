@@ -74,7 +74,7 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/alterar-senha")
+    @PutMapping("/usuarios/alterar-senha")
     public ResponseEntity<String> alterarSenha(@RequestBody AlterarSenha alteracaoSenhaRequest) {
         // Verificar se o usuário existe (se necessário)
         Usuarios usuarioExistente = dao.findByLogin(alteracaoSenhaRequest.getLogin());
@@ -89,5 +89,4 @@ public class UsuarioController {
 
         return ResponseEntity.ok("Senha alterada com sucesso.");
     }
-
 }
