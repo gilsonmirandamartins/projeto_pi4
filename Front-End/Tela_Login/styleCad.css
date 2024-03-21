@@ -14,16 +14,13 @@ body{
   align-items: center;
 }
 
-main{
+.Tela_login{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
   margin: 30px;
-}
-
-.Tela_login{
   background-color: #14242c;
   width: 400px;
   height: 432px;
@@ -40,6 +37,7 @@ main{
 form{
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 20px;
 }
 
@@ -50,6 +48,10 @@ figure{
 figure img{
   width: 30px;
   height: 30px;
+}
+
+label{
+  font-size: 20px;
 }
 
 .input{
@@ -107,16 +109,17 @@ input:focus{
   background-size: cover;
 }
 
-.Esqueceu_Senha{
-  text-align: end;
+form .Esqueceu_Senha{
   text-decoration: none;
   color: #b1b5be;
+  width: 160px;
 }
 
 .button_submit{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 350px;
   padding: 15px;
   font-size: 15px;
   border-radius: 10px;
@@ -132,6 +135,7 @@ input:focus{
 
 .section_cadastro{
   text-align: center;
+  width: 100%;
 }
 
 .Link_cadastro{

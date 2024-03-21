@@ -8,12 +8,20 @@
     <script src="./script_nova_senha.js" defer></script>
 </head>
 <body>
-    <div class="box">
+    <div class="Tela_novaSenha">
         <h1>Recuperar senha</h1>
-        <form id="formSenha" action="">
-            <label for="novaSenha"><strong>Nova senha:</strong></label>
-            <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite a nova senha">
-            <button type="submit"><strong>Confirmar</strong></button>
+        <form>
+            <div class="dados">
+                <label for="novaSenha">Nova senha:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/lock_white_24dp.svg" alt="Icone cadeado">
+                    </figure>
+                    <input type="password" id="novaSenha" class="crie_uma_senha" name="novaSenha" placeholder="Digite sua nova senha">
+                </div>
+            </div>
+
+            <button type="submit">Confirmar</button>
         </form>
         <div id="mensagem"></div> <!-- Elemento para exibir mensagem de sucesso -->
     </div>
