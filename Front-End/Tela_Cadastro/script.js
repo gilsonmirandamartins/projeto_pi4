@@ -31,7 +31,7 @@ function cadastrar() {
     // Após o cadastro ser feito corretamente, ira redirecionar para a tela de login
     .then(function (res) {
         if (res.ok) {
-            window.location.href = "http://127.0.0.1:3000/Front-End/Tela_Login/index.html";
+            window.location.href = "http://127.0.0.1:5500/Front-End/Tela_Login/index.html";
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
