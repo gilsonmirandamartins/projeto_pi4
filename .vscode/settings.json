@@ -15,5 +15,6 @@
             "username": "usuarios"
         }
     ],
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "liveServer.settings.port": 5501
 }

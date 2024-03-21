@@ -12,17 +12,18 @@
         <h1>Recuperar senha</h1>
         <form>
             <div class="dados">
-                <label>Nova senha:</label>
+                <label for="novaSenha">Nova senha:</label>
                 <div class="input">
                     <figure>
                         <img src="../img/lock_white_24dp.svg" alt="Icone cadeado">
                     </figure>
-                    <input type="password" class="crie_uma_senha" name="senha" placeholder="Digite sua nova senha">
+                    <input type="password" id="novaSenha" class="crie_uma_senha" name="novaSenha" placeholder="Digite sua nova senha">
                 </div>
             </div>
 
             <button type="submit">Confirmar</button>
         </form>
+        <div id="mensagem"></div> <!-- Elemento para exibir mensagem de sucesso -->
     </div>
 </body>
 </html>
