@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,20 +35,45 @@ public class AuthController {
         }
     }
 
-    /*@GetMapping("/users/{id}")
-    public ResponseEntity<List<Usuarios>> getAllUsers() {
-        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findAll();
-        return ResponseEntity.ok(usuarios);
-    }*/
-
     @GetMapping("/users/{id}")
-public ResponseEntity<Usuarios> getUserById(@PathVariable Integer id) {
-    Usuarios usuario = usuarioRepository.findById(id).orElse(null);
-    if (usuario != null) {
-        return ResponseEntity.ok(usuario);
-    } else {
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<Usuarios> getUserById(@PathVariable Integer id) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-}
+
+    @PostMapping("/users")
+    public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
+        Usuarios novoUsuario = usuarioRepository.save(usuario);
+        return ResponseEntity.ok(novoUsuario);
+    }
+
+    @PutMapping("/users/{id}")
+    public ResponseEntity<Usuarios> updateUser(@PathVariable Integer id, @RequestBody Usuarios usuarioDetails) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuario.setNome(usuarioDetails.getNome());
+            usuario.setLogin(usuarioDetails.getLogin());
+            // Adicione outras propriedades que você deseja atualizar
+            Usuarios usuarioAtualizado = usuarioRepository.save(usuario);
+            return ResponseEntity.ok(usuarioAtualizado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuarioRepository.delete(usuario);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

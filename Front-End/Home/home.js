@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
 
-    // Recuperar dados do usuário com base no ID
+
     fetch(`http://localhost:8081/users/${userId}`)
         .then(response => {
             if (response.ok) {
-                return response.json(); // Parse a resposta como JSON
+                return response.json();
             } else {
                 throw new Error('Erro ao recuperar dados do usuário.');
             }
@@ -26,4 +26,52 @@ document.addEventListener('DOMContentLoaded', function () {
             const userDataContainer = document.getElementById('userDataContainer');
             userDataContainer.innerHTML = `<p>Ocorreu um erro ao carregar os dados do usuário.</p>`;
         });
+
+        // Função para criar um novo usuário
+function createUser(nome, login, senha) {
+    const newUser = {
+        nome: nome,
+        login: login,
+        senha: senha
+    };
+
+    fetch('http://localhost:8081/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Novo usuário criado:', data);
+        // Atualize a interface do usuário conforme necessário
+    })
+    .catch(error => console.error('Erro ao criar usuário:', error));
+}
+
+// Função para atualizar um usuário existente
+function updateUser(id, nome, login, senha) {
+    const updatedUser = {
+        nome: nome,
+        login: login,
+        senha: senha
+    };
+
+    fetch(`http://localhost:8081/users/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedUser)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Usuário atualizado:', data);
+        // Atualize a interface do usuário conforme necessário
+    })
+    .catch(error => console.error('Erro ao atualizar usuário:', error));
+}
+
 });
+

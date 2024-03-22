@@ -12,24 +12,37 @@
         <div id="userInfoContainer">
             <p id="userData"></p>
         </div>
+
+        <!-- Campos de entrada para edição -->
+        <input type="text" id="newName" placeholder="Novo Nome">
+        <input type="text" id="newEmail" placeholder="Novo Email">
+        <input type="password" id="newPassword" placeholder="Nova Senha">
+
+        <!-- Botão para atualizar usuário -->
+        <button onclick="updateUser()">Atualizar Usuário</button>
+        <button onclick="deleteUser(1)">Deletar Usuário</button>
+        <button onclick="getAllUsers()">Obter Lista de Usuários</button>
     </main>
 
+    <script src="crud.js"></script>
+
     <script>
-        // Extrair o ID do usuário da URL
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('userId');
 
-        // Recuperar dados do usuário com base no ID
         fetch(`http://localhost:8081/users/${userId}`)
             .then(response => response.json())
             .then(data => {
-                // Exibir os dados do usuário na página
                 const userDataElement = document.getElementById('userData');
                 userDataElement.innerText = `Nome: ${data.nome},
                 Login: ${data.login},
                 Data de Nascimento: ${data.dataNascimento},
                 Data de Cadastro: ${data.dataCadastro},
                 Ativo: ${data.ativo ? 'Sim' : 'Não'} `;
+
+                // Preencher campos de entrada com os dados do usuário
+                document.getElementById('newName').value = data.nome;
+                document.getElementById('newEmail').value = data.login;
             })
             .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
     </script>
