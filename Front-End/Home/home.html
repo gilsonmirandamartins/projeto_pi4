@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="styleHome.css">
 </head>
+
 <body class="pag2main">
     <main>
         <div id="userInfoContainer">
-            <p>Ola Mundo!</p>
+            <p id="userData"></p>
         </div>
     </main>
+
+    <script>
+        // Extrair o ID do usuário da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+
+        // Recuperar dados do usuário com base no ID
+        fetch(`http://localhost:8081/users/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Exibir os dados do usuário na página
+                const userDataElement = document.getElementById('userData');
+                userDataElement.innerText = `Nome: ${data.nome},
+                Login: ${data.login},
+                Data de Nascimento: ${data.dataNascimento},
+                Data de Cadastro: ${data.dataCadastro},
+                Ativo: ${data.ativo ? 'Sim' : 'Não'} `;
+            })
+            .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
+    </script>
 </body>
+
 </html>

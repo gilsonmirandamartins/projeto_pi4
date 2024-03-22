@@ -1,9 +1,12 @@
 package br.com.projetoint.projeto.controller;
+
 //import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,14 +22,31 @@ public class AuthController {
     private IUsuario usuarioRepository;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Usuarios usuario = usuarioRepository.findByLogin(loginRequest.getLogin());
 
         if (usuario != null && usuario.getSenha().equals(loginRequest.getSenha())) {
-            return ResponseEntity.ok("Login bem-sucedido!"); // corrigir, remover coisas desnecessarias
+            // Retornar os dados do usuário junto com a mensagem de sucesso
+            return ResponseEntity.ok(usuario);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas.");
         }
     }
+
+    /*@GetMapping("/users/{id}")
+    public ResponseEntity<List<Usuarios>> getAllUsers() {
+        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findAll();
+        return ResponseEntity.ok(usuarios);
+    }*/
+
+    @GetMapping("/users/{id}")
+public ResponseEntity<Usuarios> getUserById(@PathVariable Integer id) {
+    Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+    if (usuario != null) {
+        return ResponseEntity.ok(usuario);
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
 
 }
