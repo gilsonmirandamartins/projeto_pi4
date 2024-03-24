@@ -48,12 +48,13 @@ public class AuthController {
     }
 
     @PostMapping("/users")
-public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
-    // Defina a data de cadastro antes de salvar o novo usuário
-    usuario.setDataCadastro(new Date());
-    Usuarios novoUsuario = usuarioRepository.save(usuario);
-    return ResponseEntity.ok(novoUsuario);
-}
+    public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
+        // Defina a data de cadastro antes de salvar o novo usuário
+        usuario.setDataCadastro(new Date());
+        Usuarios novoUsuario = usuarioRepository.save(usuario);
+        return ResponseEntity.ok(novoUsuario);
+    }
+    
 
 
     @PutMapping("/users/{id}")

@@ -1,112 +1,117 @@
 const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('userId');
+const userId = urlParams.get('userId');
 
-        fetch(`http://localhost:8081/users/${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                const userDataElement = document.getElementById('userData');
-                userDataElement.innerText = `Nome: ${data.nome},
+fetch(`http://localhost:8081/users/${userId}`)
+    .then(response => response.json())
+    .then(data => {
+        const userDataElement = document.getElementById('userData');
+        userDataElement.innerText = `Nome: ${data.nome},
                 Login: ${data.login},
                 Data de Nascimento: ${data.dataNascimento},
                 Data de Cadastro: ${data.dataCadastro},
                 Ativo: ${data.ativo ? 'Sim' : 'Não'} `;
-            })
-            .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
+    })
+    .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
 
-        function enableEdit() {
-            const userDataContainer = document.getElementById('userDataContainer');
-            userDataContainer.innerHTML = ''; // Limpa o conteúdo atual
-            
-            // Adiciona campos de entrada para edição
-            const newNameInput = document.createElement('input');
-            newNameInput.type = 'text';
-            newNameInput.id = 'newName';
-            newNameInput.placeholder = 'Novo Nome';
+function enableEdit() {
+    const userDataContainer = document.getElementById('userDataContainer');
+    userDataContainer.innerHTML = '';
 
-            const newEmailInput = document.createElement('input');
-            newEmailInput.type = 'text';
-            newEmailInput.id = 'newEmail';
-            newEmailInput.placeholder = 'Novo Email';
 
-            const newPasswordInput = document.createElement('input');
-            newPasswordInput.type = 'password';
-            newPasswordInput.id = 'newPassword';
-            newPasswordInput.placeholder = 'Nova Senha';
+    const newNameInput = document.createElement('input');
+    newNameInput.type = 'text';
+    newNameInput.id = 'newName';
+    newNameInput.placeholder = 'Novo Nome';
 
-            const confirmButton = document.createElement('button');
-            confirmButton.textContent = 'Confirmar Atualização';
-            confirmButton.onclick = updateUser;
+    const newEmailInput = document.createElement('input');
+    newEmailInput.type = 'text';
+    newEmailInput.id = 'newEmail';
+    newEmailInput.placeholder = 'Novo Email';
 
-            // Adiciona os campos e botão à página
-            userDataContainer.appendChild(newNameInput);
-            userDataContainer.appendChild(newEmailInput);
-            userDataContainer.appendChild(newPasswordInput);
-            userDataContainer.appendChild(confirmButton);
-        }
+    const newPasswordInput = document.createElement('input');
+    newPasswordInput.type = 'password';
+    newPasswordInput.id = 'newPassword';
+    newPasswordInput.placeholder = 'Nova Senha';
 
-        function createNewUser() {
-            const newName = document.getElementById('newUserName').value;
-            const newEmail = document.getElementById('newUserEmail').value;
-            const newPassword = document.getElementById('newUserPassword').value;
-            const newDateOfBirth = document.getElementById('newUserDateOfBirth').value;
-            
-            // Converta a data de nascimento para o formato ISO
-            const formattedDateOfBirth = new Date(newDateOfBirth).toISOString();
-            
-            // Se você quiser incluir a data de cadastro como a data atual
-            const currentDate = new Date();
-            const formattedCurrentDate = currentDate.toISOString();
-        
-            const newUser = {
-                nome: newName,
-                login: newEmail,
-                senha: newPassword,
-                dataNascimento: formattedDateOfBirth, // Utilize a data formatada
-                dataCadastro: formattedCurrentDate // Utilize a data formatada
-            };
-        
-            fetch('http://localhost:8081/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newUser)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Novo usuário criado:', data);
-                // Faça o que for necessário após a criação do usuário, como atualizar a interface
-            })
-            .catch(error => console.error('Erro ao criar novo usuário:', error));
-        }
-        
-        
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = 'Confirmar Atualização';
+    confirmButton.onclick = updateUser;
 
-        function updateUser() {
-            const newName = document.getElementById('newName').value;
-            const newEmail = document.getElementById('newEmail').value;
-            const newPassword = document.getElementById('newPassword').value;
-        
-            const updatedUser = {
-                nome: newName,
-                login: newEmail,
-                senha: newPassword
-            };
-        
-            fetch(`http://localhost:8081/users/${userId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedUser)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Usuário atualizado:', data);
-                // Atualize a interface do usuário conforme necessário
-                location.reload(); // Isso recarregará a página
-            })
-            .catch(error => console.error('Erro ao atualizar usuário:', error));
-        }
-        
-        
+
+    userDataContainer.appendChild(newNameInput);
+    userDataContainer.appendChild(newEmailInput);
+    userDataContainer.appendChild(newPasswordInput);
+    userDataContainer.appendChild(confirmButton);
+}
+
+
+
+const Inome = document.querySelector('.nome');
+const Ilogin = document.querySelector('.login');
+const Isenha = document.querySelector('.senha');
+const IdataNasc = document.querySelector('.dataNasc');
+const Iativo = document.querySelector('.ativo');
+
+function createNewUser() {
+    const dataCadastro = new Date();
+
+    const ativoValue = Iativo.value === "true";
+
+    fetch("http://localhost:8081/users", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({
+            nome: Inome.value,
+            senha: Isenha.value,
+            login: Ilogin.value,
+            dataNascimento: IdataNasc.value,
+            dataCadastro: dataCadastro.toISOString(),
+            ativo: ativoValue
+        })
+    })
+
+
+        .then(function (res) {
+            if (res.ok) {
+                window.location.href = "http://127.0.0.1:3000/Front-End/Tela_Login/index.html";
+            } else {
+                console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
+                alert('Ocorreu um erro ao realizar o cadastro.');
+            }
+        })
+        .catch(function (error) {
+            console.error('Erro ao fazer o cadastro:', error);
+            alert('Ocorreu um erro ao fazer o cadastro.');
+        });
+}
+
+function updateUser() {
+    const nome = document.getElementById('newName').value;
+    const email = document.getElementById('newEmail').value;
+    const senha = document.getElementById('newPassword').value;
+
+    const updatedUser = {
+        nome: nome,
+        login: email,
+        senha: senha
+    };
+
+    fetch(`http://localhost:8081/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedUser)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Usuário atualizado:', data);
+
+            location.reload();
+        })
+        .catch(error => console.error('Erro ao atualizar usuário:', error));
+}
+
