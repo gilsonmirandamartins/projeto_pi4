@@ -1,5 +1,7 @@
 package br.com.projetoint.projeto.controller;
 
+import java.util.Date;
+
 //import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,10 +48,13 @@ public class AuthController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
-        Usuarios novoUsuario = usuarioRepository.save(usuario);
-        return ResponseEntity.ok(novoUsuario);
-    }
+public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
+    // Defina a data de cadastro antes de salvar o novo usuário
+    usuario.setDataCadastro(new Date());
+    Usuarios novoUsuario = usuarioRepository.save(usuario);
+    return ResponseEntity.ok(novoUsuario);
+}
+
 
     @PutMapping("/users/{id}")
     public ResponseEntity<Usuarios> updateUser(@PathVariable Integer id, @RequestBody Usuarios usuarioDetails) {

@@ -14,28 +14,27 @@ import jakarta.persistence.Table;
 public class Usuarios {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	@Column(name = "id")
-    private Integer id;
+	private Integer id;
 
-    @Column(name = "nome", length = 200, nullable = false)
-    private String nome;
+	@Column(name = "nome", length = 200, nullable = false)
+	private String nome;
 
-    @Column(name = "login", length = 30, nullable = true)
-    private String login;
+	@Column(name = "login", length = 30, nullable = true)
+	private String login;
 
-    @Column(name = "senha", length = 10, nullable = false)
-    private String senha;
+	@Column(name = "senha", length = 10, nullable = false)
+	private String senha;
 
-    @Column(name = "dataNascimento", nullable = true)
-    private Date dataNascimento;
+	@Column(name = "dataNascimento", nullable = true)
+	private Date dataNascimento;
 
-    @Column(name = "dataCadastro", nullable = false)
-    private Date dataCadastro;
+	@Column(name = "dataCadastro", nullable = false)
+	private Date dataCadastro;
 
-    @Column(name = "ativo", nullable = false)
-    private Boolean ativo;
-
+	@Column(name = "ativo", nullable = false)
+	private Boolean ativo;
 
 	public Integer getId() {
 		return id;
@@ -93,12 +92,9 @@ public class Usuarios {
 		this.ativo = ativo;
 	}
 
-    public void save(Usuarios usuario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
-	
-	
-
+	public void save(Usuarios usuario) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'save'");
+	}
 
 }

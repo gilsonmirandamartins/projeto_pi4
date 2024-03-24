@@ -13,17 +13,26 @@
         <div id="userInfoContainer">
             <p id="userData"></p>
         </div>
+        <button onclick="createNewUser()">Criar Novo Usuário</button>
+        <input type="text" id="newUserName" placeholder="Novo Nome">
+<input type="text" id="newUserEmail" placeholder="Novo Email">
+<input type="password" id="newUserPassword" placeholder="Nova Senha">
+<input type="date" id="newUserDateOfBirth" placeholder="Data de Nascimento (YYYY-MM-DD)">
 
-        <!-- Campos de entrada para edição -->
+
+        
+        <button onclick="getAllUsers()">Obter Lista de Usuários</button>
+        
+        <button onclick="atualizar()">Atualizar Usuário</button>
         <input type="text" id="newName" placeholder="Novo Nome">
         <input type="text" id="newEmail" placeholder="Novo Email">
         <input type="password" id="newPassword" placeholder="Nova Senha">
 
-        <!-- Botão para atualizar usuário -->
-        <button onclick="updateUser()">Atualizar Usuário</button>
+        
+        
         <button onclick="deleteUser(1)">Deletar Usuário</button>
-        <button onclick="getAllUsers()">Obter Lista de Usuários</button>
-        <button onclick="createUser()">Criar usuario</button>
+        
+        
     </main>
 
     <script src="crud.js"></script>
