@@ -48,13 +48,13 @@ const urlParams = new URLSearchParams(window.location.search);
             const newName = document.getElementById('newName').value;
             const newEmail = document.getElementById('newEmail').value;
             const newPassword = document.getElementById('newPassword').value;
-
+        
             const updatedUser = {
                 nome: newName,
                 login: newEmail,
                 senha: newPassword
             };
-
+        
             fetch(`http://localhost:8081/users/${userId}`, {
                 method: 'PUT',
                 headers: {
@@ -66,6 +66,9 @@ const urlParams = new URLSearchParams(window.location.search);
             .then(data => {
                 console.log('Usuário atualizado:', data);
                 // Atualize a interface do usuário conforme necessário
+                location.reload(); // Isso recarregará a página
             })
             .catch(error => console.error('Erro ao atualizar usuário:', error));
         }
+        
+        

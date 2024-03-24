@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    
 </head>
 
 <body class="pag2main">
@@ -22,30 +23,10 @@
         <button onclick="updateUser()">Atualizar Usuário</button>
         <button onclick="deleteUser(1)">Deletar Usuário</button>
         <button onclick="getAllUsers()">Obter Lista de Usuários</button>
+        <button onclick="createUser()">Criar usuario</button>
     </main>
 
     <script src="crud.js"></script>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('userId');
-
-        fetch(`http://localhost:8081/users/${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                const userDataElement = document.getElementById('userData');
-                userDataElement.innerText = `Nome: ${data.nome},
-                Login: ${data.login},
-                Data de Nascimento: ${data.dataNascimento},
-                Data de Cadastro: ${data.dataCadastro},
-                Ativo: ${data.ativo ? 'Sim' : 'Não'} `;
-
-                // Preencher campos de entrada com os dados do usuário
-                document.getElementById('newName').value = data.nome;
-                document.getElementById('newEmail').value = data.login;
-            })
-            .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
-    </script>
 </body>
 
 </html>
