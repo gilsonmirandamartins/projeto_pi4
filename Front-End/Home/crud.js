@@ -55,7 +55,7 @@ const Iativo = document.querySelector('.ativo');
 function createNewUser() {
     const dataCadastro = new Date();
 
-    const ativoValue = Iativo.value === "true";
+    const ativoValue = document.querySelector('.ativo').value === "true";
 
     fetch("http://localhost:8081/users", {
         headers: {
@@ -64,29 +64,30 @@ function createNewUser() {
         },
         method: "POST",
         body: JSON.stringify({
-            nome: Inome.value,
-            senha: Isenha.value,
-            login: Ilogin.value,
-            dataNascimento: IdataNasc.value,
+            nome: document.querySelector('.nome').value,
+            senha: document.querySelector('.senha').value,
+            login: document.querySelector('.login').value,
+            dataNascimento: document.querySelector('.dataNasc').value,
             dataCadastro: dataCadastro.toISOString(),
             ativo: ativoValue
         })
     })
 
-
-        .then(function (res) {
-            if (res.ok) {
-                window.location.href = "http://127.0.0.1:3000/Front-End/Tela_Login/index.html";
-            } else {
-                console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
-                alert('Ocorreu um erro ao realizar o cadastro.');
-            }
-        })
-        .catch(function (error) {
-            console.error('Erro ao fazer o cadastro:', error);
-            alert('Ocorreu um erro ao fazer o cadastro.');
-        });
+    .then(function (res) {
+        if (res.ok) {
+            alert('Usuário criado com sucesso!');
+            window.history.back();
+        } else {
+            console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
+            alert('Ocorreu um erro ao realizar o cadastro.');
+        }
+    })
+    .catch(function (error) {
+        console.error('Erro ao fazer o cadastro:', error);
+        alert('Ocorreu um erro ao fazer o cadastro.');
+    });
 }
+
 
 function updateUser() {
     const nome = document.getElementById('newName').value;
@@ -106,12 +107,16 @@ function updateUser() {
         },
         body: JSON.stringify(updatedUser)
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Usuário atualizado:', data);
-
-            location.reload();
+        .then(function (res) {
+            if (res.ok) {
+                alert('Usuário atualizado com sucesso!');
+                window.history.back(); // Voltar para a página anterior
+            } else {
+                console.error('Ocorreu um erro ao atualizar o usuário:', res.statusText);
+                alert('Ocorreu um erro ao atualizar o usuário.');
+            }
         })
         .catch(error => console.error('Erro ao atualizar usuário:', error));
 }
+
 
