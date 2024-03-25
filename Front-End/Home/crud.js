@@ -88,6 +88,22 @@ function createNewUser() {
     });
 }
 
+function getAllUsers() {
+    fetch("http://localhost:8081/users")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('userData').innerHTML = "";
+
+            
+            data.forEach(user => {
+                const userInfo = document.createElement('p');
+                userInfo.textContent = `ID: ${user.id}, Nome: ${user.nome}, Login: ${user.login}`;
+                document.getElementById('userData').appendChild(userInfo);
+            });
+        })
+        .catch(error => console.error('Erro ao obter lista de usuários:', error));
+}
+
 
 function updateUser() {
     const nome = document.getElementById('newName').value;

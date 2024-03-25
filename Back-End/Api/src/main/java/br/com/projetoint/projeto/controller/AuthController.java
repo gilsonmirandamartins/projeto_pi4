@@ -2,7 +2,6 @@ package br.com.projetoint.projeto.controller;
 
 import java.util.Date;
 
-//import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projetoint.projeto.DAO.IUsuario;
 import br.com.projetoint.projeto.model.Usuarios;
+import scala.collection.immutable.List;
 
 @CrossOrigin("*")
 @RestController
@@ -30,7 +30,6 @@ public class AuthController {
         Usuarios usuario = usuarioRepository.findByLogin(loginRequest.getLogin());
 
         if (usuario != null && usuario.getSenha().equals(loginRequest.getSenha())) {
-            // Retornar os dados do usuário junto com a mensagem de sucesso
             return ResponseEntity.ok(usuario);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas.");
@@ -49,7 +48,6 @@ public class AuthController {
 
     @PostMapping("/users")
     public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
-        // Defina a data de cadastro antes de salvar o novo usuário
         usuario.setDataCadastro(new Date());
         Usuarios novoUsuario = usuarioRepository.save(usuario);
         return ResponseEntity.ok(novoUsuario);
@@ -63,13 +61,20 @@ public class AuthController {
         if (usuario != null) {
             usuario.setNome(usuarioDetails.getNome());
             usuario.setLogin(usuarioDetails.getLogin());
-            // Adicione outras propriedades que você deseja atualizar
             Usuarios usuarioAtualizado = usuarioRepository.save(usuario);
             return ResponseEntity.ok(usuarioAtualizado);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<Usuarios>> getAllUsers() {
+        @SuppressWarnings("unchecked")
+        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findAll();
+        return ResponseEntity.ok(usuarios);
+    }
+    
 
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
