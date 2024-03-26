@@ -6,13 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         const novaSenha = document.getElementById('novaSenha').value;
-
-        // Dados que serão enviados para o backend
         const data = {
             novaSenha: novaSenha
         };
 
-        // Enviar os dados para o backend
         fetch("http://localhost:8081/usuarios/alterar-senha", {
             method: 'PUT',
             headers: {
@@ -20,20 +17,18 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(data)
         })
-        .then(response => {
-            if (response.ok) {
-                return response.text(); // Retornar a resposta do servidor
-            } else {
-                return response.text().then(text => Promise.reject(text)); // Rejeitar a promessa com a mensagem de erro do servidor
-            }
-        })
-        .then(message => {
-            // Exibir mensagem de sucesso
-            mensagem.innerHTML = message;
-        })
-        .catch(error => {
-            // Exibir mensagem de erro
-            mensagem.innerHTML = error;
-        });
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    return response.text().then(text => Promise.reject(text));
+                }
+            })
+            .then(message => {
+                mensagem.innerHTML = message;
+            })
+            .catch(error => {
+                mensagem.innerHTML = error;
+            });
     });
 });

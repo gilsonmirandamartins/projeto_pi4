@@ -1,15 +1,22 @@
 package br.com.projetoint.projeto.controller;
-//import org.hibernate.mapping.Map;
+
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projetoint.projeto.DAO.IUsuario;
 import br.com.projetoint.projeto.model.Usuarios;
+import scala.collection.immutable.List;
 
 @CrossOrigin("*")
 @RestController
@@ -19,13 +26,64 @@ public class AuthController {
     private IUsuario usuarioRepository;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Usuarios usuario = usuarioRepository.findByLogin(loginRequest.getLogin());
 
         if (usuario != null && usuario.getSenha().equals(loginRequest.getSenha())) {
-            return ResponseEntity.ok("Login bem-sucedido!"); // corrigir, remover coisas desnecessarias
+            return ResponseEntity.ok(usuario);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas.");
+        }
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<Usuarios> getUserById(@PathVariable Integer id) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<Usuarios> createUser(@RequestBody Usuarios usuario) {
+        usuario.setDataCadastro(new Date());
+        Usuarios novoUsuario = usuarioRepository.save(usuario);
+        return ResponseEntity.ok(novoUsuario);
+    }
+    
+
+
+    @PutMapping("/users/{id}")
+    public ResponseEntity<Usuarios> updateUser(@PathVariable Integer id, @RequestBody Usuarios usuarioDetails) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuario.setNome(usuarioDetails.getNome());
+            usuario.setLogin(usuarioDetails.getLogin());
+            Usuarios usuarioAtualizado = usuarioRepository.save(usuario);
+            return ResponseEntity.ok(usuarioAtualizado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<Usuarios>> getAllUsers() {
+        @SuppressWarnings("unchecked")
+        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findAll();
+        return ResponseEntity.ok(usuarios);
+    }
+    
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuarioRepository.delete(usuario);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 
