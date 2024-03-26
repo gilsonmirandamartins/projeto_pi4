@@ -45,7 +45,6 @@ function enableEdit() {
 }
 
 
-
 const Inome = document.querySelector('.nome');
 const Ilogin = document.querySelector('.login');
 const Isenha = document.querySelector('.senha');
@@ -88,23 +87,6 @@ function createNewUser() {
     });
 }
 
-function getAllUsers() {
-    fetch("http://localhost:8081/users")
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('userData').innerHTML = "";
-
-            
-            data.forEach(user => {
-                const userInfo = document.createElement('p');
-                userInfo.textContent = `ID: ${user.id}, Nome: ${user.nome}, Login: ${user.login}`;
-                document.getElementById('userData').appendChild(userInfo);
-            });
-        })
-        .catch(error => console.error('Erro ao obter lista de usuários:', error));
-}
-
-
 function updateUser() {
     const nome = document.getElementById('newName').value;
     const email = document.getElementById('newEmail').value;
@@ -126,7 +108,7 @@ function updateUser() {
         .then(function (res) {
             if (res.ok) {
                 alert('Usuário atualizado com sucesso!');
-                window.history.back(); // Voltar para a página anterior
+                window.history.back();
             } else {
                 console.error('Ocorreu um erro ao atualizar o usuário:', res.statusText);
                 alert('Ocorreu um erro ao atualizar o usuário.');
@@ -142,7 +124,7 @@ function deleteUser(login) {
     .then(function (res) {
         if (res.ok) {
             alert('Usuário deletado com sucesso!');
-            window.location.reload(); // Recarregar a página para atualizar a lista de usuários
+            window.location.reload();
         } else {
             console.error('Ocorreu um erro ao deletar o usuário:', res.statusText);
             alert('Ocorreu um erro ao deletar o usuário.');
@@ -151,3 +133,13 @@ function deleteUser(login) {
     .catch(error => console.error('Erro ao deletar usuário:', error));
 }
 
+function getAllUsers() {
+    fetch("http://localhost:8081/users")
+        .then(response => response.json())
+        .then(data => {
+            const userNames = data.map(user => user.nome); // Extrai apenas os nomes dos usuários
+            const userDataElement = document.getElementById('userData');
+            userDataElement.innerText = userNames.join(", "); // Exibe os nomes separados por vírgula
+        })
+        .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
+}
