@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const Iativo = document.querySelector(".ativo");
 
 function cadastrar() {
-    const dataCadastro = new Date();  // para data e hora atual
+    const dataCadastro = new Date();
 
-    const ativoValue = Iativo.value === "true"; // Converte para booleano
+    const ativoValue = Iativo.value === "true";
 
     fetch("http://localhost:8081/usuarios", {
         headers: {
@@ -23,20 +23,20 @@ function cadastrar() {
             senha: Isenha.value,
             login: Ilogin.value,
             dataNascimento: IdataNasc.value,
-            dataCadastro: dataCadastro.toISOString(), // Converte a data
+            dataCadastro: dataCadastro.toISOString(),
             ativo: ativoValue
         })
     })
 
-    // Após o cadastro ser feito corretamente, ira redirecionar para a tela de login
     .then(function (res) {
         if (res.ok) {
-            window.location.href = "http://127.0.0.1:3000/Front-End/Tela_Login/index.html";
+            window.history.back();
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
         }
     })
+    
     .catch(function (error) {
         console.error('Erro ao fazer o cadastro:', error);
         alert('Ocorreu um erro ao fazer o cadastro.');
