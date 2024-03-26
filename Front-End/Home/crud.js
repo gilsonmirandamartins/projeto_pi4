@@ -135,4 +135,19 @@ function updateUser() {
         .catch(error => console.error('Erro ao atualizar usuário:', error));
 }
 
+function deleteUser(login) {
+    fetch(`http://localhost:8081/users/login/${login}`, {
+        method: 'DELETE',
+    })
+    .then(function (res) {
+        if (res.ok) {
+            alert('Usuário deletado com sucesso!');
+            window.location.reload(); // Recarregar a página para atualizar a lista de usuários
+        } else {
+            console.error('Ocorreu um erro ao deletar o usuário:', res.statusText);
+            alert('Ocorreu um erro ao deletar o usuário.');
+        }
+    })
+    .catch(error => console.error('Erro ao deletar usuário:', error));
+}
 

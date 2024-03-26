@@ -77,14 +77,25 @@ public class AuthController {
     
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
-        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario != null) {
-            usuarioRepository.delete(usuario);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
+    Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+    if (usuario != null) {
+        usuarioRepository.delete(usuario);
+        return ResponseEntity.noContent().build();
+    } else {
+        return ResponseEntity.notFound().build();
     }
+}
+
+@DeleteMapping("/users/login/{login}")
+public ResponseEntity<Void> deleteUserByLogin(@PathVariable String login) {
+    Usuarios usuario = usuarioRepository.findByLogin(login);
+    if (usuario != null) {
+        usuarioRepository.delete(usuario);
+        return ResponseEntity.noContent().build();
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
 
 }
