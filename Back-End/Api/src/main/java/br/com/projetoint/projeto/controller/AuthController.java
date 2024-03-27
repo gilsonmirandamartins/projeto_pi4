@@ -1,6 +1,7 @@
 package br.com.projetoint.projeto.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projetoint.projeto.DAO.IUsuario;
 import br.com.projetoint.projeto.model.Usuarios;
-import scala.collection.immutable.List;
 
 @CrossOrigin("*")
 @RestController
@@ -68,23 +68,33 @@ public class AuthController {
         }
     }
 
-    @GetMapping("/users")
-    public ResponseEntity<List<Usuarios>> getAllUsers() {
-        @SuppressWarnings("unchecked")
-        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findAll();
-        return ResponseEntity.ok(usuarios);
-    }
-    
-
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
-        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario != null) {
-            usuarioRepository.delete(usuario);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
+    Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+    if (usuario != null) {
+        usuarioRepository.delete(usuario);
+        return ResponseEntity.noContent().build();
+    } else {
+        return ResponseEntity.notFound().build();
     }
+}
+
+@DeleteMapping("/users/login/{login}")
+public ResponseEntity<Void> deleteUserByLogin(@PathVariable String login) {
+    Usuarios usuario = usuarioRepository.findByLogin(login);
+    if (usuario != null) {
+        usuarioRepository.delete(usuario);
+        return ResponseEntity.noContent().build();
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
+
+@GetMapping("/users")
+public ResponseEntity<List<Usuarios>> getAllUsers() {
+    List<Usuarios> users = (List<Usuarios>) usuarioRepository.findAll();
+    return ResponseEntity.ok(users);
+}
+
 
 }
