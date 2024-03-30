@@ -61,6 +61,7 @@ public class AuthController {
         if (usuario != null) {
             usuario.setNome(usuarioDetails.getNome());
             usuario.setLogin(usuarioDetails.getLogin());
+            usuario.setSenha(usuarioDetails.getSenha());
             Usuarios usuarioAtualizado = usuarioRepository.save(usuario);
             return ResponseEntity.ok(usuarioAtualizado);
         } else {
