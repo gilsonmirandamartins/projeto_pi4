@@ -137,9 +137,9 @@ function getAllUsers() {
     fetch("http://localhost:8081/users")
         .then(response => response.json())
         .then(data => {
-            const userNames = data.map(user => user.nome); // Extrai apenas os nomes dos usuários
+            const userNames = data.map(user => user.nome);
             const userDataElement = document.getElementById('userData');
-            userDataElement.innerText = userNames.join(", "); // Exibe os nomes separados por vírgula
+            userDataElement.innerText = userNames.join(", ");
         })
         .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
 }
