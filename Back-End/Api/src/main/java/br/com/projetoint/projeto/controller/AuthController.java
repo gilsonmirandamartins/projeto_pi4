@@ -52,8 +52,6 @@ public class AuthController {
         Usuarios novoUsuario = usuarioRepository.save(usuario);
         return ResponseEntity.ok(novoUsuario);
     }
-    
-
 
     @PutMapping("/users/{id}")
     public ResponseEntity<Usuarios> updateUser(@PathVariable Integer id, @RequestBody Usuarios usuarioDetails) {
@@ -70,32 +68,31 @@ public class AuthController {
     }
 
     @DeleteMapping("/users/{id}")
-public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
-    Usuarios usuario = usuarioRepository.findById(id).orElse(null);
-    if (usuario != null) {
-        usuarioRepository.delete(usuario);
-        return ResponseEntity.noContent().build();
-    } else {
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
+        Usuarios usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuarioRepository.delete(usuario);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-}
 
-@DeleteMapping("/users/login/{login}")
-public ResponseEntity<Void> deleteUserByLogin(@PathVariable String login) {
-    Usuarios usuario = usuarioRepository.findByLogin(login);
-    if (usuario != null) {
-        usuarioRepository.delete(usuario);
-        return ResponseEntity.noContent().build();
-    } else {
-        return ResponseEntity.notFound().build();
+    @DeleteMapping("/users/login/{login}")
+    public ResponseEntity<Void> deleteUserByLogin(@PathVariable String login) {
+        Usuarios usuario = usuarioRepository.findByLogin(login);
+        if (usuario != null) {
+            usuarioRepository.delete(usuario);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-}
 
-@GetMapping("/users")
-public ResponseEntity<List<Usuarios>> getAllUsers() {
-    List<Usuarios> users = (List<Usuarios>) usuarioRepository.findAll();
-    return ResponseEntity.ok(users);
-}
-
+    @GetMapping("/users")
+    public ResponseEntity<List<Usuarios>> getAllUsers() {
+        List<Usuarios> users = (List<Usuarios>) usuarioRepository.findAll();
+        return ResponseEntity.ok(users);
+    }
 
 }

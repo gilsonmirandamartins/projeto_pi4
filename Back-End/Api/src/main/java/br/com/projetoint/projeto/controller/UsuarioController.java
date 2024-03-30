@@ -87,4 +87,6 @@ public class UsuarioController {
 
         return ResponseEntity.ok("Senha alterada com sucesso.");
     }
+
+    
 }

@@ -1,22 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const formSenha = document.getElementById("formSenha");
+    const formSenha = document.querySelector(".Tela_novaSenha form");
     const mensagem = document.getElementById("mensagem");
 
-    formSenha.addEventListener('submit', function (event) {
-        event.preventDefault();
+    if (formSenha && mensagem) {
+        formSenha.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        const novaSenha = document.getElementById('novaSenha').value;
-        const data = {
-            novaSenha: novaSenha
-        };
+            const novaSenhaInput = document.getElementById('novaSenha');
+            if (!novaSenhaInput) {
+                console.error('Elemento novaSenha não encontrado.');
+                return;
+            }
 
-        fetch("http://localhost:8081/usuarios/alterar-senha", {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+            const novaSenha = novaSenhaInput.value;
+            const login = localStorage.getItem('login'); // Recupera o login armazenado
+
+            const data = {
+                login: login,
+                novaSenha: novaSenha
+            };
+
+            fetch("http://localhost:8081/usuarios/alterar-senha", {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
             .then(response => {
                 if (response.ok) {
                     return response.text();
@@ -30,5 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 mensagem.innerHTML = error;
             });
-    });
+        });
+    } else {
+        console.error('Elementos formSenha ou mensagem não encontrados.');
+    }
 });
