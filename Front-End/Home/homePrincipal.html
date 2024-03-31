@@ -5,30 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tecnologia</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="scriptMenu.js"></script>
+  <script src="crud.js"></script>
 </head>
 <body>
   <header>
+    <button onclick="ClickMenu()" class="iconeMenu"></button>
     <h1>Tecnologia</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Cadastre-se</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </nav>
+    <!--Nome Do Usuario entre o Tecnologia e o botão de sair-->
+    <a class="ButtonSair" href=""><img src="../img/menu/logout_white_24dp.svg" alt="">Sair</a>
+    <!--Quando clicado ira redirecionar para tela de login-->
   </header>
-  <section class="hero">
-    <h2>Bem-vindo à era da tecnologia!</h2>
-    <p>Descubra as últimas inovações e tendências tecnológicas.</p>
-    <button onclick="scrollToContent()">Explorar</button>
-  </section>
 
-  <section class="content" id="content">
-    <h2 class="out">Conteúdo Principal</h2>
-    <p>Aqui você encontrará informações sobre diversas áreas da tecnologia.</p>
-  </section>
+  <main>
+    <div class="menu">
+      <ul>
+          <li><img src="../img/person_white_24dp.svg" alt="iconeMenu"><a href="">Informações Usuário</a></li>
+          <li><img src="../img/menu/groups_white_24dp.svg" alt="iconeMenu"><a href="">Listar Usuários</a></li>
+          <li><img src="../img/menu/person_add_alt_white_24dp.svg" alt="iconeMenu"><a href="">Criação de Usuário</a></li>
+          <li><img src="../img/menu/manage_accounts_white_24dp.svg" alt="iconeMenu"><a href="">Atualizar Dados</a></li>
+          <li><img src="../img/menu/person_remove_white_24dp.svg" alt="iconeMenu"><a href="">Deletar conta</a></li>
+      </ul>
+    </div>
+    <section class="hero">
+      <h2>Bem-vindo à era da tecnologia!</h2>
+      <p>Descubra as últimas inovações e tendências tecnológicas.</p>
+      <button onclick="scrollToContent()">Explorar</button>
+    </section>
+  </main>
 
   <footer>
     <p class="fot">&copy; 2024 Tecnologia Inc.</p>
