@@ -143,3 +143,7 @@ function getAllUsers() {
         })
         .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
 }
+
+function logout(){
+    window.location.href = 'http://127.0.0.1:5500/Front-End/Tela_Login/index.html';
+}
