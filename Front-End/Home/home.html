@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="styleHome.css">
-    <script src="crud.js"></script>
-
-</head>
 <body class="pag2main">
     <main>
         <div id="userInfoContainer">
@@ -33,9 +23,9 @@
         <input type="password" id="newPassword" placeholder="Nova Senha">
         <button onclick="updateUser()">Atualizar Usuário</button>
 
-        <input type="text" id="deleteUserLogin" placeholder="Login do Usuário a ser deletado">
-        <button onclick="deleteUser(document.getElementById('deleteUserLogin').value)">Deletar Usuário por
-            Login</button>
+        <input type="text" id="deleteUserName" placeholder="usuario a ser deletado">
+<button onclick="deleteUser(document.getElementById('deleteUserName').value)">deletar usuario</button>
+
 
     </main>
 
