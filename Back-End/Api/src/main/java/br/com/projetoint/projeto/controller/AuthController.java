@@ -78,9 +78,9 @@ public class AuthController {
         }
     }
 
-    @DeleteMapping("/users/login/{login}")
-    public ResponseEntity<Void> deleteUserByLogin(@PathVariable String login) {
-        Usuarios usuario = usuarioRepository.findByLogin(login);
+    @DeleteMapping("/users/nome/{nome}")
+    public ResponseEntity<Void> deleteUserByNome(@PathVariable String nome) {
+        Usuarios usuario = usuarioRepository.findByNome(nome);
         if (usuario != null) {
             usuarioRepository.delete(usuario);
             return ResponseEntity.noContent().build();

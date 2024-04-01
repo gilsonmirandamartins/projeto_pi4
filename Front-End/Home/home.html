@@ -11,20 +11,20 @@
             <option value="true">Sim</option>
             <option value="false">Não</option>
         </select>
-        <button onclick="createNewUser()">Criar Novo Usuário</button>
+        <button onclick="createNewUser()">Criar novo Usuário</button>
 
 
-        <button onclick="getAllUsers()">Obter Lista de Usuários</button>
+        <button onclick="getAllUsers()">Lista de Usuários</button>
 
 
-        <input type="text" id="newName" placeholder="Novo Nome">
-        <input type="text" id="newEmail" placeholder="Novo Email">
-        <input type="password" id="newPassword" placeholder="Nova Senha">
+        <input type="text" id="newName" placeholder="novo Nome">
+        <input type="text" id="newEmail" placeholder="novo Email">
+        <input type="password" id="newPassword" placeholder="nova Senha">
         <button onclick="updateUser()">Atualizar Usuário</button>
 
-        <input type="text" id="deleteUserLogin" placeholder="Login do Usuário a ser deletado">
-        <button onclick="deleteUser(document.getElementById('deleteUserLogin').value)">Deletar Usuário por
-            Login</button>
+        <input type="text" id="deleteUserName" placeholder="usuario a ser deletado">
+<button onclick="deleteUser(document.getElementById('deleteUserName').value)">deletar usuario</button>
+
 
     </main>
 

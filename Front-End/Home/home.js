@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
             userDataContainer.innerHTML = `<p>Ocorreu um erro ao carregar os dados do usuário.</p>`;
         });
 
-        // Função para criar um novo usuário
 function createUser(nome, login, senha) {
     const newUser = {
         nome: nome,
@@ -45,12 +44,10 @@ function createUser(nome, login, senha) {
     .then(response => response.json())
     .then(data => {
         console.log('Novo usuário criado:', data);
-        // Atualize a interface do usuário conforme necessário
     })
     .catch(error => console.error('Erro ao criar usuário:', error));
 }
 
-// Função para atualizar um usuário existente
 function updateUser(id, nome, login, senha) {
     const updatedUser = {
         nome: nome,
@@ -68,7 +65,6 @@ function updateUser(id, nome, login, senha) {
     .then(response => response.json())
     .then(data => {
         console.log('Usuário atualizado:', data);
-        // Atualize a interface do usuário conforme necessário
     })
     .catch(error => console.error('Erro ao atualizar usuário:', error));
 }
