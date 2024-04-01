@@ -74,9 +74,9 @@ public class UsuarioController {
     }
 
     @PutMapping("/alterar-senha")
-    public ResponseEntity<String> alterarSenha(@RequestBody AlteracaoSenhaDTO alteracaoSenhaDTO) {
-        String login = alteracaoSenhaDTO.getLogin();
-        String novaSenha = alteracaoSenhaDTO.getNovaSenha();
+    public ResponseEntity<String> alterarSenha(@RequestBody Usuarios alteracaoSenha) {
+        String login = alteracaoSenha.getLogin();
+        String novaSenha = alteracaoSenha.getSenha();
 
         Usuarios usuario = dao.findByLogin(login);
         if (usuario != null) {

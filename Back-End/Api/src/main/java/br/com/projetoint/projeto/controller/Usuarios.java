@@ -1,6 +1,6 @@
 package br.com.projetoint.projeto.controller;
 
-public class AlteracaoSenhaDTO {
+public class Usuarios {
 
     private String login;
     private String novaSenha;
