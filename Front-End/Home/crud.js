@@ -117,8 +117,8 @@ function updateUser() {
         .catch(error => console.error('Erro ao atualizar usuário:', error));
 }
 
-function deleteUser(login) {
-    fetch(`http://localhost:8081/users/login/${login}`, {
+function deleteUser(nome) {
+    fetch(`http://localhost:8081/users/nome/${nome}`, {
         method: 'DELETE',
     })
     .then(function (res) {
@@ -132,6 +132,7 @@ function deleteUser(login) {
     })
     .catch(error => console.error('Erro ao deletar usuário:', error));
 }
+
 
 function getAllUsers() {
     fetch("http://localhost:8081/users")
