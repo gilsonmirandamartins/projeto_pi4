@@ -65,28 +65,28 @@ public class UsuarioController {
                 dadosUsuario.getDataNascimento());
 
         if (usuarioNoBanco != null) {
-
-            return ResponseEntity.ok().body("{\"message\": \"Acesso liberado para edição de senha.\"}");
+            return ResponseEntity.ok().body("{\"message\": \"Acesso liberado para edição de senha.\", \"nome\": \""
+                    + usuarioNoBanco.getNome() + "\"}");
         } else {
-
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("{\"error\": \"Acesso negado. Login ou data de nascimento incorretos.\"}");
         }
     }
 
-    @PutMapping("/usuarios/alterar-senha")
-    public ResponseEntity<String> alterarSenha(@RequestBody AlterarSenha alteracaoSenhaRequest) {
-        Usuarios usuarioExistente = dao.findByLogin(alteracaoSenhaRequest.getLogin());
-        if (usuarioExistente == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Usuário não encontrado.");
+    @PutMapping("/alterar-senha")
+    public ResponseEntity<String> alterarSenha(@RequestBody AlteracaoSenhaDTO alteracaoSenhaDTO) {
+        String login = alteracaoSenhaDTO.getLogin();
+        String novaSenha = alteracaoSenhaDTO.getNovaSenha();
+
+        Usuarios usuario = dao.findByLogin(login);
+        if (usuario != null) {
+            usuario.setSenha(novaSenha);
+            dao.save(usuario);
+            return ResponseEntity.ok("Senha alterada com sucesso.");
+        } else {
+            return ResponseEntity.badRequest().body("Usuário não encontrado.");
         }
-
-        usuarioExistente.setSenha(alteracaoSenhaRequest.getNovaSenha());
-        dao.save(usuarioExistente);
-
-        return ResponseEntity.ok("Senha alterada com sucesso.");
     }
-
-    
 }
+
+
