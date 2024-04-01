@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 // Redirecionar para a página Home e enviar dados do usuário como parâmetro
-                window.location.href = `http://127.0.0.1:5500/Front-End/Home/home.html?userId=${data.id}`;
+                window.location.href = `http://127.0.0.1:5500/Front-End/Home/Tela_InfoUsuario/Tela_InfoUsuario.html?userId=${data.id}`;
             })
             .catch(error => {
                 console.error('Erro ao fazer login:', error);
