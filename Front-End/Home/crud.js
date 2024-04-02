@@ -5,11 +5,31 @@ fetch(`http://localhost:8081/users/${userId}`)
     .then(response => response.json())
     .then(data => {
         const userDataElement = document.getElementById('userData');
-        userDataElement.innerText = `Nome: ${data.nome},
-                Login: ${data.login},
-                Data de Nascimento: ${data.dataNascimento},
-                Data de Cadastro: ${data.dataCadastro},
-                Ativo: ${data.ativo ? 'Sim' : 'Não'} `;
+
+        const userInfo = `
+            <div>
+                <label>Nome:</label>
+                <p>${data.nome}</p>
+            </div>
+            <div>
+                <label>Login:</label>
+                <p>${data.login}</p>
+            </div>
+            <div>
+                <label>Data de Nascimento:</label>
+                <p>${data.dataNascimento}</p>
+            </div>
+            <div>
+                <label>Data de Cadastro:</label>
+                <p>${data.dataCadastro}</p>
+            </div>
+            <div>
+                <label>Ativo:</label>
+                <p>${data.ativo ? 'Sim' : 'Não'}</p>
+            </div>
+        `;
+
+        userDataElement.innerHTML = userInfo;
     })
     .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
 
