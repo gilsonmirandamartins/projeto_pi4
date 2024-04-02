@@ -1,33 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações Usuario</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="../scriptMenu.js"></script>
+    <script src="../crud.js"></script>
+    <script src="../home.js"></script>
+</head>
+
 <body class="pag2main">
+    <header>
+        <h1>Tecnologia</h1>
+        <!--Nome Do Usuario entre o Tecnologia e o botão de sair-->
+        <button class="ButtonSair" onclick="logout()"><img src="../img/logout_white_24dp.svg" alt="Icone Logout">Logout</button>
+        <!--Quando clicado ira redirecionar para tela de login-->
+    </header>
     <main>
-        <div id="userInfoContainer">
-            <p id="userData"></p>
-        </div>
-        <input type="text" class="nome" name="nome" placeholder="digite um nome" required>
-        <input type="text" class="login" name="login" placeholder="crie um login">
-        <input type="password" class="Crie uma senha" name="senha" placeholder="crie uma Senha">
-        <input type="date" class="dataNasc" name="nascimento" value="" placeholder="">
-        <select class="ativo" name="ativo" required>
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
-        </select>
-        <button onclick="createNewUser()">Criar novo Usuário</button>
+        <section class="Informações">
+            <div id="userInfoContainer">
+                <h2>Informações do Usuário</h2>
+                <p id="userData"></p>
+            </div>
+        </section>
+        <section class="CriacaoUsuario">
+            <h2>Cadastrar Usuário</h2>
+            <div class="dados">
+                <label>Nome:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/person_white_24dp.svg" alt="Imagem Perfil">
+                    </figure>
+                    <input type="text" class="nome" name="nome" placeholder="Digite um nome" required>
+                </div>
+            </div>
 
+            <div class="dados">
+                <label>Email de login:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/email_white_24dp.svg" alt="Imagem email">
+                    </figure>
+                    <input type="text" class="login" name="login" placeholder="Crie Seu Login" required>
+                </div>
+            </div>
 
-        <button onclick="getAllUsers()">Lista de Usuários</button>
+            <div class="dados">
+                <label>Senha:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/lock_white_24dp.svg" alt="Imagem Cadeado">
+                    </figure>
+                    <input type="password" class="Crie uma senha" name="senha" placeholder="Crie uma Senha" required>
+                </div>
+            </div>
 
+            <div class="dados">
+                <label>Data de nascimento:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/calendar_month_white_24dp.svg" alt="Imagem Calendario">
+                    </figure>
+                    <input type="date" class="dataNasc" name="nascimento" value="" placeholder="">
+                </div>
+            </div>
 
-        <input type="text" id="newName" placeholder="novo nome">
-        <input type="text" id="newEmail" placeholder="novo email">
-        <input type="password" id="newPassword" placeholder="nova Senha">
-        <button onclick="updateUser()">Atualizar Usuário</button>
+            <div class="dados">
+                <label>Manter cadastro ativo?</label>
 
-        <input type="text" id="deleteUserName" placeholder="usuario a ser deletado">
-<button onclick="deleteUser(document.getElementById('deleteUserName').value)">deletar usuario</button>
+                <select class="ativo" name="ativo" required>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+            </div>
 
+            <button class="ButtonCadastrar" onclick="createNewUser()">Criar novo Usuário</button>
+        </section>
 
+        <section class="ListUsuarios">
+            <h2>Lista Usuários</h2>
+            <button class="ButtonLista" onclick="getAllUsers()">Lista de Usuários</button>
+        </section>
+        <section class="AttUsuario">
+            <h2>Atualizar Usuário</h2>
+            <div class="dados">
+                <label>Nome:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/person_white_24dp.svg" alt="Imagem Perfil">
+                    </figure>
+                    <input type="text" class="nome" name="nome"  id="newName" placeholder="Novo nome" required>
+                </div>
+            </div>
+
+            <div class="dados">
+                <label>Email de login:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/email_white_24dp.svg" alt="Imagem email">
+                    </figure>
+                    <input type="text"  class="login" name="login" id="newEmail" placeholder="Novo email" required>
+                </div>
+            </div>
+
+            <div class="dados">
+                <label>Senha:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/lock_white_24dp.svg" alt="Imagem Cadeado">
+                    </figure>
+                    <input type="password" class="Crie uma senha" name="senha" id="newPassword" placeholder="Nova Senha">
+                </div>
+            </div>
+            <button class="ButtonAtt" onclick="updateUser()">Atualizar Usuário</button>
+        </section>
+        <section class="DelUsuario">
+            <h2>Deletar Usuário</h2>
+            <div class="dados">
+                <label>Nome do Usuário:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/email_white_24dp.svg" alt="Imagem email">
+                    </figure>
+                    <input type="text" id="deleteUserName" placeholder="Nome do Usuário a ser deletado">
+                </div>
+                <button class="ButtonDell" onclick="deleteUser(document.getElementById('deleteUserName').value)">Deletar Usuário</button>
+            </div>
+        </section>
     </main>
+    <footer>
+        <p class="fot">&copy; Equipe 5</p>
+    </footer>
 
     <script src="crud.js"></script>
 </body>
+</html>
 
