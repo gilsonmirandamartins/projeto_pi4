@@ -18,7 +18,7 @@
         <!--Quando clicado ira redirecionar para tela de login-->
     </header>
     <main>
-        <section class="Informações">
+        <section id="info" class="Informações">
             <div id="userInfoContainer">
                 <h2>Informações do Usuário</h2>
                 <p id="userData"></p>
@@ -80,7 +80,7 @@
 
         <section class="ListUsuarios">
             <h2>Lista Usuários</h2>
-            <button class="ButtonLista" onclick="getAllUsers()">Lista de Usuários</button>
+            <button class="ButtonLista" onclick="getAllUsers()"><a href="#info">Lista de Usuários</a></button>
         </section>
         <section class="AttUsuario">
             <h2>Atualizar Usuário</h2>
