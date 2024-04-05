@@ -216,3 +216,7 @@ figure img{
   flex-direction: column;
   gap: 20px;
 }
+
+.LinkRedirecionar{
+  cursor: pointer;
+}

@@ -21,7 +21,7 @@
         <div class="menu">
             <nav>
                 <ul>
-                    <li><img src="../../img/person_white_24dp.svg" alt="iconeMenu"><a onclick="Redirecionar()">Informações Usuário</a></li>
+                    <li><img src="../../img/person_white_24dp.svg" alt="iconeMenu"><a onclick="Redirecionar()" class="LinkRedirecionar">Informações Usuário</a></li>
                     <li><img src="../../img/menu/groups_white_24dp.svg" alt="iconeMenu"><a href="">Listar Usuários</a></li>
                     <li><img src="../../img/menu/person_add_alt_white_24dp.svg" alt="iconeMenu"><a href="http://127.0.0.1:5500/Front-End/Home/Tela_CriacaoUsuario/Tela_CriacaoUsuario.html">Criação de Usuário</a></li>
                     <li><img src="../../img/menu/manage_accounts_white_24dp.svg" alt="iconeMenu"><a href="http://127.0.0.1:5500/Front-End/Home/Tela_AtualizacaoUsuario/Tela_AtualizacaoUsuario.html">Atualizar Dados</a></li>
@@ -32,12 +32,12 @@
         <section class="DelUsuario">
             <h2>Deletar Usuário</h2>
             <div class="dados">
-                <label>Email de login:</label>
+                <label>Nome do Usuário:</label>
                 <div class="input">
                     <figure>
                         <img src="../../img/email_white_24dp.svg" alt="Imagem email">
                     </figure>
-                    <input type="text" id="deleteUserLogin" placeholder="Login do Usuário a ser deletado">
+                    <input type="text" id="deleteUserLogin" placeholder="Nome do Usuário a ser deletado">
                 </div>
                 <button class="ButtonDell" onclick="deleteUser(document.getElementById('deleteUserLogin').value)">Deletar Usuário por Login</button>
             </div>
