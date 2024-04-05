@@ -222,3 +222,7 @@ input:focus{
 .ButtonAtt:hover{
   background-color: rgb(3, 78, 133);
 }
+
+.LinkRedirecionar{
+  cursor: pointer;
+}
