@@ -94,7 +94,7 @@ function createNewUser() {
 
     .then(function (res) {
         if (res.ok) {
-            alert('Usuário criado com sucesso!');
+            alert('Novo usuário cadastrado!');
             window.history.back();
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
@@ -144,7 +144,7 @@ function deleteUser(nome) {
     .then(function (res) {
         if (res.ok) {
             alert('Usuário deletado com sucesso!');
-            window.location.reload();
+            window.location.href = 'http://127.0.0.1:5500/Front-End/Tela_Login/index.html';
         } else {
             console.error('Ocorreu um erro ao deletar o usuário:', res.statusText);
             alert('Ocorreu um erro ao deletar o usuário.');
@@ -159,8 +159,8 @@ function getAllUsers() {
         .then(response => response.json())
         .then(data => {
             const userNames = data.map(user => user.nome);
-            const userDataElement = document.getElementById('userData');
-            userDataElement.innerText = userNames.join(", ");
+            const userDataElement = document.getElementById('userAtt');
+            userDataElement.innerHTML = userNames.join("<br>");
         })
         .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
 }
