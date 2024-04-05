@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const username = document.getElementById('in1').value;
         const password = document.getElementById('in2').value;
-
-        // Enviar os dados de login para o backend
         fetch('http://localhost:8081/login', {
             method: 'POST',
             headers: {
@@ -20,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => {
                 if (response.ok) {
-                    return response.json(); // Parse a resposta como JSON
+                    return response.json();
                 } else {
                     throw new Error('Credenciais inválidas. Tente novamente.');
                 }
