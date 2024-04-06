@@ -1,35 +1,36 @@
-const urlParams = new URLSearchParams(window.location.search);
-const userId = urlParams.get('userId');
+//Utilizar o ip armazenado
+const userId = window.localStorage.getItem('userId');
 
 fetch(`http://localhost:8081/users/${userId}`)
     .then(response => response.json())
     .then(data => {
         const userDataElement = document.getElementById('userData');
+
         const userInfo = `
-        <div>
-            <label>Nome:</label>
-            <p>${data.nome}</p>
-        </div>
-        <div>
-            <label>Login:</label>
-            <p>${data.login}</p>
-        </div>
-        <div>
-            <label>Data de Nascimento:</label>
-            <p>${data.dataNascimento}</p>
-        </div>
-        <div>
-            <label>Data de Cadastro:</label>
-            <p>${data.dataCadastro}</p>
-        </div>
-        <div>
-            <label>Ativo:</label>
-            <p>${data.ativo ? 'Sim' : 'Não'}</p>
-        </div>
+            <div>
+                <label>Nome:</label>
+                <p>${data.nome}</p>
+            </div>
+            <div>
+                <label>Login:</label>
+                <p>${data.login}</p>
+            </div>
+            <div>
+                <label>Data de Nascimento:</label>
+                <p>${data.dataNascimento}</p>
+            </div>
+            <div>
+                <label>Data de Cadastro:</label>
+                <p>${data.dataCadastro}</p>
+            </div>
+            <div>
+                <label>Ativo:</label>
+                <p>${data.ativo ? 'Sim' : 'Não'}</p>
+            </div>
         `;
 
         userDataElement.innerHTML = userInfo;
-        })
+    })
     .catch(error => console.error('Erro ao recuperar dados do usuário:', error));
 
 function enableEdit() {
@@ -93,7 +94,7 @@ function createNewUser() {
 
     .then(function (res) {
         if (res.ok) {
-            alert('Usuário criado com sucesso!');
+            alert('Novo usuário cadastrado!');
             window.history.back();
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
@@ -143,7 +144,7 @@ function deleteUser(nome) {
     .then(function (res) {
         if (res.ok) {
             alert('Usuário deletado com sucesso!');
-            window.location.reload();
+            window.location.href = 'http://127.0.0.1:5500/Front-End/Tela_Login/index.html';
         } else {
             console.error('Ocorreu um erro ao deletar o usuário:', res.statusText);
             alert('Ocorreu um erro ao deletar o usuário.');
@@ -152,15 +153,20 @@ function deleteUser(nome) {
     .catch(error => console.error('Erro ao deletar usuário:', error));
 }
 
+
 function getAllUsers() {
     fetch("http://localhost:8081/users")
         .then(response => response.json())
         .then(data => {
             const userNames = data.map(user => user.nome);
-            const userDataElement = document.getElementById('userData');
-            userDataElement.innerText = userNames.join(", ");
+            const userDataElement = document.getElementById('userAtt');
+            userDataElement.innerHTML = userNames.join("<br>");
         })
         .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
+}
+
+function Redirecionar(){
+    window.location.href = `http://127.0.0.1:5500/Front-End/Home/Tela_InfoUsuario/Tela_InfoUsuario.html?userId=${userId}`
 }
 
 function logout(){

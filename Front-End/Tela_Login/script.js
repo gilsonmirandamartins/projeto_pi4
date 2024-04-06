@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .then(data => {
-                window.location.href = `http://127.0.0.1:5500/Front-End/Home/home.html?userId=${data.id}`;
+                // Armazenar o ID do usuário no localStorage
+                window.localStorage.setItem('userId', data.id);
+            
+                // Redirecionar para a página Home e enviar dados do usuário como parâmetro (opcional, poadd is o ID será obtido do localStorage)
+                window.location.href = `http://127.0.0.1:5500/Front-End/Home/Tela_InfoUsuario/Tela_InfoUsuario.html`;
             })
             .catch(error => {
                 console.error('Erro ao fazer login:', error);

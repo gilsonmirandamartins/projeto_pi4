@@ -88,6 +88,8 @@ public class AuthController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+
 
     @GetMapping("/users")
     public ResponseEntity<List<Usuarios>> getAllUsers() {

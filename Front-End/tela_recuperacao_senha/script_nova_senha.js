@@ -1,47 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const formSenha = document.querySelector(".Tela_novaSenha form");
-    const mensagem = document.getElementById("mensagem");
+    const nomeUsuario = sessionStorage.getItem('nomeUsuario');
+    if (nomeUsuario) {
+        document.getElementById('nomeUsuario').innerText = nomeUsuario;
+    }
 
-    if (formSenha && mensagem) {
-        formSenha.addEventListener('submit', function (event) {
+    const form = document.getElementById('alterarSenhaForm');
+    if (form) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const novaSenhaInput = document.getElementById('novaSenha');
-            if (!novaSenhaInput) {
-                console.error('Elemento novaSenha não encontrado.');
-                return;
-            }
-
-            const novaSenha = novaSenhaInput.value;
-            const login = localStorage.getItem('login'); // Recupera o login armazenado
-
-            const data = {
-                login: login,
-                novaSenha: novaSenha
-            };
+            const novaSenha = document.getElementById('novaSenha').value;
 
             fetch("http://localhost:8081/usuarios/alterar-senha", {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (response.ok) {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ login: nomeUsuario, novaSenha: novaSenha })
+})
+
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Falha ao alterar a senha.');
+                    }
                     return response.text();
-                } else {
-                    return response.text().then(text => Promise.reject(text));
-                }
-            })
-            .then(message => {
-                mensagem.innerHTML = message;
-            })
-            .catch(error => {
-                mensagem.innerHTML = error;
-            });
+                })
+                .then(resposta => {
+                    alert(resposta);
+                })
+                .catch(error => {
+                    console.error('Erro ao alterar a senha:', error);
+                    alert('Ocorreu um erro ao alterar a senha. Por favor, tente novamente mais tarde.');
+                });
         });
     } else {
-        console.error('Elementos formSenha ou mensagem não encontrados.');
+        console.error('Formulário de alteração de senha não encontrado.');
     }
 });
