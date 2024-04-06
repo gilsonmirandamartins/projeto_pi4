@@ -95,7 +95,7 @@ function createNewUser() {
     .then(function (res) {
         if (res.ok) {
             alert('Novo usuário cadastrado!');
-            window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Tela_ListaUsuario/Tela_ListaUsuario.html"';
+            window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Tela_ListaUsuario/Tela_ListaUsuario.html';
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
