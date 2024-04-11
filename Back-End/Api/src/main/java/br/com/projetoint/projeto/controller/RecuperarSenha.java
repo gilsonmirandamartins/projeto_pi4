@@ -6,6 +6,7 @@ import java.util.Date;
 public class RecuperarSenha {
     private String login;
     private Date dataNascimento;
+    private String senha;
     
     public String getLogin() {
         return login;
@@ -19,5 +20,13 @@ public class RecuperarSenha {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    
     
 }

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(resposta => {
                     if (resposta.message.includes("Acesso liberado")) {
                         sessionStorage.setItem('nomeUsuario', resposta.nome);
-                        window.location.href = "http://127.0.0.1:5500/Front-End/tela_recuperacao_senha/nova_senha.html";
+                        window.location.href = "http://127.0.0.1:5500/Front-End/tela_recuperacao_senha/editar_senha.html";
                     } else {
                         console.log('Recuperação de senha falhou');
                     }

@@ -1,6 +1,7 @@
 package br.com.projetoint.projeto.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,20 +74,44 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/alterar-senha")
-    public ResponseEntity<String> alterarSenha(@RequestBody Usuarios alteracaoSenha) {
-        String login = alteracaoSenha.getLogin();
-        String novaSenha = alteracaoSenha.getSenha();
+   /*  @PutMapping("/alterar-senha")
+    public ResponseEntity<?> alterarSenha(@RequestBody Map<String, String> requestBody) {
+        String login = requestBody.get("login");
+        String senha = requestBody.get("senha");
 
+        Usuarios usuario = dao.findByLogin(login);
+        if (usuario != null) {
+            usuario.setSenha(senha);
+            dao.save(usuario);
+            return ResponseEntity.ok()
+                    .body("{\"message\": \"Senha alterada com sucesso para o usuário " + login + "\"}");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"Usuário não encontrado.\"}");
+        }
+    }*/
+
+   /* @PutMapping("/alterar-senha")
+    public ResponseEntity<String> alterarSenha(@RequestBody Map<String, String> requestBody) {
+        String login = requestBody.get("login");
+        String novaSenha = requestBody.get("novaSenha");
+    
         Usuarios usuario = dao.findByLogin(login);
         if (usuario != null) {
             usuario.setSenha(novaSenha);
             dao.save(usuario);
-            return ResponseEntity.ok("Senha alterada com sucesso.");
+            return ResponseEntity.ok("Senha alterada com sucesso!");
         } else {
-            return ResponseEntity.badRequest().body("Usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
         }
+    }*/
+
+    @PutMapping("/alterar-senha")
+    public ResponseEntity<?> alterarSenha(@RequestBody Map<String, String> requestBody) {
+        return ResponseEntity.ok().body("{\"message\": \"Senha alterada com sucesso.\"}");
     }
+    
+    
 }
+
 
 
