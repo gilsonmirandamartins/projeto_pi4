@@ -14,17 +14,14 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    // Método para criar um novo agendamento
     public Agendamento criarAgendamento(Agendamento agendamento) {
         return agendamentoRepository.save(agendamento);
     }
 
-    // Método para obter um agendamento por ID
     public Agendamento obterAgendamentoPorId(int id) {
         return agendamentoRepository.findById(id).orElse(null);
     }
 
-    // Método para listar todos os agendamentos
     public List<Agendamento> listarAgendamentos() {
         return agendamentoRepository.findAll();
     }
