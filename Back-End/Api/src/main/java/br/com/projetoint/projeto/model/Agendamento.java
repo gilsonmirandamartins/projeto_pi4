@@ -104,5 +104,4 @@ public class Agendamento {
         this.dataCadastro = dataCadastro;
     }
 
-    
 }

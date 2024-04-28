@@ -33,7 +33,4 @@ public class Medico {
         this.nomeMedico = nomeMedico;
     }
 
-   
 }
-
-

@@ -26,4 +26,3 @@ public class AgendamentoService {
         return agendamentoRepository.findAll();
     }
 }
-

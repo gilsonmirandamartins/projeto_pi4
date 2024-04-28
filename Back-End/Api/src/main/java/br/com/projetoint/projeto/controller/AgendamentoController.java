@@ -35,4 +35,3 @@ public class AgendamentoController {
         return agendamentoService.listarAgendamentos();
     }
 }
-
