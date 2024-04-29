@@ -1,3 +1,4 @@
+use bd_usuarios
 
 CREATE TABLE Medico (
     idMedico INT AUTO_INCREMENT PRIMARY KEY,
