@@ -17,6 +17,10 @@ public class Medico {
     @Column(name = "nomeMedico", nullable = false, length = 100)
     private String nomeMedico;
 
+    @Column(name = "senha", nullable = false)
+    private int senha;
+
+
     public int getIdMedico() {
         return idMedico;
     }
@@ -31,6 +35,14 @@ public class Medico {
 
     public void setNomeMedico(String nomeMedico) {
         this.nomeMedico = nomeMedico;
+    }
+
+    public int getSenha() {
+        return senha;
+    }
+
+    public void setSenha(int senha) {
+        this.senha = senha;
     }
 
 }
