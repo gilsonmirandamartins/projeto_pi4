@@ -34,5 +34,4 @@ public class AgendamentoController {
     public List<Agendamento> listarAgendamentos() {
         return agendamentoService.listarAgendamentos();
     }
-
 }
