@@ -30,7 +30,7 @@ public class AgendamentoController {
         return agendamentoService.obterAgendamentoPorId(id);
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Agendamento> listarAgendamentos() {
         return agendamentoService.listarAgendamentos();
     }
