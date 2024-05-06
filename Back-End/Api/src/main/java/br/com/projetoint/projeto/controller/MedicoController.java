@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,22 +67,6 @@ public class MedicoController {
             return ResponseEntity.ok("Médico atualizado com sucesso.");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado.");
-        }
-    }
-
-    @DeleteMapping("/deletar")
-    public ResponseEntity<String> deletarMedico(@RequestBody Medico medico) {
-        // Buscar o médico pelo nome
-        Optional<Medico> medicoOptional = medicoRepository.findByNomeMedico(medico.getNomeMedico());
-
-        if (medicoOptional.isPresent()) {
-            // Se o médico foi encontrado, exclua-o
-            medicoRepository.delete(medicoOptional.get());
-            return ResponseEntity.ok("Médico '" + medico.getNomeMedico() + "' excluído com sucesso.");
-        } else {
-            // Se o médico não foi encontrado, retorne um erro
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Médico com nome '" + medico.getNomeMedico() + "' não encontrado.");
         }
     }
 
