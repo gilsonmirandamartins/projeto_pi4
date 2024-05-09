@@ -26,4 +26,9 @@ public class AgendamentoService {
     public List<Agendamento> listarAgendamentos() {
         return agendamentoRepository.findAll();
     }
+
+    public void deletarAgendamento(int id) {
+        agendamentoRepository.deleteById(id);
+    }
+    
 }
