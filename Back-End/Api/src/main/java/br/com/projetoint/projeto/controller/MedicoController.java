@@ -51,7 +51,7 @@ public class MedicoController {
         return ResponseEntity.ok(mensagem);
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/listar")//endpoint: /meedico/listar
     public List<Medico> listarMedicos() {
         return medicoRepository.findAll();
     }
