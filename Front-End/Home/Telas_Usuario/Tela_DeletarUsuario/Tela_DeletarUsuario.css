@@ -1,0 +1,229 @@
+@charset "UTF-8";
+
+*{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+    font-family: 'minha_fonte';
+    src: url(../fontes/Square.ttf);
+}
+
+@font-face {
+    font-family: 'minha_fonte2';
+    src: url(../fontes/supercharge3d.ttf);
+}
+
+@font-face {
+    font-family: 'minha_fonte3';
+    src: url(../fontes/KIdDOS-Regular.otf);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+h1{
+  font-family: minha_fonte;
+}
+
+h2{
+  font-family: minha_fonte2;
+}
+
+header {
+  background-color: #14242c;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+footer {
+  background-color: #14242c;
+  color: #fff;
+  text-align: center;
+
+
+  width: 100%;
+  height: 40px;
+}
+
+.fot{
+  margin: auto;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+main{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #24343c;
+  color: white;
+}
+
+.iconeMenu{
+  background: url(../../img/menu/menu_white_24dp.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 0;
+}
+  
+.iconeMenu:hover{
+  background-color: #24343c;
+  border-radius: 100%;
+}
+  
+.menu{
+  background-color: #14242c;
+  width: 250px;
+  height: 65%;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow: 5px 0px 10px #1b1b1b;
+}
+  
+.menu ul{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.menu ul li{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px;
+}
+
+.menu a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu li:hover{
+  border-left: rgb(5, 135, 228) solid ;
+  background-color: #24343c;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.ButtonSair{
+  color: white;
+  background-color: #14242c;
+  text-decoration: none;
+  display: flex;
+  gap: 5px;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ButtonSair:hover{
+  background-color: #24343c;
+}
+
+.DelUsuario{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  padding: 30px;
+  border: white solid;
+  border-radius: 10px;
+  background-color: #14242c;
+  gap: 30px;
+  margin:30px;
+  width: 500px;
+}
+
+.input{
+  width: 350px;
+  height: 60px;
+  background-color: #14242c;
+  border: 2px solid #d6dce7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #14242c;
+  border-radius: 10px;
+  color: #d6dce7;
+  -webkit-box-shadow: 0 0 0 30px #14242c inset;
+  -webkit-text-fill-color: #d6dce7 !important;
+}
+
+input::placeholder{
+  font-size: 16px;
+  color: #d6dce7;
+}
+
+input:focus{
+  outline: none;
+}
+
+.ButtonDell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 0px;
+  color: aliceblue;
+  background-color: rgb(5, 135, 228);
+  cursor: pointer;
+}
+
+.ButtonDell:hover{
+  background-color: rgb(3, 78, 133);
+}
+
+figure{
+  padding: 10px;
+}
+
+figure img{
+  width: 30px;
+  height: 30px;
+}
+
+.dados{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.LinkRedirecionar{
+  cursor: pointer;
+}
