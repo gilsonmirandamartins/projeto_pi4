@@ -63,18 +63,19 @@ public class AgendamentoController {
         return ResponseEntity.ok("Agendamento atualizado com sucesso.");
     }
 
-    @DeleteMapping("deletar/{id}") //deltar por id
-    public ResponseEntity<String> deletarAgendamento(@PathVariable int id) {
-        Agendamento agendamentoExistente = agendamentoService.obterAgendamentoPorId(id);
+    @DeleteMapping("/deletar/{id}") // deletar por id
+public ResponseEntity<String> deletarAgendamentoPorId(@PathVariable int id) {
+    Agendamento agendamentoExistente = agendamentoService.obterAgendamentoPorId(id);
 
-        if (agendamentoExistente == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Agendamento não encontrado.");
-        }
-
-        agendamentoService.deletarAgendamento(id);
-
-        return ResponseEntity.ok("Agendamento deletado com sucesso.");
+    if (agendamentoExistente == null) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Agendamento não encontrado.");
     }
+
+    agendamentoService.deletarAgendamento(id);
+
+    return ResponseEntity.ok("Agendamento deletado com sucesso.");
+}
+
 
     @GetMapping("/{id}")
     public Agendamento obterAgendamento(@PathVariable int id) {
