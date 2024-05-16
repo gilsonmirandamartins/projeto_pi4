@@ -44,6 +44,10 @@ public class MedicoController {
     @PostMapping("/criar") // criar medico.Informe o medico e o id é criado automatico,endpoint:/medico/criar
 
     public ResponseEntity<String> criarMedico(@RequestBody Medico medico) {
+        if(medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()){
+            return ResponseEntity.badRequest().body("Falha ao criar medico: Nome Obrigatorio");
+        }
+
         Medico medicoSalvo = medicoRepository.save(medico);
         String mensagem = String.format("Médico '%s' criado com sucesso. Seu ID é %d.",
                 medicoSalvo.getNomeMedico(),
