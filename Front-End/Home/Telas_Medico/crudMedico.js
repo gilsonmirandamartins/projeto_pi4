@@ -1,19 +1,21 @@
-function createNewUser() {
+function createNewMedico() {
+    const nMedico = document.querySelector('.nome').value
 
     fetch("http://localhost:8081/medico/criar", {
         headers: {        
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         method: "POST",
         body: JSON.stringify({
-            nome: document.querySelector('.nome').value
+            nomeMedico: nMedico
         })
     })
 
     .then(function (res) {
         if (res.ok) {
             alert('Novo Medico cadastrado!');
-            window.history.back;
+            window.history.back();
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
@@ -25,15 +27,13 @@ function createNewUser() {
     });
 }
 
-function listarMedicos() {
-    return fetch("http://localhost:8080/medico/listar")
-    .then(response => response.json())
-    .then(data => {
-        console.log("Lista de medicos:", data);
-        return data;
-    })
-    .catch(error => {
-        console.error("Erro ao listar medicos:", error);
-        throw error;
-    });
+function getAllMedico() {
+    fetch("http://localhost:8081/medico/listar")
+        .then(response => response.json())
+        .then(data => {
+            const userNames = data.map(user => user.nomeMedico);
+            const userDataElement = document.getElementById('userAtt');
+            userDataElement.innerHTML = userNames.join("<br>");
+        })
+        .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
 }
