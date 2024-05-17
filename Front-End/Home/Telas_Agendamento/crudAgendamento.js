@@ -116,3 +116,21 @@ function editarAgendamento() {
         alert('Ocorreu um erro ao atualizar o agendamento.');
     });
 }
+
+function deleteAgendamento() {
+    const idAgendamento = document.getElementById('IdAgendamento').value;
+
+    fetch(`http://localhost:8081/agendamento/deletar/${idAgendamento}`, {
+        method: 'DELETE',
+    })
+    .then(function (res) {
+        if (res.ok) {
+            alert('Agendamento deletado com sucesso!');
+            location.reload()
+        } else {
+            console.error('Ocorreu um erro ao deletar o agendamento:', res.statusText);
+            alert('Ocorreu um erro ao deletar o agendamento.');
+        }
+    })
+    .catch(error => console.error('Erro ao deletar agendamento:', error));
+}
