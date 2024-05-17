@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../crudAgendamento.js" defer></script>
+    <title>Editar Agendamento</title>
+</head>
+<body>
+    <form id="formEditarAgendamento">
+        <label for="idAgendamento">ID do Agendamento:</label>
+        <input type="number" id="idAgendamento" name="idAgendamento" required>
+        <br>
+        <label for="nomePaciente">Nome do Paciente:</label>
+        <input type="text" id="nomePaciente" name="nomePaciente" required>
+        <br>
+        <label for="email">Novo email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="selectStatus">Status:</label>
+        <select name="status" id="selectStatus">
+            <option value="AGENDADO">AGENDADO</option>
+            <option value="CANCELADO">CANCELADO</option>
+            <option value="REALIZADO">REALIZADO</option>
+        </select>
+        <br>
+        <label for="selectClinica">Clinica:</label>
+        <select id="selectClinica" name="clinica" required>
+            <option value="Medical Center">Medical Center</option>
+            <option value="Otomédica">Otomédica</option>
+            <option value="Otoclínica">Otoclínica</option>
+        </select>
+        <br>
+        <label for="idMedico">ID do Médico:</label>
+        <input type="number" id="idMedico" name="idMedico" required>
+        <br>
+        <label for="dataHoraAgendamento">Data e Hora do Agendamento:</label>
+        <input type="datetime-local" id="dataHoraAgendamento" name="dataHoraAgendamento" required>
+        <br>
+        <input type="button" onclick="editarAgendamento()" value="Confirmar">
+    </form>
+</body>
+</html>
