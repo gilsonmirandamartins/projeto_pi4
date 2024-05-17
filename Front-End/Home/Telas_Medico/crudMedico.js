@@ -64,3 +64,21 @@ function editarMedico() {
     })
     .catch(error => console.error('Erro ao atualizar médico:', error));
 }
+
+function deleteMedico() {
+    const nomeMedico = document.getElementById('nomeMedico').value;
+
+    fetch(`http://localhost:8081/medico/deletar/${nomeMedico}`, {
+        method: 'DELETE',
+    })
+    .then(function (res) {
+        if (res.ok) {
+            alert('Medico deletado com sucesso!');
+            location.reload()
+        } else {
+            console.error('Ocorreu um erro ao deletar o medico:', res.statusText);
+            alert('Ocorreu um erro ao deletar o medico.');
+        }
+    })
+    .catch(error => console.error('Erro ao deletar o medico:', error));
+}
