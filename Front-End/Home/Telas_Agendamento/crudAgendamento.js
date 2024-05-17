@@ -71,17 +71,16 @@ function getAllAgendamentos() {
 }
 
 function editarAgendamento() {
-    const idAgendamentoElement = document.getElementById('idAgendamento');
-    const nomePacienteElement = document.getElementById('nomePaciente');
-    const emailElement = document.getElementById('email');
-    const clinicaElement = document.getElementById('selectClinica');
-    const idMedicoElement = document.getElementById('idMedico');
-    const statusElement = document.getElementById('selectStatus');
-    const dataHoraAgendamentoElement = document.getElementById('dataHoraAgendamento')
+    const idAgendamento = document.getElementById('idAgendamento').value;
+    const nomePaciente = document.getElementById('nomePaciente').value;
+    const email = document.getElementById('email').value;
+    const clinica = document.getElementById('selectClinica').value;
+    const idMedico = document.getElementById('idMedico').value;
+    const status = document.getElementById('selectStatus').value;
+    const dataHoraAgendamento = document.getElementById('dataHoraAgendamento').value;
     const dataCadastro = new Date().toISOString();
 
-    // Formatando a data e hora corretamente
-    const formattedDataHoraAgendamento = new Date(novaDataHoraAgendamento).toISOString();
+    const formattedDataHoraAgendamento = new Date(dataHoraAgendamento).toISOString();
 
     fetch(`http://localhost:8081/agendamento/editar/${idAgendamento}`, {
         method: 'PUT',
@@ -90,12 +89,12 @@ function editarAgendamento() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            nomePaciente: novoNomePaciente,
-            email: novoEmail,
-            status: novoStatus,
-            clinica: novaClinica,
+            nomePaciente: nomePaciente,
+            email: email,
+            status: status,
+            clinica: clinica,
             medico: {
-                idMedico: novoIdMedico
+                idMedico: idMedico
             },
             dataHoraAgendamento: formattedDataHoraAgendamento,
             dataCadastro: dataCadastro
@@ -104,7 +103,7 @@ function editarAgendamento() {
     .then(function (res) {
         if (res.ok) {
             alert('Agendamento atualizado com sucesso!');
-            window.history.back();
+            location.reload()
         } else {
             return res.text().then(errorData => {
                 console.error('Ocorreu um erro ao atualizar o agendamento:', errorData);
