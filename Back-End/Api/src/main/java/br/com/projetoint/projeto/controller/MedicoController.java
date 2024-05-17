@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,10 +42,11 @@ public class MedicoController {
         }
     }
 
-    @PostMapping("/criar") // criar medico.Informe o medico e o id é criado automatico,endpoint:/medico/criar
+    @PostMapping("/criar") // criar medico.Informe o medico e o id é criado
+                           // automatico,endpoint:/medico/criar
 
     public ResponseEntity<String> criarMedico(@RequestBody Medico medico) {
-        if(medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()){
+        if (medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()) {
             return ResponseEntity.badRequest().body("Falha ao criar medico: Nome Obrigatorio");
         }
 
@@ -55,7 +57,7 @@ public class MedicoController {
         return ResponseEntity.ok(mensagem);
     }
 
-    @GetMapping("/listar")//endpoint: /meedico/listar
+    @GetMapping("/listar") // endpoint: /meedico/listar
     public List<Medico> listarMedicos() {
         return medicoRepository.findAll();
     }
@@ -74,6 +76,18 @@ public class MedicoController {
         }
     }
 
+    @DeleteMapping("/deletar/{nome}")
+public ResponseEntity<String> deletarMedico(@PathVariable String nome) {
+    Optional<Medico> medicoOptional = medicoRepository.findByNomeMedico(nome);
+
+    if (medicoOptional.isPresent()) {
+        medicoRepository.delete(medicoOptional.get());
+        return ResponseEntity.ok("Médico deletado com sucesso.");
+    } else {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado.");
+    }
+}
+   
     @GetMapping("/{id}")
     public Medico obterMedicoPorId(@PathVariable int id) {
         return medicoRepository.findById(id).orElse(null);
