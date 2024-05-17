@@ -9,5 +9,7 @@ import br.com.projetoint.projeto.model.Medico;
 public interface MedicoRepository extends JpaRepository<Medico, Integer> {
 
     Optional<Medico> findByNomeMedico(String nome);
+
+    void deleteByNomeMedico(String nome);
 }
 
