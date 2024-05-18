@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem Medico</title>
-    <link rel="stylesheet" href="Tela_ListarMedico.css">
+    <title>Deletar Medico</title>
+    <link rel="stylesheet" href="Tela_DeletarMedico.css">
     <script src="../../scriptMenu.js"></script>
     <script src="../crudMedico.js"></script>
 </head>
@@ -34,13 +34,16 @@
                 </ul>
             </nav>
         </div>   
-        <section class="ListUsuarios">
-            <div class="lista">
-                <h2>Lista de Médicos</h2>
-                <div id="userAtt"></div>
-                <button class="btn" type="button" onclick="getAllMedico()">Listar Médicos</button>
-            </div>
-        </section>   
+        <div class="section_deletar">
+            <form class="deletar">
+                <div class="info">
+                    <h2>Deletar Médico</h2>
+                    <label>Digite o nome completo do medico que devera ser deletado:</label>
+                    <input type="text" id="nomeMedico" required>
+                </div>
+                <input type="button" class="btn" onclick="deleteMedico()" value="Confirmar">
+            </form>
+        </div>
     </main>
     <footer>
         <p class="fot">&copy;2024 - Equipe 5</p>

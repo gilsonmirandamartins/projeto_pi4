@@ -15,7 +15,7 @@ function createNewMedico() {
     .then(function (res) {
         if (res.ok) {
             alert('Novo Medico cadastrado!');
-            window.history.back();
+            location.reload()
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
@@ -36,4 +36,49 @@ function getAllMedico() {
             userDataElement.innerHTML = userNames.join("<br>");
         })
         .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
+}
+
+function editarMedico() {
+    const idAtual = document.getElementById('idAtual').value;
+    const nomeAtual = document.getElementById('nomeAtual').value;
+    const novoNome = document.getElementById('novoNome').value;
+
+    fetch(`http://localhost:8081/medico/editar?idAtual=${idAtual}&nomeAtual=${nomeAtual}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nomeMedico: novoNome
+        })
+    })
+    .then(function (res) {
+        if (res.ok) {
+            alert('Médico foi atualizado com sucesso!');
+            window.history.back();
+        } else {
+            console.error('Ocorreu um erro ao atualizar o médico:', res.statusText);
+            alert('Ocorreu um erro ao atualizar o médico.');
+        }
+    })
+    .catch(error => console.error('Erro ao atualizar médico:', error));
+}
+
+function deleteMedico() {
+    const nomeMedico = document.getElementById('nomeMedico').value;
+
+    fetch(`http://localhost:8081/medico/deletar/${nomeMedico}`, {
+        method: 'DELETE',
+    })
+    .then(function (res) {
+        if (res.ok) {
+            alert('Medico deletado com sucesso!');
+            location.reload()
+        } else {
+            console.error('Ocorreu um erro ao deletar o medico:', res.statusText);
+            alert('Ocorreu um erro ao deletar o medico.');
+        }
+    })
+    .catch(error => console.error('Erro ao deletar o medico:', error));
 }

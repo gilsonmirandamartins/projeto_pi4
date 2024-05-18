@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem Medico</title>
-    <link rel="stylesheet" href="Tela_ListarMedico.css">
+    <title>Área Atendimento</title>
+    <link rel="stylesheet" href="Tela_ExcluirAgendamento.css">
     <script src="../../scriptMenu.js"></script>
-    <script src="../crudMedico.js"></script>
+    <script src="../crudAgendamento.js"></script>
 </head>
 <body>
     <header>
         <button onclick="ClickMenu()" class="iconeMenu"></button>
-        <h1>Área do Médico</h1>
+        <h1>Área do Agendamentos</h1>
         <button class="ButtonSair" onclick="logout()"><img src="../../img/menu/logout_black.svg" alt="Icone Logout">Logout</button>
     </header>
     <main>
@@ -34,13 +34,16 @@
                 </ul>
             </nav>
         </div>   
-        <section class="ListUsuarios">
-            <div class="lista">
-                <h2>Lista de Médicos</h2>
-                <div id="userAtt"></div>
-                <button class="btn" type="button" onclick="getAllMedico()">Listar Médicos</button>
+        <section class="section_deletar">
+            <div class="container">
+                <h2>Deletar Agendamento</h2>
+                <form class="deletar">
+                    <label>ID do Agendamento:</label>
+                    <input type="number" id="IdAgendamento" placeholder="Digite o id do agendamento a ser excluido">
+                    <input type="button" class="btn" onclick="deleteAgendamento()" value="Deletar">
+                </form>
             </div>
-        </section>   
+        </section>
     </main>
     <footer>
         <p class="fot">&copy;2024 - Equipe 5</p>
