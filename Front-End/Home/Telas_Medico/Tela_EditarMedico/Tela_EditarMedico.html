@@ -1,23 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição Medico</title>
+    <link rel="stylesheet" href="Tela_EditarMedico.css">
+    <script src="../../scriptMenu.js"></script>
     <script src="../crudMedico.js"></script>
-    <title>Editar Médico</title>
 </head>
 <body>
-    <form>
-        <label for="idAtual">ID Atual:</label>
-        <input type="text" id="idAtual" name="idAtual" required>
-        <br>
-        <label for="nomeAtual">Nome Atual:</label>
-        <input type="text" id="nomeAtual" name="nomeAtual" required>
-        <br>
-        <label for="novoNome">Novo Nome:</label>
-        <input type="text" id="novoNome" name="novoNome" required>
-        <br>
-        <input type="submit" onclick="editarMedico()" value="Confirmar">
-    </form>
+    <header>
+        <button onclick="ClickMenu()" class="iconeMenu"></button>
+        <h1>Área do Médico</h1>
+        <button class="ButtonSair" onclick="logout()"><img src="../../img/menu/logout_black.svg" alt="Icone Logout">Logout</button>
+    </header>
+    <main>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_CriacaoAgendamento/Tela_CriacaoAgendamento.html">Agendar Atendimento</a></li>
+                    <li class="MenuAreaMedico">
+                        <a href="#">Área do Médico</a>
+                        <div class="SubMenu">
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_CriacaoMedico/Tela_CriacaoMedico.html">Criação Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_EditarMedico/Tela_EditarMedico.html">Edição Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_ListarMedico/Tela_ListarMedico.html">Listar Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_DeletarMedico/Tela_DeletarMedico.html">Excluir Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ListarAgendamento/Tela_ListarAgendamento.html">Consultar Agendamentos</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ExcluirAgendamento/Tela_ExcluirAgendamento.html">Deletar Agendamentos</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_EditarAgendamento/Tela_EditarAgendamento.html">Editar Agendamentos</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>   
+        <div class="section_edit">
+            <form class="edit">
+                <label for="idAtual">ID Atual:</label>
+                <input type="text" id="idAtual" name="idAtual" required>
+                <br>
+
+                <label for="nomeAtual">Nome Atual:</label>
+                <input type="text" id="nomeAtual" name="nomeAtual" required>
+                <br>
+
+                <label for="novoNome">Novo Nome:</label>
+                <input type="text" id="novoNome" name="novoNome" required>
+                <br>
+                <input type="submit" onclick="editarMedico()" value="Confirmar">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p class="fot">&copy;2024 - Equipe 5</p>
+    </footer>
 </body>
 </html>
