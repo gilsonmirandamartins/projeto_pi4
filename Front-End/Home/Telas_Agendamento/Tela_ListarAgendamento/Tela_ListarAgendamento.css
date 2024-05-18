@@ -126,6 +126,7 @@ main{
   background-color: #fff;
   text-decoration: none;
   display: flex;
+  visibility: hidden;
   gap: 5px;
   border: 1px solid white;
   padding: 5px;
@@ -179,63 +180,25 @@ html, body {
   display: block;
 }
 
-.especialidades{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  padding: 10px;
-}
-
-.container{
-  display: flex;
-  gap: 50px;
-}
-
-.card{
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  width: 250px;
-  height: 200px;
-  background-color: white
-}
-
-.nomeClinica{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 20%;
-  border: 1px solid black;
-}
-
-.card img{
-  width: 100%;
-  height: 80%;
-}
-
 .section_lista{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.info{
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-    border: 1px solid black;
+table tr{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 1000px;
+  border: 1px solid black;
 }
 
-.infoC{
-    padding: 10px;
-    width:100%;
-    border: 1px solid black;
+.ButtonAtt{
+  background-color: rgb(5, 135, 228);
+  color: white;
+  padding: 10px;
 }

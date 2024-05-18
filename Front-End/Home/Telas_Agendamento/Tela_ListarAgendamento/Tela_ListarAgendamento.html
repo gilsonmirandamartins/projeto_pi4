@@ -12,9 +12,7 @@
     <header>
         <button onclick="ClickMenu()" class="iconeMenu"></button>
         <h1>Área do Agendamentos</h1>
-        <!--Nome Do Usuario entre o Tecnologia e o botão de sair-->
         <button class="ButtonSair" onclick="logout()"><img src="../../img/menu/logout_black.svg" alt="Icone Logout">Logout</button>
-        <!--Quando clicado ira redirecionar para tela de login-->
     </header>
     <main>
         <div class="menu">
@@ -38,28 +36,24 @@
         </div>   
         <section class="section_lista">
             <h2>Lista de Agendamentos</h2>
-            <div class="info">
-                <div class="infoC">
-                    <label>Nome do Paciente</label>
-                    <div id="NomePaciente"></div>
-                </div>
-                <div class="infoC">
-                    <label>Clinica</label>
-                    <div id="clinica"></div>
-                </div>
-                <div  class="infoC">
-                    <label>Status</label>
-                    <div id="status"></div>
-                </div>
-                <div class="infoC">
-                    <label>IdMedico</label>
-                    <div id="idMedico"></div>
-                </div>
-                <div class="infoC">
-                    <label>Data e Hora do Agendamento</label>
-                    <div id="DataHoraAgendamento"></div>
-                </div>
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label>Nome do Paciente</label></td>
+                        <td><label>Clinica</label></td>
+                        <td><label>Status</label></td>
+                        <td><label>IdMedico</label></td>
+                        <td><label>Data e Hora</label></td>
+                    </tr>
+                    <tr>
+                        <td><div id="NomePaciente"></div></td>
+                        <td><div id="clinica"></div></td>
+                        <td><div id="status"></div></td>
+                        <td><div id="idMedico"></div></td>
+                        <td><div id="DataHoraAgendamento"></div></td>
+                    </tr>
+                </tbody>
+            </table>
             <button class="ButtonAtt" type="button" onclick="getAllAgendamentos()">Lista de Agendamentos</button>
         </section>  
     </main>
