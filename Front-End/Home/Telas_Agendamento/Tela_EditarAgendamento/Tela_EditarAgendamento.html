@@ -1,43 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../crudAgendamento.js" defer></script>
-    <title>Editar Agendamento</title>
+    <title>Área Atendimento</title>
+    <link rel="stylesheet" href="Tela_EditarAgendamento.css">
+    <script src="../../scriptMenu.js"></script>
+    <script src="../crudAgendamento.js"></script>
 </head>
 <body>
-    <form id="formEditarAgendamento">
-        <label for="idAgendamento">ID do Agendamento:</label>
-        <input type="number" id="idAgendamento" name="idAgendamento" required>
-        <br>
-        <label for="nomePaciente">Nome do Paciente:</label>
-        <input type="text" id="nomePaciente" name="nomePaciente" required>
-        <br>
-        <label for="email">Novo email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="selectStatus">Status:</label>
-        <select name="status" id="selectStatus">
-            <option value="AGENDADO">AGENDADO</option>
-            <option value="CANCELADO">CANCELADO</option>
-            <option value="REALIZADO">REALIZADO</option>
-        </select>
-        <br>
-        <label for="selectClinica">Clinica:</label>
-        <select id="selectClinica" name="clinica" required>
-            <option value="Medical Center">Medical Center</option>
-            <option value="Otomédica">Otomédica</option>
-            <option value="Otoclínica">Otoclínica</option>
-        </select>
-        <br>
-        <label for="idMedico">ID do Médico:</label>
-        <input type="number" id="idMedico" name="idMedico" required>
-        <br>
-        <label for="dataHoraAgendamento">Data e Hora do Agendamento:</label>
-        <input type="datetime-local" id="dataHoraAgendamento" name="dataHoraAgendamento" required>
-        <br>
-        <input type="button" onclick="editarAgendamento()" value="Confirmar">
-    </form>
+    <header>
+        <button onclick="ClickMenu()" class="iconeMenu"></button>
+        <h1>Área do Agendamentos</h1>
+        <!--Nome Do Usuario entre o Tecnologia e o botão de sair-->
+        <button class="ButtonSair" onclick="logout()"><img src="../../img/menu/logout_black.svg" alt="Icone Logout">Logout</button>
+        <!--Quando clicado ira redirecionar para tela de login-->
+    </header>
+    <main>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_CriacaoAgendamento/Tela_CriacaoAgendamento.html">Agendar Atendimento</a></li>
+                    <li class="MenuAreaMedico">
+                        <a href="#">Área do Médico</a>
+                        <div class="SubMenu">
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_CriacaoMedico/Tela_CriacaoMedico.html">Criação Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_EditarMedico/Tela_EditarMedico.html">Edição Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_ListarMedico/Tela_ListarMedico.html">Listar Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_DeletarMedico/Tela_DeletarMedico.html">Excluir Médico</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ListarAgendamento/Tela_ListarAgendamento.html">Consultar Agendamentos</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ExcluirAgendamento/Tela_ExcluirAgendamento.html">Deletar Agendamentos</a>
+                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_EditarAgendamento/Tela_EditarAgendamento.html">Editar Agendamentos</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>   
+        <div class="section_Edit">
+            <h2>Editar Atendimento</h2>
+            <form id="formEditarAgendamento">
+                <label for="idAgendamento">ID do Agendamento:</label>
+                <input type="number" id="idAgendamento" name="idAgendamento" required>
+                <br>
+                <label for="nomePaciente">Nome do Paciente:</label>
+                <input type="text" id="nomePaciente" name="nomePaciente" required>
+                <br>
+                <label for="email">Novo email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="selectStatus">Status:</label>
+                <select name="status" id="selectStatus">
+                    <option value="AGENDADO">AGENDADO</option>
+                    <option value="CANCELADO">CANCELADO</option>
+                    <option value="REALIZADO">REALIZADO</option>
+                </select>
+                <br>
+                <label for="selectClinica">Clinica:</label>
+                <select id="selectClinica" name="clinica" required>
+                    <option value="Medical Center">Medical Center</option>
+                    <option value="Otomédica">Otomédica</option>
+                    <option value="Otoclínica">Otoclínica</option>
+                </select>
+                <br>
+                <label for="idMedico">ID do Médico:</label>
+                <input type="number" id="idMedico" name="idMedico" required>
+                <br>
+                <label for="dataHoraAgendamento">Data e Hora do Agendamento:</label>
+                <input type="datetime-local" id="dataHoraAgendamento" name="dataHoraAgendamento" required>
+                <br>
+                <input type="button" onclick="editarAgendamento()" value="Confirmar">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p class="fot">&copy;2024 - Equipe 5</p>
+    </footer>
 </body>
 </html>
