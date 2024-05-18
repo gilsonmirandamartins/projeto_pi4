@@ -35,7 +35,7 @@ function getAllMedico() {
             const userDataElement = document.getElementById('userAtt');
             userDataElement.innerHTML = userNames.join("<br>");
         })
-        .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
+        .catch(error => console.error('Erro ao recuperar lista de medicos:', error));
 }
 
 function editarMedico() {
