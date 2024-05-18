@@ -15,7 +15,7 @@ function createNewMedico() {
     .then(function (res) {
         if (res.ok) {
             alert('Novo Medico cadastrado!');
-            window.history.back();
+            location.reload()
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
