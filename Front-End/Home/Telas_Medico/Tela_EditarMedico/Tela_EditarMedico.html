@@ -36,18 +36,22 @@
         </div>   
         <div class="section_edit">
             <form class="edit">
-                <label for="idAtual">ID Atual:</label>
-                <input type="text" id="idAtual" name="idAtual" required>
-                <br>
+                <h2>Editar Médico</h2>
+                <div class="info">
+                    <label for="idAtual">ID Atual:</label>
+                    <input type="text" id="idAtual" name="idAtual" required>
+                </div>
 
-                <label for="nomeAtual">Nome Atual:</label>
-                <input type="text" id="nomeAtual" name="nomeAtual" required>
-                <br>
+                <div class="info">
+                    <label for="nomeAtual">Nome Atual:</label>
+                    <input type="text" id="nomeAtual" name="nomeAtual" required>
+                </div>
 
-                <label for="novoNome">Novo Nome:</label>
-                <input type="text" id="novoNome" name="novoNome" required>
-                <br>
-                <input type="submit" onclick="editarMedico()" value="Confirmar">
+                <div class="info">
+                    <label for="novoNome">Novo Nome:</label>
+                    <input type="text" id="novoNome" name="novoNome" required>
+                </div>
+                <input type="submit" class="btn" onclick="editarMedico()" value="Confirmar">
             </form>
         </div>
     </main>
