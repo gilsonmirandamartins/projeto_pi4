@@ -67,7 +67,7 @@ function getAllAgendamentos() {
             dataElementidMedico.innerHTML = idMedico.join("<br>");
             dataElementDataHoraAgendamento.innerHTML = DataHoraAgendamento.join("<br>");
         })
-        .catch(error => console.error('Erro ao recuperar lista de usuários:', error));
+        .catch(error => console.error('Erro ao recuperar lista de Agendamentos:', error));
 }
 
 function editarAgendamento() {
