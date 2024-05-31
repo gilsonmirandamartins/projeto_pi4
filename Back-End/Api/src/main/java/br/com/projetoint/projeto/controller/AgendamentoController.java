@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.projetoint.projeto.DTO.AgendamentoDTO;
 import br.com.projetoint.projeto.Service.AgendamentoService;
 import br.com.projetoint.projeto.model.Agendamento;
 
@@ -38,8 +39,8 @@ public class AgendamentoController {
         }
     }
 
-    @GetMapping("/listar")
-    public List<Agendamento> listarAgendamentos() {
+   @GetMapping("/listar")
+    public List<AgendamentoDTO> listarAgendamentos() {
         return agendamentoService.listarAgendamentos();
     }
 

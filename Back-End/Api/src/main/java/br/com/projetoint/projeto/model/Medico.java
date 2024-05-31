@@ -1,10 +1,15 @@
 package br.com.projetoint.projeto.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +21,11 @@ public class Medico {
 
     @Column(name = "nomeMedico", nullable = false, length = 100)
     private String nomeMedico;
+
+    @OneToMany(mappedBy = "medico")
+    @JsonManagedReference
+    private List<Agendamento> agendamentos;
+
 
     public int getIdMedico() {
         return idMedico;

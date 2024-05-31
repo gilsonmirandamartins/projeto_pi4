@@ -49,25 +49,35 @@ function getAllAgendamentos() {
     fetch("http://localhost:8081/agendamento/listar")
         .then(response => response.json())
         .then(data => {
-            const userNames = data.map(user => user.nomePaciente);
-            const clinica = data.map(clinica => clinica.clinica);
-            const status = data.map(status => status.status);
-            const idMedico = data.map(agendamento => agendamento.medico.idMedico);
-            const DataHoraAgendamento = data.map(DataHoraAgendamento => DataHoraAgendamento.dataHoraAgendamento);
+            const nomesPacientes = data.map(agendamento => agendamento.nomePaciente || "");
+            const clinicas = data.map(agendamento => agendamento.clinica || "");
+            const status = data.map(agendamento => agendamento.status || "");
+            const nomesMedicos = data.map(agendamento => agendamento.nomeMedico || "");
+            const datasHorasAgendamento = data.map(agendamento => agendamento.dataHoraAgendamento || "");
 
-            const dataElementPaciente = document.getElementById('NomePaciente');
-            const dataElementclinica = document.getElementById('clinica');
-            const dataElementstatus = document.getElementById('status');
-            const dataElementidMedico = document.getElementById('idMedico');
-            const dataElementDataHoraAgendamento = document.getElementById('DataHoraAgendamento');
-            
-            dataElementPaciente.innerHTML = userNames.join("<br>");
-            dataElementclinica.innerHTML = clinica.join("<br>");
-            dataElementstatus.innerHTML = status.join("<br>");
-            dataElementidMedico.innerHTML = idMedico.join("<br>");
-            dataElementDataHoraAgendamento.innerHTML = DataHoraAgendamento.join("<br>");
+            const elementoNomePaciente = document.getElementById('NomePaciente');
+            const elementoClinica = document.getElementById('clinica');
+            const elementoStatus = document.getElementById('status');
+            const elementoNomeMedico = document.getElementById('NomeMedico');
+            const elementoDataHoraAgendamento = document.getElementById('DataHoraAgendamento');
+
+            elementoNomePaciente.innerHTML = nomesPacientes.join("<br>");
+            elementoClinica.innerHTML = clinicas.join("<br>");
+            elementoStatus.innerHTML = status.join("<br>");
+            elementoNomeMedico.innerHTML = nomesMedicos.join("<br>");
+            elementoDataHoraAgendamento.innerHTML = datasHorasAgendamento.join("<br>");
         })
         .catch(error => console.error('Erro ao recuperar lista de Agendamentos:', error));
+}
+
+function obterNomeMedicoPorId(idMedico) {
+    return fetch(`http://localhost:8081/medico/${idMedico}`)
+        .then(response => response.json())
+        .then(data => data.nomeMedico)
+        .catch(error => {
+            console.error(`Erro ao obter o nome do médico com o ID ${idMedico}:`, error);
+            return ""; // Retorna uma string vazia em caso de erro
+        });
 }
 
 function editarAgendamento() {
