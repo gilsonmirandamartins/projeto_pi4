@@ -27,19 +27,23 @@ public class AgendamentoController {
 
     @PostMapping("/criar")
     public ResponseEntity<String> criarAgendamento(@RequestBody Agendamento agendamento) {
-        Agendamento novoAgendamento = agendamentoService.criarAgendamento(agendamento);
-        if (novoAgendamento != null) {
-            String mensagemSucesso = String.format(
-                    "Agendamento criado com sucesso! ID do agendamento: %d, Nome do paciente: %s.",
-                    novoAgendamento.getIdAgendamento(),
-                    novoAgendamento.getNomePaciente());
-            return ResponseEntity.status(HttpStatus.CREATED).body(mensagemSucesso);
-        } else {
+        try {
+            Agendamento novoAgendamento = agendamentoService.criarAgendamento(agendamento);
+            if (novoAgendamento != null) {
+                String mensagemSucesso = String.format(
+                        "Agendamento criado com sucesso! ID do agendamento: %d, Nome do paciente: %s.",
+                        novoAgendamento.getIdAgendamento(),
+                        novoAgendamento.getNomePaciente());
+                return ResponseEntity.status(HttpStatus.CREATED).body(mensagemSucesso);
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Médico com horario indisponivél.");
+            }
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falha ao criar o agendamento.");
         }
     }
 
-   @GetMapping("/listar")
+    @GetMapping("/listar")
     public List<AgendamentoDTO> listarAgendamentos() {
         return agendamentoService.listarAgendamentos();
     }
@@ -65,18 +69,17 @@ public class AgendamentoController {
     }
 
     @DeleteMapping("/deletar/{id}") // deletar por id
-public ResponseEntity<String> deletarAgendamentoPorId(@PathVariable int id) {
-    Agendamento agendamentoExistente = agendamentoService.obterAgendamentoPorId(id);
+    public ResponseEntity<String> deletarAgendamentoPorId(@PathVariable int id) {
+        Agendamento agendamentoExistente = agendamentoService.obterAgendamentoPorId(id);
 
-    if (agendamentoExistente == null) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Agendamento não encontrado.");
+        if (agendamentoExistente == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Agendamento não encontrado.");
+        }
+
+        agendamentoService.deletarAgendamento(id);
+
+        return ResponseEntity.ok("Agendamento deletado com sucesso.");
     }
-
-    agendamentoService.deletarAgendamento(id);
-
-    return ResponseEntity.ok("Agendamento deletado com sucesso.");
-}
-
 
     @GetMapping("/{id}")
     public Agendamento obterAgendamento(@PathVariable int id) {
