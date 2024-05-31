@@ -36,6 +36,7 @@ function criarAgendamento() {
             return res.text().then(errorData => {
                 console.error('Erro ao fazer o agendamento:', errorData);
                 alert('Ocorreu um erro ao realizar o agendamento: ' + errorData);
+                location.reload();
             });
         }
     })
