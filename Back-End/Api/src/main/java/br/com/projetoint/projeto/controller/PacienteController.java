@@ -57,22 +57,22 @@ public class PacienteController {
 
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<String> editarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
-        Optional<Paciente> pacienteExistenteOpt = pacienteService.buscarPacientePorId(id);
-        if (pacienteExistenteOpt.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Paciente não encontrado.");
-        }
-
-        Paciente pacienteExistente = pacienteExistenteOpt.get();
-        pacienteExistente.setNome(pacienteAtualizado.getNome());
-        pacienteExistente.setDocumento(pacienteAtualizado.getDocumento());
-        pacienteExistente.setSexo(pacienteAtualizado.getSexo());
-        pacienteExistente.setDataNascimento(pacienteAtualizado.getDataNascimento());
-
-        pacienteService.salvarPaciente(pacienteExistente);
-
-        return ResponseEntity.ok("Paciente atualizado com sucesso.");
+public ResponseEntity<String> editarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
+    Optional<Paciente> pacienteExistenteOpt = pacienteService.buscarPacientePorId(id);
+    if (pacienteExistenteOpt.isEmpty()) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Paciente não encontrado.");
     }
+
+    Paciente pacienteExistente = pacienteExistenteOpt.get();
+    pacienteExistente.setNome(pacienteAtualizado.getNome());
+    pacienteExistente.setDocumento(pacienteAtualizado.getDocumento());
+    pacienteExistente.setSexo(pacienteAtualizado.getSexo());
+    pacienteExistente.setDataNascimento(pacienteAtualizado.getDataNascimento());
+
+    pacienteService.salvarPaciente(pacienteExistente);
+
+    return ResponseEntity.ok("Paciente atualizado com sucesso.");
+}
 
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletarPacientePorId(@PathVariable Long id) {
