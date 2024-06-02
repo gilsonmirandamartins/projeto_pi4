@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Paciente</title>
+</head>
+<body>
+    <header>
+        <h1>Login de Paciente</h1>
+    </header>
+    <main>
+        <form id="formLoginPaciente"> <!-- Aqui está o ID do formulário -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+            <label for="documento">Documento:</label>
+            <input type="text" id="documento" name="documento" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p id="mensagem"></p>
+    </main>
+    <script src="crudPaciente.js"></script>
+</body>
+</html>

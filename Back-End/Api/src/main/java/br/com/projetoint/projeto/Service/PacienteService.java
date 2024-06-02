@@ -30,4 +30,9 @@ public class PacienteService {
     public void deletarPaciente(Long id) {
         pacienteRepository.deleteById(id);
     }
+
+    public Optional<Paciente> buscarPacientePorNomeEDocumento(String nome, String documento) {
+        return pacienteRepository.findByNomeAndDocumento(nome, documento);
+    }
+    
 }

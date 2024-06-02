@@ -44,6 +44,17 @@ public class PacienteController {
         return pacienteService.listarPacientes();
     }
 
+    @PostMapping("/login")
+public ResponseEntity<String> loginPaciente(@RequestBody Paciente paciente) {
+    Optional<Paciente> pacienteExistente = pacienteService.buscarPacientePorNomeEDocumento(paciente.getNome(), paciente.getDocumento());
+    if (pacienteExistente.isPresent()) {
+        return ResponseEntity.ok("Login bem-sucedido.");
+    } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Nome ou documento incorretos.");
+    }
+}
+
+
     @PutMapping("/editar/{id}")
     public ResponseEntity<String> editarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
         Optional<Paciente> pacienteExistenteOpt = pacienteService.buscarPacientePorId(id);
