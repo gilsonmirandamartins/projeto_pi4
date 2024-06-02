@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_cadastro.css">
+    <script src="./script.js" defer></script>
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="Tela_Cadastro">
+        <div class="bloco_azul"></div>
+        <h1>Cadastro</h1>
+        <form>
+            <div class="dados">
+                <label>Nome:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/person_Black.svg" alt="Imagem Perfil">
+                    </figure>
+                    <input type="text" class="nome" name="nome" placeholder="Digite seu nome" maxlength="200" required>
+                </div>
+            </div>
+            
+            <div class="dados">
+                <label>Email de login:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/email_Black.svg" alt="Imagem email">
+                    </figure>
+                    <input type="text" class="login" name="login" placeholder="Digite seu e-mail" required maxlength="30">
+                </div>
+            </div>
+
+            <div class="dados">
+                <label>Senha:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/lock_Black.svg" alt="Imagem Cadeado">
+                    </figure>
+                    <input type="password" class="Crie uma senha" name="senha" placeholder="Digite sua senha" required maxlength="10">
+                </div>
+            </div>
+
+            <div class="dados">
+                <label>Data de nascimento:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/calendar_month_black.svg" alt="Imagem Calendario">
+                    </figure>
+                    <input type="date" class="dataNasc" name="nascimento" value="" required>
+                </div>
+            </div>
+
+            <div class="dados">
+                <label>Manter cadastro ativo?</label>
+                
+                <select class="ativo" name="ativo" required>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+
+            <p class="section_login">
+                Já tem uma conta? 
+                <a href="../Tela_Login/index.html" class="Link_login">Entrar</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>

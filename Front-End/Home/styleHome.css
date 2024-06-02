@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+/* styleHome.css */
+
+/* Estilos para o corpo da página */
+body.pag2main {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o contêiner principal */
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para os campos de entrada */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/*Estilo do label a cima do botão sim e não*/
+
+.lb{
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: gray;
+    color: #ffffff;
+    border:rgb(0, 0, 0)e;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Estilos para o botão */
+button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para o contêiner de informações do usuário */
+#userInfoContainer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para o contêiner de informações do usuário - parágrafo */
+#userInfoContainer p {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Estilos para o campo de nome */
+.nome {
+    text-transform: capitalize;
+}
+
+/* Estilos para o campo de senha */
+.senha {
+    letter-spacing: 2px;
+}

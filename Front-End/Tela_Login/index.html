@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styleCad.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <main class="Tela_login">
+        <div class="bloco_azul"></div>
+        <h1>Login</h1>
+        <form>
+            <div class="dados">
+                <label>Login:</label>
+                <div class="input_Nome input">
+                    <figure>
+                        <img src="../img/email_Black.svg" alt="Imagem email">
+                    </figure>
+                    <input type="text" name="nome" id="in1" required placeholder="E-mail" maxlength="30">
+                </div>
+            </div>
+            <div class="dados">
+                <label>Senha:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../img/lock_Black.svg" alt="Imagem Cadeado">
+                    </figure>
+                    <input type="password" name="senha" id="in2" placeholder="Senha" required maxlength="10">
+                    <div class="input_button">
+                        <button type="button" onclick="toggleSenha()" id="icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <a href="../tela_recuperacao_senha/tela_de_verificação.html" class="Esqueceu_Senha">Esqueceu sua senha?</a>
+            <button type="submit" class="button_submit">Acessar</button>
+            <p class="section_cadastro">
+                Não tem uma conta?
+                <a href="../Tela_Cadastro/paginaCadastro.html" class="Link_cadastro">Cadastre-se</a>
+            </p>
+        </form>
+    </main>
+</body>
+</html>
