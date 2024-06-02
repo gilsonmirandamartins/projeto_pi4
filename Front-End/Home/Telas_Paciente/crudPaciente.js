@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const respostaTexto = await response.text();
                 mensagem.textContent = respostaTexto;
                 mensagem.style.color = 'green';
+                localStorage.setItem('mensagemBoasVindas', respostaTexto);
                 window.location.href = 'Crud_Paciente.html';
 
             } else {
@@ -89,4 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mensagem.style.color = 'red';
         }
     });
+
+    const mensagemBoasVindas = localStorage.getItem('mensagemBoasVindas');
+    if (mensagemBoasVindas) {
+        const elementoMensagem = document.getElementById('mensagemBoasVindas');
+        elementoMensagem.textContent = mensagemBoasVindas;
+        elementoMensagem.style.display = 'block';
+        localStorage.removeItem('mensagemBoasVindas');
+    }
 });
