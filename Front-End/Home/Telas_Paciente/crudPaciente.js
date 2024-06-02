@@ -4,28 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const formDeletar = document.getElementById('formDeletarPaciente');
     const formLogin = document.getElementById('formLoginPaciente');
 
-    const handleSubmit = async (event, url, errorMessage) => {
+    const handleSubmit = async (event, url, method, errorMessage) => {
         event.preventDefault();
-        const idPaciente = document.getElementById('idPaciente')?.value;
-        const nome = document.getElementById('nome').value;
-        const documento = document.getElementById('documento').value;
-        const sexo = document.getElementById('sexo')?.value;
-        const dataNascimento = document.getElementById('dataNascimento')?.value;
 
-        const paciente = {
-            nome,
-            documento,
-            sexo,
-            dataNascimento
-        };
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+        console.log("Dados enviados:", data);
 
         try {
-            const response = await fetch(url + (idPaciente ? `/${idPaciente}` : ''), {
-                method: idPaciente ? 'PUT' : 'POST',
+            const response = await fetch(url, {
+                method: method,
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(paciente)
+                body: JSON.stringify(data)
             });
 
             const mensagem = document.getElementById('mensagem');
@@ -34,11 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mensagem.textContent = respostaTexto;
                 mensagem.style.color = 'green';
             } else {
+                const errorText = await response.text();
+                console.error('Erro na resposta:', errorText);
                 mensagem.textContent = errorMessage;
                 mensagem.style.color = 'red';
             }
         } catch (error) {
-            console.error('Erro:', error);
+            console.error('Erro na requisição:', error);
             const mensagem = document.getElementById('mensagem');
             mensagem.textContent = 'Erro de conexão.';
             mensagem.style.color = 'red';
@@ -46,15 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     formCadastro?.addEventListener('submit', async function(event) {
-        await handleSubmit(event, 'http://localhost:8081/paciente/criar', 'Falha ao cadastrar paciente.');
+        await handleSubmit(event, 'http://localhost:8081/paciente/criar', 'POST', 'Falha ao cadastrar paciente.');
     });
 
     formEditar?.addEventListener('submit', async function(event) {
-        await handleSubmit(event, 'http://localhost:8081/paciente/editar', 'Falha ao editar paciente.');
+        const idPaciente = document.getElementById('idPaciente').value;
+        await handleSubmit(event, `http://localhost:8081/paciente/editar/${idPaciente}`, 'PUT', 'Falha ao editar paciente.');
     });
 
     formDeletar?.addEventListener('submit', async function(event) {
-        await handleSubmit(event, 'http://localhost:8081/paciente/deletar', 'Falha ao deletar paciente.');
+        const idPaciente = document.getElementById('idPaciente').value;
+        await handleSubmit(event, `http://localhost:8081/paciente/deletar/${idPaciente}`, 'DELETE', 'Falha ao deletar paciente.');
     });
 
     formLogin?.addEventListener('submit', async function(event) {
