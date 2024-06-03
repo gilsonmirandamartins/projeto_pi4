@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Função para cadastro de paciente - Início
     const formCadastro = document.getElementById('formCadastroPaciente');
-    const formEditar = document.getElementById('formEditarPaciente');
-    const formDeletar = document.getElementById('formDeletarPaciente');
-    const formLogin = document.getElementById('formLoginPaciente');
 
-    const handleSubmit = async (event, url, method, errorMessage) => {
+    const cadastrarPaciente = async (event) => {
         event.preventDefault();
 
         const formData = new FormData(event.target);
@@ -12,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Dados enviados:", data);
 
         try {
-            const response = await fetch(url, {
-                method: method,
+            const response = await fetch('http://localhost:8081/paciente/criar', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const errorText = await response.text();
                 console.error('Erro na resposta:', errorText);
-                mensagem.textContent = errorMessage;
+                mensagem.textContent = 'Falha ao cadastrar paciente.';
                 mensagem.style.color = 'red';
             }
         } catch (error) {
@@ -39,21 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    formCadastro?.addEventListener('submit', async function(event) {
-        await handleSubmit(event, 'http://localhost:8081/paciente/criar', 'POST', 'Falha ao cadastrar paciente.');
-    });
+    formCadastro?.addEventListener('submit', cadastrarPaciente);
+    // Função para cadastro de paciente - Fim
 
-    formEditar?.addEventListener('submit', async function(event) {
-        const idPaciente = document.getElementById('idPaciente').value;
-        await handleSubmit(event, `http://localhost:8081/paciente/editar/${idPaciente}`, 'PUT', 'Falha ao editar paciente.');
-    });
+    // Função para login de paciente - Início
+    const formLogin = document.getElementById('formLoginPaciente');
 
-    formDeletar?.addEventListener('submit', async function(event) {
-        const idPaciente = document.getElementById('idPaciente').value;
-        await handleSubmit(event, `http://localhost:8081/paciente/deletar/${idPaciente}`, 'DELETE', 'Falha ao deletar paciente.');
-    });
-
-    formLogin?.addEventListener('submit', async function(event) {
+    const loginPaciente = async (event) => {
         event.preventDefault();
         const nome = document.getElementById('nome').value;
         const documento = document.getElementById('documento').value;
@@ -85,8 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mensagem.textContent = 'Erro de conexão.';
             mensagem.style.color = 'red';
         }
-    });
+    };
 
+    formLogin?.addEventListener('submit', loginPaciente);
+    // Função para login de paciente - Fim
+
+    // Mensagem de boas-vindas - Início
     const mensagemBoasVindas = localStorage.getItem('mensagemBoasVindas');
     if (mensagemBoasVindas) {
         const elementoMensagem = document.getElementById('mensagemBoasVindas');
@@ -94,4 +88,5 @@ document.addEventListener('DOMContentLoaded', () => {
         elementoMensagem.style.display = 'block';
         localStorage.removeItem('mensagemBoasVindas');
     }
+    // Mensagem de boas-vindas - Fim
 });
