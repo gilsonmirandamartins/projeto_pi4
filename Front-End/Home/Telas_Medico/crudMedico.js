@@ -11,15 +11,18 @@ function createNewMedico() {
             nomeMedico: nMedico
         })
     })
-
     .then(function (res) {
         if (res.ok) {
-            alert('Novo Medico cadastrado!');
-            location.reload()
+            return res.json();  // Converte a resposta para JSON
         } else {
             console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
             alert('Ocorreu um erro ao realizar o cadastro.');
+            throw new Error('Erro ao fazer o cadastro');
         }
+    })
+    .then(function (data) {
+        alert(`Médico '${data.nomeMedico}' cadastrado com sucesso. Seu ID é ${data.idMedico}.`);
+        location.reload();
     })
     .catch(function (error) {
         console.error('Erro ao fazer o cadastro:', error);

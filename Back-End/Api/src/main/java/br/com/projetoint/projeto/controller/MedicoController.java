@@ -1,6 +1,9 @@
 package br.com.projetoint.projeto.controller;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,20 +45,19 @@ public class MedicoController {
         }
     }
 
-    @PostMapping("/criar") // criar medico.Informe o medico e o id é criado
-                           // automatico,endpoint:/medico/criar
-
-    public ResponseEntity<String> criarMedico(@RequestBody Medico medico) {
-        if (medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()) {
-            return ResponseEntity.badRequest().body("Falha ao criar medico: Nome Obrigatorio");
-        }
-
-        Medico medicoSalvo = medicoRepository.save(medico);
-        String mensagem = String.format("Médico '%s' criado com sucesso. Seu ID é %d.",
-                medicoSalvo.getNomeMedico(),
-                medicoSalvo.getIdMedico());
-        return ResponseEntity.ok(mensagem);
+    @PostMapping("/criar")
+public ResponseEntity<Map<String, Object>> criarMedico(@RequestBody Medico medico) {
+    if (medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()) {
+        return ResponseEntity.badRequest().body(Collections.singletonMap("error", "Falha ao criar medico: Nome Obrigatorio"));
     }
+
+    Medico medicoSalvo = medicoRepository.save(medico);
+    Map<String, Object> response = new HashMap<>();
+    response.put("nomeMedico", medicoSalvo.getNomeMedico());
+    response.put("idMedico", medicoSalvo.getIdMedico());
+    return ResponseEntity.ok(response);
+}
+
 
     @GetMapping("/listar") // endpoint: /meedico/listar
     public List<Medico> listarMedicos() {
