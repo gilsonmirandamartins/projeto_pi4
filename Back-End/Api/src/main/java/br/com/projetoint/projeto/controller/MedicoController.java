@@ -29,35 +29,39 @@ public class MedicoController {
     @Autowired
     private MedicoRepository medicoRepository;
 
-    @GetMapping("/verificar") // login de medico, verificar id e nome, endpoint: /medico/verificar
-    public ResponseEntity<String> verificarMedico(@RequestParam int id, @RequestParam String nome) {
-        Optional<Medico> medicoOptional = medicoRepository.findById(id);
+    @GetMapping("/verificar")
+public ResponseEntity<Map<String, Object>> verificarMedico(@RequestParam int id, @RequestParam String nome) {
+    Optional<Medico> medicoOptional = medicoRepository.findById(id);
 
-        if (medicoOptional.isPresent()) {
-            Medico medico = medicoOptional.get();
-            if (medico.getNomeMedico().equalsIgnoreCase(nome)) {
-                return ResponseEntity.ok("Verificado com sucesso");
-            } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Nome do médico não corresponde");
-            }
+    if (medicoOptional.isPresent()) {
+        Medico medico = medicoOptional.get();
+        if (medico.getNomeMedico().equalsIgnoreCase(nome)) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "Verificado com sucesso");
+            response.put("nomeMedico", medico.getNomeMedico());
+            return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", "Nome do médico não corresponde"));
         }
+    } else {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", "Médico não encontrado"));
     }
-
-    @PostMapping("/criar")
-public ResponseEntity<Map<String, Object>> criarMedico(@RequestBody Medico medico) {
-    if (medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()) {
-        return ResponseEntity.badRequest().body(Collections.singletonMap("error", "Falha ao criar medico: Nome Obrigatorio"));
-    }
-
-    Medico medicoSalvo = medicoRepository.save(medico);
-    Map<String, Object> response = new HashMap<>();
-    response.put("nomeMedico", medicoSalvo.getNomeMedico());
-    response.put("idMedico", medicoSalvo.getIdMedico());
-    return ResponseEntity.ok(response);
 }
 
+
+    @PostMapping("/criar")
+    public ResponseEntity<Map<String, Object>> criarMedico(@RequestBody Medico medico) {
+        if (medico.getNomeMedico() == null || medico.getNomeMedico().isEmpty()) {
+            return ResponseEntity.badRequest()
+                    .body(Collections.singletonMap("error", "Falha ao criar medico: Nome Obrigatorio"));
+        }
+
+        Medico medicoSalvo = medicoRepository.save(medico);
+        Map<String, Object> response = new HashMap<>();
+        response.put("nomeMedico", medicoSalvo.getNomeMedico());
+        response.put("idMedico", medicoSalvo.getIdMedico());
+        return ResponseEntity.ok(response);
+    }
 
     @GetMapping("/listar") // endpoint: /meedico/listar
     public List<Medico> listarMedicos() {
@@ -79,17 +83,17 @@ public ResponseEntity<Map<String, Object>> criarMedico(@RequestBody Medico medic
     }
 
     @DeleteMapping("/deletar/{nome}")
-public ResponseEntity<String> deletarMedico(@PathVariable String nome) {
-    Optional<Medico> medicoOptional = medicoRepository.findByNomeMedico(nome);
+    public ResponseEntity<String> deletarMedico(@PathVariable String nome) {
+        Optional<Medico> medicoOptional = medicoRepository.findByNomeMedico(nome);
 
-    if (medicoOptional.isPresent()) {
-        medicoRepository.delete(medicoOptional.get());
-        return ResponseEntity.ok("Médico deletado com sucesso.");
-    } else {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado.");
+        if (medicoOptional.isPresent()) {
+            medicoRepository.delete(medicoOptional.get());
+            return ResponseEntity.ok("Médico deletado com sucesso.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado.");
+        }
     }
-}
-   
+
     @GetMapping("/{id}")
     public Medico obterMedicoPorId(@PathVariable int id) {
         return medicoRepository.findById(id).orElse(null);

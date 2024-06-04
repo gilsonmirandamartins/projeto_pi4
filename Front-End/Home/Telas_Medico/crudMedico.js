@@ -2,7 +2,7 @@ function createNewMedico() {
     const nMedico = document.querySelector('.nome').value
 
     fetch("http://localhost:8081/medico/criar", {
-        headers: {        
+        headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
@@ -11,23 +11,23 @@ function createNewMedico() {
             nomeMedico: nMedico
         })
     })
-    .then(function (res) {
-        if (res.ok) {
-            return res.json();  // Converte a resposta para JSON
-        } else {
-            console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
-            alert('Ocorreu um erro ao realizar o cadastro.');
-            throw new Error('Erro ao fazer o cadastro');
-        }
-    })
-    .then(function (data) {
-        alert(`Médico '${data.nomeMedico}' cadastrado com sucesso. Seu ID é ${data.idMedico}.`);
-        location.reload();
-    })
-    .catch(function (error) {
-        console.error('Erro ao fazer o cadastro:', error);
-        alert('Ocorreu um erro ao fazer o cadastro.');
-    });
+        .then(function (res) {
+            if (res.ok) {
+                return res.json();  // Converte a resposta para JSON
+            } else {
+                console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
+                alert('Ocorreu um erro ao realizar o cadastro.');
+                throw new Error('Erro ao fazer o cadastro');
+            }
+        })
+        .then(function (data) {
+            alert(`Médico '${data.nomeMedico}' cadastrado com sucesso. Seu ID é ${data.idMedico}.`);
+            location.reload();
+        })
+        .catch(function (error) {
+            console.error('Erro ao fazer o cadastro:', error);
+            alert('Ocorreu um erro ao fazer o cadastro.');
+        });
 }
 
 function getAllMedico() {
@@ -56,16 +56,16 @@ function editarMedico() {
             nomeMedico: novoNome
         })
     })
-    .then(function (res) {
-        if (res.ok) {
-            alert('Médico foi atualizado com sucesso!');
-            window.history.back();
-        } else {
-            console.error('Ocorreu um erro ao atualizar o médico:', res.statusText);
-            alert('Ocorreu um erro ao atualizar o médico.');
-        }
-    })
-    .catch(error => console.error('Erro ao atualizar médico:', error));
+        .then(function (res) {
+            if (res.ok) {
+                alert('Médico foi atualizado com sucesso!');
+                window.history.back();
+            } else {
+                console.error('Ocorreu um erro ao atualizar o médico:', res.statusText);
+                alert('Ocorreu um erro ao atualizar o médico.');
+            }
+        })
+        .catch(error => console.error('Erro ao atualizar médico:', error));
 }
 
 function deleteMedico() {
@@ -74,14 +74,14 @@ function deleteMedico() {
     fetch(`http://localhost:8081/medico/deletar/${nomeMedico}`, {
         method: 'DELETE',
     })
-    .then(function (res) {
-        if (res.ok) {
-            alert('Medico deletado com sucesso!');
-            location.reload()
-        } else {
-            console.error('Ocorreu um erro ao deletar o medico:', res.statusText);
-            alert('Ocorreu um erro ao deletar o medico.');
-        }
-    })
-    .catch(error => console.error('Erro ao deletar o medico:', error));
+        .then(function (res) {
+            if (res.ok) {
+                alert('Medico deletado com sucesso!');
+                location.reload()
+            } else {
+                console.error('Ocorreu um erro ao deletar o medico:', res.statusText);
+                alert('Ocorreu um erro ao deletar o medico.');
+            }
+        })
+        .catch(error => console.error('Erro ao deletar o medico:', error));
 }
