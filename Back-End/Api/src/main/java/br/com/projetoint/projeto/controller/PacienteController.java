@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projetoint.projeto.Service.PacienteService;
@@ -46,7 +47,8 @@ public class PacienteController {
 
     @PostMapping("/login")
     public ResponseEntity<String> loginPaciente(@RequestBody Paciente paciente) {
-        Optional<Paciente> pacienteExistente = pacienteService.buscarPacientePorNomeEDocumento(paciente.getNome(), paciente.getDocumento());
+        Optional<Paciente> pacienteExistente = pacienteService.buscarPacientePorNomeEDocumento(paciente.getNome(),
+                paciente.getDocumento());
         if (pacienteExistente.isPresent()) {
             String nomePaciente = pacienteExistente.get().getNome();
             return ResponseEntity.ok("Login bem-sucedido. Bem-vindo, " + nomePaciente + "!");
@@ -55,41 +57,43 @@ public class PacienteController {
         }
     }
 
-
     @PutMapping("/editar/{id}")
-public ResponseEntity<String> editarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
-    Optional<Paciente> pacienteExistenteOpt = pacienteService.buscarPacientePorId(id);
-    if (pacienteExistenteOpt.isEmpty()) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Paciente não encontrado.");
-    }
-
-    Paciente pacienteExistente = pacienteExistenteOpt.get();
-    pacienteExistente.setNome(pacienteAtualizado.getNome());
-    pacienteExistente.setDocumento(pacienteAtualizado.getDocumento());
-    pacienteExistente.setSexo(pacienteAtualizado.getSexo());
-    pacienteExistente.setDataNascimento(pacienteAtualizado.getDataNascimento());
-
-    pacienteService.salvarPaciente(pacienteExistente);
-
-    return ResponseEntity.ok("Paciente atualizado com sucesso.");
-}
-
-    @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<String> deletarPacientePorId(@PathVariable Long id) {
+    public ResponseEntity<String> editarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
         Optional<Paciente> pacienteExistenteOpt = pacienteService.buscarPacientePorId(id);
         if (pacienteExistenteOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Paciente não encontrado.");
         }
 
-        pacienteService.deletarPaciente(id);
+        Paciente pacienteExistente = pacienteExistenteOpt.get();
+        pacienteExistente.setNome(pacienteAtualizado.getNome());
+        pacienteExistente.setDocumento(pacienteAtualizado.getDocumento());
+        pacienteExistente.setSexo(pacienteAtualizado.getSexo());
+        pacienteExistente.setDataNascimento(pacienteAtualizado.getDataNascimento());
 
+        pacienteService.salvarPaciente(pacienteExistente);
+
+        return ResponseEntity.ok("Paciente atualizado com sucesso.");
+    }
+
+    @DeleteMapping("/deletar")
+    public ResponseEntity<String> deletarPacientePorNome(@RequestParam String nome) {
+        System.out.println("Requisição para deletar paciente recebida. Nome: " + nome);
+        Optional<Paciente> pacienteExistenteOpt = pacienteService.buscarPacientePorNome(nome);
+        if (pacienteExistenteOpt.isEmpty()) {
+            System.out.println("Paciente não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Paciente não encontrado.");
+        }
+
+        Paciente pacienteExistente = pacienteExistenteOpt.get();
+        pacienteService.deletarPaciente(pacienteExistente.getIdPaciente());
+        System.out.println("Paciente deletado com sucesso.");
         return ResponseEntity.ok("Paciente deletado com sucesso.");
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public ResponseEntity<Paciente> obterPaciente(@PathVariable Long id) {
         Optional<Paciente> paciente = pacienteService.buscarPacientePorId(id);
         return paciente.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }
+    }*/
 }

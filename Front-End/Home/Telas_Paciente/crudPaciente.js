@@ -129,6 +129,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formEditar?.addEventListener('submit', editarPaciente);
 
+    const formDeletar = document.getElementById('formDeletarPaciente');
+
+    const deletarPaciente = async (event) => {
+        event.preventDefault();
+
+        const nomePaciente = document.getElementById('nomePacienteDeletar').value;
+
+        try {
+            const response = await fetch(`http://localhost:8081/paciente/deletar?nome=${nomePaciente}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const mensagem = document.getElementById('mensagem');
+            if (response.ok) {
+                const respostaTexto = await response.text();
+                console.log('Paciente deletado com sucesso:', respostaTexto);
+                mensagem.textContent = respostaTexto;
+                mensagem.style.color = 'green';
+            } else {
+                const errorText = await response.text();
+                console.error('Erro na resposta:', errorText);
+                mensagem.textContent = 'Falha ao deletar paciente.';
+                mensagem.style.color = 'red';
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+            const mensagem = document.getElementById('mensagem');
+            mensagem.textContent = 'Erro de conexão.';
+            mensagem.style.color = 'red';
+        }
+    };
+
+    formDeletar?.addEventListener('submit', deletarPaciente);
+
     // Mensagem de boas-vindas - Início
     const mensagemBoasVindas = localStorage.getItem('mensagemBoasVindas');
     if (mensagemBoasVindas) {

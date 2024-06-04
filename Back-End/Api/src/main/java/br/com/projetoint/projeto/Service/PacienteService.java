@@ -19,20 +19,24 @@ public class PacienteService {
         return pacienteRepository.findAll();
     }
 
+    public Paciente salvarPaciente(Paciente paciente) {
+        return pacienteRepository.save(paciente);
+    }
+
     public Optional<Paciente> buscarPacientePorId(Long id) {
         return pacienteRepository.findById(id);
     }
 
-    public Paciente salvarPaciente(Paciente paciente) {
-        return pacienteRepository.save(paciente);
+    public Optional<Paciente> buscarPacientePorNomeEDocumento(String nome, String documento) {
+        return pacienteRepository.findByNomeAndDocumento(nome, documento);
+    }
+
+    public Optional<Paciente> buscarPacientePorNome(String nome) {
+        return pacienteRepository.findByNome(nome);
     }
 
     public void deletarPaciente(Long id) {
         pacienteRepository.deleteById(id);
     }
 
-    public Optional<Paciente> buscarPacientePorNomeEDocumento(String nome, String documento) {
-        return pacienteRepository.findByNomeAndDocumento(nome, documento);
-    }
-    
 }
