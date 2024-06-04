@@ -85,3 +85,32 @@ function deleteMedico() {
         })
         .catch(error => console.error('Erro ao deletar o medico:', error));
 }
+
+function fazerLogin() {
+    const idMedico = document.getElementById('idMedico').value;
+    const nomeMedico = document.getElementById('nomeMedico').value;
+
+    fetch(`http://localhost:8081/medico/verificar?id=${idMedico}&nome=${nomeMedico}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Falha ao verificar médico');
+            }
+        })
+        .then(data => {
+            
+            if (data.nomeMedico === nomeMedico) {
+                
+                window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Crud_Medico.html';
+            } else {
+                alert('Nome do médico não corresponde ao ID fornecido.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao fazer login:', error);
+            alert('Ocorreu um erro ao fazer login.');
+        });
+
+        
+}
