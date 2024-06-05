@@ -99,9 +99,9 @@ function fazerLogin() {
             }
         })
         .then(data => {
-            
+
             if (data.nomeMedico === nomeMedico) {
-                
+
                 window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Crud_Medico.html';
             } else {
                 alert('Nome do médico não corresponde ao ID fornecido.');
@@ -112,5 +112,30 @@ function fazerLogin() {
             alert('Ocorreu um erro ao fazer login.');
         });
 
-        
+    // Função para listar pacientes
+async function listarPacientes() {
+    try {
+        const response = await fetch('http://localhost:8081/paciente/listar');
+        if (response.ok) {
+            const pacientes = await response.json();
+            const listaPacientesElement = document.getElementById('pacientes');
+            listaPacientesElement.innerHTML = '';
+            pacientes.forEach(paciente => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Nome: ${paciente.nome}, Documento: ${paciente.documento}`;
+                listaPacientesElement.appendChild(listItem);
+            });
+        } else {
+            console.error('Falha ao buscar pacientes.');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar pacientes:', error);
+    }
+}
+
+// Adicione o evento ao botão listarPacientesBtn
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('listarPacientesBtn').addEventListener('click', listarPacientes);
+});
+
 }

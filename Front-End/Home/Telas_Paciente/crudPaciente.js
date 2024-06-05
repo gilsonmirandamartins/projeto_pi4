@@ -176,3 +176,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Mensagem de boas-vindas - Fim
 });
+

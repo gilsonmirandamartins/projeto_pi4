@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Médico - Clínica Vida</title>
 </head>
+
 <body>
     <header>
         <h1>Área do Médico</h1>
     </header>
     <main>
+        <p id="welcomeMessage"></p>
+        <button onclick="window.location.href='Tela_CriacaoMedico/Tela_CriacaoMedico.html'">Criar Médico</button>
         <button onclick="window.location.href='Tela_ListarMedico/Tela_ListarMedico.html'">Listar Médicos</button>
+        <button onclick="window.location.href='Tela_EditarMedico/Tela_EditarMedico.html'">Editar Médico</button>
+        <button onclick="window.location.href='Tela_DeletarMedico/Tela_DeletarMedico.html'">Deletar Médico</button>
+        <button id="listarPacientesBtn">Listar Pacientes</button>
 
-        <button onclick="window.location.href='Front-End/Home/Telas_Medico/Tela_ListarMedico/Tela_ListarMedico.html'">Listar Médicos</button>
-        <button onclick="window.location.href='Front-End/Home/Telas_Medico/Tela_EditarMedico/Tela_EditarMedico.html'">Editar Médico</button>
-        <button onclick="window.location.href='Front-End/Home/Telas_Medico/Tela_DeletarMedico/Tela_DeletarMedico.html'">Deletar Médico</button>
+        <ul id="pacientes"></ul>
     </main>
     <footer>
         <p class="fot">&copy;2025 - Equipe 5</p>
     </footer>
     <script src="crudMedico.js"></script>
 </body>
+
 </html>
