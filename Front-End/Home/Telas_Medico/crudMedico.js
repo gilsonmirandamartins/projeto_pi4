@@ -112,12 +112,15 @@ function fazerLogin() {
             alert('Ocorreu um erro ao fazer login.');
         });
 
-    // Função para listar pacientes
+ // Função para listar pacientes
 async function listarPacientes() {
+    console.log("Botão de listar pacientes clicado"); // Log para verificação
     try {
         const response = await fetch('http://localhost:8081/paciente/listar');
         if (response.ok) {
+            console.log("Resposta recebida com sucesso"); // Log para verificação
             const pacientes = await response.json();
+            console.log("Pacientes:", pacientes); // Log para verificação
             const listaPacientesElement = document.getElementById('pacientes');
             listaPacientesElement.innerHTML = '';
             pacientes.forEach(paciente => {
@@ -135,7 +138,12 @@ async function listarPacientes() {
 
 // Adicione o evento ao botão listarPacientesBtn
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('listarPacientesBtn').addEventListener('click', listarPacientes);
+    const listarPacientesBtn = document.getElementById('listarPacientesBtn');
+    if (listarPacientesBtn) {
+        listarPacientesBtn.addEventListener('click', listarPacientes);
+        console.log("Evento de clique adicionado ao botão listarPacientesBtn"); // Log para verificação
+    } else {
+        console.error("Botão listarPacientesBtn não encontrado"); // Log para verificação
+    }
 });
-
 }
