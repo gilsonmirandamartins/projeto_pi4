@@ -1,5 +1,5 @@
 function createNewMedico() {
-    const nMedico = document.querySelector('.nome').value
+    const nMedico = document.querySelector('.nome').value;
 
     fetch("http://localhost:8081/medico/criar", {
         headers: {
@@ -11,23 +11,23 @@ function createNewMedico() {
             nomeMedico: nMedico
         })
     })
-        .then(function (res) {
-            if (res.ok) {
-                return res.json();  // Converte a resposta para JSON
-            } else {
-                console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
-                alert('Ocorreu um erro ao realizar o cadastro.');
-                throw new Error('Erro ao fazer o cadastro');
-            }
-        })
-        .then(function (data) {
-            alert(`Médico '${data.nomeMedico}' cadastrado com sucesso. Seu ID é ${data.idMedico}.`);
-            location.reload();
-        })
-        .catch(function (error) {
-            console.error('Erro ao fazer o cadastro:', error);
-            alert('Ocorreu um erro ao fazer o cadastro.');
-        });
+    .then(function (res) {
+        if (res.ok) {
+            return res.json();  // Converte a resposta para JSON
+        } else {
+            console.error('Ocorreu um erro ao fazer o cadastro:', res.statusText);
+            alert('Ocorreu um erro ao realizar o cadastro.');
+            throw new Error('Erro ao fazer o cadastro');
+        }
+    })
+    .then(function (data) {
+        alert(`Médico '${data.nomeMedico}' cadastrado com sucesso. Seu ID é ${data.idMedico}.`);
+        location.reload();
+    })
+    .catch(function (error) {
+        console.error('Erro ao fazer o cadastro:', error);
+        alert('Ocorreu um erro ao fazer o cadastro.');
+    });
 }
 
 function getAllMedico() {
@@ -56,16 +56,16 @@ function editarMedico() {
             nomeMedico: novoNome
         })
     })
-        .then(function (res) {
-            if (res.ok) {
-                alert('Médico foi atualizado com sucesso!');
-                window.history.back();
-            } else {
-                console.error('Ocorreu um erro ao atualizar o médico:', res.statusText);
-                alert('Ocorreu um erro ao atualizar o médico.');
-            }
-        })
-        .catch(error => console.error('Erro ao atualizar médico:', error));
+    .then(function (res) {
+        if (res.ok) {
+            alert('Médico foi atualizado com sucesso!');
+            window.history.back();
+        } else {
+            console.error('Ocorreu um erro ao atualizar o médico:', res.statusText);
+            alert('Ocorreu um erro ao atualizar o médico.');
+        }
+    })
+    .catch(error => console.error('Erro ao atualizar médico:', error));
 }
 
 function deleteMedico() {
@@ -74,16 +74,16 @@ function deleteMedico() {
     fetch(`http://localhost:8081/medico/deletar/${nomeMedico}`, {
         method: 'DELETE',
     })
-        .then(function (res) {
-            if (res.ok) {
-                alert('Medico deletado com sucesso!');
-                location.reload()
-            } else {
-                console.error('Ocorreu um erro ao deletar o medico:', res.statusText);
-                alert('Ocorreu um erro ao deletar o medico.');
-            }
-        })
-        .catch(error => console.error('Erro ao deletar o medico:', error));
+    .then(function (res) {
+        if (res.ok) {
+            alert('Medico deletado com sucesso!');
+            location.reload();
+        } else {
+            console.error('Ocorreu um erro ao deletar o medico:', res.statusText);
+            alert('Ocorreu um erro ao deletar o medico.');
+        }
+    })
+    .catch(error => console.error('Erro ao deletar o medico:', error));
 }
 
 function fazerLogin() {
@@ -99,9 +99,7 @@ function fazerLogin() {
             }
         })
         .then(data => {
-
             if (data.nomeMedico === nomeMedico) {
-
                 window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Crud_Medico.html';
             } else {
                 alert('Nome do médico não corresponde ao ID fornecido.');
@@ -111,39 +109,20 @@ function fazerLogin() {
             console.error('Erro ao fazer login:', error);
             alert('Ocorreu um erro ao fazer login.');
         });
-
- // Função para listar pacientes
-async function listarPacientes() {
-    console.log("Botão de listar pacientes clicado"); // Log para verificação
-    try {
-        const response = await fetch('http://localhost:8081/paciente/listar');
-        if (response.ok) {
-            console.log("Resposta recebida com sucesso"); // Log para verificação
-            const pacientes = await response.json();
-            console.log("Pacientes:", pacientes); // Log para verificação
-            const listaPacientesElement = document.getElementById('pacientes');
-            listaPacientesElement.innerHTML = '';
-            pacientes.forEach(paciente => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `Nome: ${paciente.nome}, Documento: ${paciente.documento}`;
-                listaPacientesElement.appendChild(listItem);
-            });
-        } else {
-            console.error('Falha ao buscar pacientes.');
-        }
-    } catch (error) {
-        console.error('Erro ao buscar pacientes:', error);
-    }
 }
 
-// Adicione o evento ao botão listarPacientesBtn
-document.addEventListener('DOMContentLoaded', () => {
-    const listarPacientesBtn = document.getElementById('listarPacientesBtn');
-    if (listarPacientesBtn) {
-        listarPacientesBtn.addEventListener('click', listarPacientes);
-        console.log("Evento de clique adicionado ao botão listarPacientesBtn"); // Log para verificação
-    } else {
-        console.error("Botão listarPacientesBtn não encontrado"); // Log para verificação
-    }
-});
+function listarPacientes() {
+    fetch("http://localhost:8081/paciente/listar")
+        .then(response => response.json())
+        .then(data => {
+            const pacientes = data.map(paciente => paciente.nome);
+            const pacientesList = document.getElementById('pacientes');
+            pacientesList.innerHTML = '';
+            pacientes.forEach(paciente => {
+                const listItem = document.createElement('li');
+                listItem.textContent = paciente;
+                pacientesList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Erro ao recuperar lista de pacientes:', error));
 }
