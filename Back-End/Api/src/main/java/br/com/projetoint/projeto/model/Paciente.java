@@ -2,11 +2,13 @@ package br.com.projetoint.projeto.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +30,9 @@ public class Paciente {
 
     @Column(name = "dataNascimento", nullable = false)
     private LocalDate dataNascimento;
+
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private IMC imc;
 
     public Long getIdPaciente() {
         return idPaciente;
@@ -68,4 +73,15 @@ public class Paciente {
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
+    public IMC getImc() {
+        return imc;
+    }
+
+    public void setImc(IMC imc) {
+        this.imc = imc;
+    }
+
+    
+
 }
