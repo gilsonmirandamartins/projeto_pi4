@@ -122,6 +122,9 @@ function listarPacientes() {
     fetch("http://localhost:8081/paciente/listar")
         .then(response => response.json())
         .then(data => {
+            if (!Array.isArray(data)) {
+                throw new Error('Dados de pacientes não estão no formato esperado.');
+            }
             const pacientes = data.map(paciente => paciente.nome);
             const pacientesList = document.getElementById('pacientes');
             pacientesList.innerHTML = '';

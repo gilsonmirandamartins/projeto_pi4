@@ -32,6 +32,11 @@ public class IMCService {
         Paciente paciente = pacienteRepository.findByNome(nomePaciente)
             .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
 
+            Optional<IMC> imcExistente = (Optional<IMC>) imcRepository.findByPaciente(paciente);
+            if (imcExistente.isPresent()) {
+                throw new IllegalArgumentException("IMC já calculado para este paciente.");
+            }
+
         IMC imc = new IMC();
         imc.setPaciente(paciente);
         imc.setPeso(peso);
@@ -45,3 +50,26 @@ public class IMCService {
         imcRepository.deleteById(id);
     }
 }
+
+/*public IMC calcularIMC(String nomePaciente, double peso, double altura) {
+    Paciente paciente = pacienterepository.findByNome(nomePaciente)
+        .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
+
+    // Certifique-se de que não há duplicação
+    Optional<IMC> imcExistente = imcRepository.findByPaciente(paciente);
+    if (imcExistente.isPresent()) {
+        throw new IllegalArgumentException("IMC já calculado para este paciente.");
+    }
+
+    IMC imc = new IMC();
+    imc.setPaciente(paciente);
+    imc.setPeso(peso);
+    imc.setAltura(altura);
+    imc.setResultado(peso / (altura * altura));
+
+    return imcRepository.save(imc);
+}
+
+public void deletarIMC(Long id) {
+    imcRepository.deleteById(id);
+} */

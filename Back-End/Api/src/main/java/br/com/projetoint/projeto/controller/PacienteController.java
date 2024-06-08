@@ -41,8 +41,9 @@ public class PacienteController {
     }
 
     @GetMapping("/listar")
-    public List<Paciente> listarPacientes() {
-        return pacienteService.listarPacientes();
+    public ResponseEntity<List<Paciente>> listarPacientes() {
+        List<Paciente> pacientes = pacienteService.listarPacientes();
+        return ResponseEntity.ok(pacientes);
     }
 
     @PostMapping("/login")
