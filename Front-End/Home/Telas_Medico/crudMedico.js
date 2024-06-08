@@ -148,6 +148,7 @@ function calcularIMC() {
         return;
     }
 
+    // Enviar os dados para o backend
     fetch('http://localhost:8081/imc/calcular', {
         method: 'POST',
         headers: {
@@ -159,21 +160,45 @@ function calcularIMC() {
             altura: altura
         })
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao calcular IMC. Por favor, verifique os dados enviados.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.resultado !== undefined) {
-                document.getElementById('resultado').value = data.resultado.toFixed(2);
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao calcular IMC. Por favor, verifique os dados enviados.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Exibir o resultado no campo de resultado do HTML
+        if (data && data.resultado) {
+            var resultadoIMC = parseFloat(data.resultado.toFixed(2));
+            var frase = '';
+
+            // Determinar a frase com base no IMC calculado
+            if (resultadoIMC < 16.9) {
+                frase = 'Muito abaixo do peso.';
+            } else if (resultadoIMC >= 17 && resultadoIMC <= 18.4) {
+                frase = 'Abaixo do peso.';
+            } else if (resultadoIMC >= 18.5 && resultadoIMC <= 24.9) {
+                frase = 'Peso Normal.';
+            } else if (resultadoIMC >= 25 && resultadoIMC <= 29.9) {
+                frase = 'Acima do peso.';
+            } else if (resultadoIMC >= 30 && resultadoIMC <= 34.9) {
+                frase = 'Obesidade grau I.';
+            } else if (resultadoIMC >= 35 && resultadoIMC <= 40) {
+                frase = 'Obesidade grau II.';
             } else {
-                throw new Error('Resultado do IMC não recebido do servidor.');
+                frase = 'Obesidade grau III.';
             }
-        })
-        .catch(error => {
-            console.error('Erro ao calcular IMC:', error.message);
-            alert('Erro ao calcular IMC. Por favor, tente novamente.');
-        });
+
+            // Exibir o resultado com a frase no HTML
+            var resultadoHTML = `Paciente: ${nomePaciente} tem IMC ${resultadoIMC.toFixed(2)}, ${frase}`;
+            document.getElementById('resultado').value = resultadoIMC.toFixed(2);
+            document.getElementById('fraseResultado').innerText = resultadoHTML;
+        } else {
+            throw new Error('Resultado do IMC não recebido do servidor.');
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao calcular IMC:', error.message);
+        alert('Erro ao calcular IMC. Por favor, tente novamente.');
+    });
 }
