@@ -2,6 +2,8 @@ package br.com.projetoint.projeto.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,6 +34,7 @@ public class Paciente {
     private LocalDate dataNascimento;
 
     @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private IMC imc;
 
     public Long getIdPaciente() {

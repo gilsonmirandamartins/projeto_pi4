@@ -28,14 +28,15 @@ public class IMCService {
         return imcRepository.findById(id);
     }
 
-    public IMC calcularIMC(Long pacienteId, double peso, double altura) {
-        Paciente paciente = pacienteRepository.findById(pacienteId)
+    public IMC calcularIMC(String nomePaciente, double peso, double altura) {
+        Paciente paciente = pacienteRepository.findByNome(nomePaciente)
             .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
 
         IMC imc = new IMC();
         imc.setPaciente(paciente);
         imc.setPeso(peso);
         imc.setAltura(altura);
+        imc.setResultado(peso / (altura * altura));
 
         return imcRepository.save(imc);
     }

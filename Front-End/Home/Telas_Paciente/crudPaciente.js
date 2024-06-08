@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para cadastro de paciente - Início
+    //Cadastrar Paciente
     const formCadastro = document.getElementById('formCadastroPaciente');
 
     const cadastrarPaciente = async (event) => {
@@ -38,9 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     formCadastro?.addEventListener('submit', cadastrarPaciente);
-    // Função para cadastro de paciente - Fim
 
-    // Função para login de paciente - Início
+    //Login de Pacinete
     const formLogin = document.getElementById('formLoginPaciente');
 
     const loginPaciente = async (event) => {
@@ -78,9 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     formLogin?.addEventListener('submit', loginPaciente);
-    // Função para login de paciente - Fim
 
-    //Função para edição de paciente - Início
+    //Editar Paciente
     const formEditar = document.getElementById('formEditarPaciente');
 
     const editarPaciente = async (event) => {
@@ -166,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formDeletar?.addEventListener('submit', deletarPaciente);
 
-    // Mensagem de boas-vindas - Início
+    // Mensagem de boas-vindas
     const mensagemBoasVindas = localStorage.getItem('mensagemBoasVindas');
     if (mensagemBoasVindas) {
         const elementoMensagem = document.getElementById('mensagemBoasVindas');
@@ -174,6 +172,5 @@ document.addEventListener('DOMContentLoaded', () => {
         elementoMensagem.style.display = 'block';
         localStorage.removeItem('mensagemBoasVindas');
     }
-    // Mensagem de boas-vindas - Fim
 });
 

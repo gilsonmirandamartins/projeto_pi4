@@ -1,6 +1,6 @@
 package br.com.projetoint.projeto.model;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,6 +19,7 @@ public class IMC {
 
     @OneToOne
     @JoinColumn(name = "paciente_id", nullable = false, unique = true)
+    @JsonBackReference
     private Paciente paciente;
 
     @Column(nullable = false)
@@ -27,7 +28,7 @@ public class IMC {
     @Column(nullable = false)
     private double altura;
 
-    @Column(columnDefinition = "DECIMAL(5,2) AS (peso / (altura * altura)) STORED")
+    @Column(nullable = false)
     private double resultado;
 
     public Long getIdIMC() {
@@ -70,6 +71,8 @@ public class IMC {
         this.resultado = resultado;
     }
 
-
     
 }
+
+    
+
