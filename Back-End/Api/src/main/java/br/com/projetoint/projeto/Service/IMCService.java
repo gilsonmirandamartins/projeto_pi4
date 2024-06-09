@@ -31,20 +31,24 @@ public class IMCService {
     public IMC calcularIMC(String nomePaciente, double peso, double altura) {
         Paciente paciente = pacienteRepository.findByNome(nomePaciente)
             .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
-
+    
         Optional<IMC> imcExistente = imcRepository.findByPaciente(paciente);
+        IMC imc;
+    
         if (imcExistente.isPresent()) {
-            throw new IllegalArgumentException("IMC já calculado para este paciente.");
+            imc = imcExistente.get();
+        } else {
+            imc = new IMC();
         }
-
-        IMC imc = new IMC();
+    
         imc.setPaciente(paciente);
         imc.setPeso(peso);
         imc.setAltura(altura);
         imc.setResultado(peso / (altura * altura));
-
+    
         return imcRepository.save(imc);
     }
+    
 
     public Optional<IMC> obterIMCPorPaciente(Paciente paciente) {
         return imcRepository.findByPaciente(paciente);
