@@ -1,6 +1,7 @@
 package br.com.projetoint.projeto.model;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -83,6 +84,11 @@ public class Paciente {
 
     public void setImc(IMC imc) {
         this.imc = imc;
+    }
+
+    public static Optional<IMC> buscarPacientePorNome(String nome2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarPacientePorNome'");
     }
 
     

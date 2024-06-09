@@ -91,10 +91,4 @@ public class PacienteController {
         return ResponseEntity.ok("Paciente deletado com sucesso.");
     }
 
-    /*@GetMapping("/{id}")
-    public ResponseEntity<Paciente> obterPaciente(@PathVariable Long id) {
-        Optional<Paciente> paciente = pacienteService.buscarPacientePorId(id);
-        return paciente.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }*/
 }

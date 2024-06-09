@@ -167,12 +167,10 @@ function calcularIMC() {
         return response.json();
     })
     .then(data => {
-        // Exibir o resultado no campo de resultado do HTML
         if (data && data.resultado) {
             var resultadoIMC = parseFloat(data.resultado.toFixed(2));
             var frase = '';
 
-            // Determinar a frase com base no IMC calculado
             if (resultadoIMC < 16.9) {
                 frase = 'Muito abaixo do peso.';
             } else if (resultadoIMC >= 17 && resultadoIMC <= 18.4) {
@@ -201,4 +199,45 @@ function calcularIMC() {
         console.error('Erro ao calcular IMC:', error.message);
         alert('Erro ao calcular IMC. Por favor, tente novamente.');
     });
+}
+
+//Listagem de IMC
+function listarIMCs() {
+    fetch("http://localhost:8081/paciente/listar")
+        .then(response => response.json())
+        .then(data => {
+            if (!Array.isArray(data)) {
+                throw new Error('Dados de pacientes não estão no formato esperado.');
+            }
+            const pacientesList = document.getElementById('pacientes');
+            pacientesList.innerHTML = '';
+            data.forEach(paciente => {
+                // aqui dará o nome do paciente
+                const listItem = document.createElement('li');
+                listItem.textContent = `Nome: ${paciente.nome}`;
+                pacientesList.appendChild(listItem);
+
+                // Busca o imc do paciente
+                fetch(`http://localhost:8081/imc/por-paciente?nome=${encodeURIComponent(paciente.nome)}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Erro ao recuperar IMC do paciente: ${paciente.nome}`);
+                        }
+                        return response.json();
+                    })
+                    .then(imcData => {
+                        // elemento IMC
+                        const imc = document.createElement('span');
+                        imc.textContent = `, IMC: ${imcData.resultado.toFixed(2)}`;
+                        listItem.appendChild(imc);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        const imcErro = document.createElement('span');
+                        imcErro.textContent = `, IMC: Não disponível`;
+                        listItem.appendChild(imcErro);
+                    });
+            });
+        })
+        .catch(error => console.error('Erro ao recuperar lista de pacientes:', error));
 }
