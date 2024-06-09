@@ -228,7 +228,26 @@ function listarIMCs() {
                     .then(imcData => {
                         // elemento IMC
                         const imc = document.createElement('span');
-                        imc.textContent = `, IMC: ${imcData.resultado.toFixed(2)}`;
+                        const resultadoIMC = parseFloat(imcData.resultado.toFixed(2));
+                        let frase = '';
+
+                        if (resultadoIMC < 16.9) {
+                            frase = 'Muito abaixo do peso.';
+                        } else if (resultadoIMC >= 17 && resultadoIMC <= 18.4) {
+                            frase = 'Abaixo do peso.';
+                        } else if (resultadoIMC >= 18.5 && resultadoIMC <= 24.9) {
+                            frase = 'Peso Normal.';
+                        } else if (resultadoIMC >= 25 && resultadoIMC <= 29.9) {
+                            frase = 'Acima do peso.';
+                        } else if (resultadoIMC >= 30 && resultadoIMC <= 34.9) {
+                            frase = 'Obesidade grau I.';
+                        } else if (resultadoIMC >= 35 && resultadoIMC <= 40) {
+                            frase = 'Obesidade grau II.';
+                        } else {
+                            frase = 'Obesidade grau III.';
+                        }
+
+                        imc.textContent = `, IMC: ${resultadoIMC.toFixed(2)}, ${frase}`;
                         listItem.appendChild(imc);
                     })
                     .catch(error => {
