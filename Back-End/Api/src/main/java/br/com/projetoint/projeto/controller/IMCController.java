@@ -3,6 +3,7 @@ package br.com.projetoint.projeto.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,6 +47,19 @@ public class IMCController {
             return ResponseEntity.ok(imc);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
+    
+    @DeleteMapping("/deletar")
+    public ResponseEntity<Void> deletarIMC(@RequestParam String nome) {
+        try {
+            Paciente paciente = pacienteService.buscarPacientePorNome(nome)
+                    .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
+            imcService.deletarIMCPorPaciente(paciente);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 }

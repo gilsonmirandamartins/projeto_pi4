@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dados de IMC</title>
 </head>
+
 <body>
     <header>
         <h1>Dados de IMC</h1>
@@ -28,9 +30,17 @@
 
         <div id="fraseResultado"></div>
 
-        <button onclick="listarIMCs()">Listar IMCs</button>
         <h2>Lista de Pacientes e IMCs</h2>
+        <button onclick="listarIMCs()">Listar IMCs</button>
         <ul id="pacientes"></ul>
+
+        <!-- Campo para deletar IMC -->
+        <h2>Deletar IMC</h2>
+        <form id="deleteIMCForm" onsubmit="deletarIMC(); return false;">
+            <label for="nomePacienteDeletar">Nome do Paciente a Deletar:</label>
+            <input type="text" id="nomePacienteDeletar" name="nomePacienteDeletar" required><br><br>
+            <button type="submit">Deletar IMC</button>
+        </form>
     </main>
     <footer>
         <p class="fot">&copy;2025 - Equipe 5</p>
@@ -38,4 +48,5 @@
 
     <script src="crudMedico.js"></script>
 </body>
+
 </html>

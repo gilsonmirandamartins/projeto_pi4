@@ -54,8 +54,9 @@ public class IMCService {
         return imcRepository.findByPaciente(paciente);
     }
 
-    public void deletarIMC(Long id) {
-        imcRepository.deleteById(id);
+    public void deletarIMCPorPaciente(Paciente paciente) {
+        Optional<IMC> imc = imcRepository.findByPaciente(paciente);
+        imc.ifPresent(imcRepository::delete);
     }
 }
 
