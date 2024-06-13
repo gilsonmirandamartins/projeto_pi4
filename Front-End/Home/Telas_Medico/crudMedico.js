@@ -201,7 +201,7 @@ function calcularIMC() {
     });
 }
 
-//Listagem de IMC
+// Listagem de IMC
 function listarIMCs() {
     fetch("http://localhost:8081/paciente/listar")
         .then(response => response.json())
@@ -220,8 +220,8 @@ function listarIMCs() {
                 // Busca o imc do paciente
                 fetch(`http://localhost:8081/imc/por-paciente?nome=${encodeURIComponent(paciente.nome)}`)
                     .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Erro ao recuperar IMC do paciente: ${paciente.nome}`);
+                        if (response.status === 404) {
+                            throw new Error(`IMC não encontrado para o paciente: ${paciente.nome}`);
                         }
                         return response.json();
                     })
@@ -265,7 +265,6 @@ function listarIMCs() {
 function deletarIMC() {
     var nomePaciente = document.getElementById('nomePacienteDeletar').value;
 
-    // Enviar requisição para deletar o IMC do paciente
     fetch(`http://localhost:8081/imc/deletar?nome=${encodeURIComponent(nomePaciente)}`, {
         method: 'DELETE'
     })
@@ -274,7 +273,7 @@ function deletarIMC() {
             throw new Error('Erro ao deletar IMC. Por favor, verifique o nome do paciente.');
         }
         alert('IMC deletado com sucesso!');
-        listarIMCs(); // Atualizar a lista de pacientes
+        listarIMCs();
     })
     .catch(error => {
         console.error('Erro ao deletar IMC:', error.message);

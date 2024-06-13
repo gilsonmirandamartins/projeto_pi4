@@ -49,9 +49,12 @@ public class IMCService {
         return imcRepository.save(imc);
     }
     
-
     public Optional<IMC> obterIMCPorPaciente(Paciente paciente) {
         return imcRepository.findByPaciente(paciente);
+    }
+
+    public void deletarIMC(Long id) {
+        imcRepository.deleteById(id);
     }
 
     public void deletarIMCPorPaciente(Paciente paciente) {
@@ -59,4 +62,3 @@ public class IMCService {
         imc.ifPresent(imcRepository::delete);
     }
 }
-
