@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.projetoint.projeto.DTO.ConsultaDTO;
 import br.com.projetoint.projeto.Service.ConsultaService;
+import br.com.projetoint.projeto.Service.MedicoService;
+import br.com.projetoint.projeto.Service.PacienteService;
 import br.com.projetoint.projeto.model.Consulta;
+import br.com.projetoint.projeto.model.Medico;
+import br.com.projetoint.projeto.model.Paciente;
 
 @RestController
 @RequestMapping("/consulta")
@@ -25,21 +30,46 @@ public class ConsultaController {
     @Autowired
     private ConsultaService consultaService;
 
+    @Autowired
+    private PacienteService pacienteService;
+
+    @Autowired
+    private MedicoService medicoService;
+
     @PostMapping("/criar")
-    public ResponseEntity<String> criarConsulta(@RequestBody Consulta consulta) {
+    public ResponseEntity<String> criarConsulta(@RequestBody ConsultaDTO consultaDTO) {
         try {
-            Consulta novaConsulta = consultaService.save(consulta);
-            if (novaConsulta != null) {
-                String mensagemSucesso = String.format(
-                        "Consulta criada com sucesso! ID da consulta: %d, Nome do paciente: %s.",
-                        novaConsulta.getIdConsulta(),
-                        novaConsulta.getPaciente().getNome());
-                return ResponseEntity.status(HttpStatus.CREATED).body(mensagemSucesso);
-            } else {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar a consulta.");
+            // Verifica se o paciente existe
+            Optional<Paciente> pacienteOptional = pacienteService.buscarPacientePorNome(consultaDTO.getPaciente());
+            if (!pacienteOptional.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Paciente não encontrado.");
             }
+            Paciente paciente = pacienteOptional.get();
+
+            // Verifica se o médico existe
+            Optional<Medico> medicoOptional = MedicoService.buscarMedicoPorNome(consultaDTO.getMedico());
+            if (!medicoOptional.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado.");
+            }
+            Medico medico = medicoOptional.get();
+
+            // Cria a consulta
+            Consulta novaConsulta = new Consulta();
+            novaConsulta.setQueixaPrincipal(consultaDTO.getQueixaPrincipal());
+            novaConsulta.setDiagnostico(consultaDTO.getDiagnostico());
+            novaConsulta.setPaciente(paciente);
+            novaConsulta.setMedico(medico);
+
+            Consulta consultaSalva = consultaService.save(novaConsulta);
+
+            String mensagemSucesso = String.format(
+                    "Consulta criada com sucesso! ID da consulta: %d, Nome do paciente: %s.",
+                    consultaSalva.getIdConsulta(),
+                    consultaSalva.getPaciente().getNome());
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(mensagemSucesso);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falha ao criar a consulta.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao criar a consulta.");
         }
     }
 

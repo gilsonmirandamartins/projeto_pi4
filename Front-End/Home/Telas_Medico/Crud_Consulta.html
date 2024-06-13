@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Consultas - Clínica Vida</title>
+</head>
+<body>
+    <header>
+        <h1>CRUD de Consultas</h1>
+    </header>
+    <main>
+        <section id="criarConsulta">
+            <h2>Criar Consulta</h2>
+            <form id="formCriarConsulta" onsubmit="return criarConsulta(event)">
+                <label for="nomePaciente">Nome do Paciente:</label>
+                <input type="text" id="nomePaciente" name="nomePaciente" required>
+
+                <label for="queixaPrincipal">Queixa Principal:</label>
+                <input type="text" id="queixaPrincipal" name="queixaPrincipal" required>
+
+                <label for="diagnostico">Diagnóstico:</label>
+                <input type="text" id="diagnostico" name="diagnostico" required>
+
+                <label for="medico">Médico:</label>
+                <input type="text" id="medico" name="medico" required>
+
+                <button type="submit">Criar</button>
+            </form>
+            <p id="mensagemSucesso" style="display:none; color: green;"></p>
+            <p id="mensagemErro" style="display:none; color: red;"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;2025 - Equipe 5</p>
+    </footer>
+    <script src="crudMedico.js"></script>
+</body>
+</html>

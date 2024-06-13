@@ -280,3 +280,62 @@ function deletarIMC() {
         alert('Erro ao deletar IMC. Por favor, tente novamente.');
     });
 }
+
+
+// crudMedico.js
+
+// Função para criar consulta
+async function criarConsulta(event) {
+    event.preventDefault();
+
+    const nomePaciente = document.getElementById('nomePaciente').value;
+    const queixaPrincipal = document.getElementById('queixaPrincipal').value;
+    const diagnostico = document.getElementById('diagnostico').value;
+    const medico = document.getElementById('medico').value;
+
+    try {
+        // Verifica se o paciente existe
+        const pacienteResponse = await fetch(`/pacientes?nome=${nomePaciente}`);
+        const pacientes = await pacienteResponse.json();
+        if (pacientes.length === 0) {
+            throw new Error('Paciente não encontrado.');
+        }
+        const pacienteId = pacientes[0].idPaciente;
+
+        // Verifica se o médico existe
+        const medicoResponse = await fetch(`/medicos?nome=${medico}`);
+        const medicos = await medicoResponse.json();
+        if (medicos.length === 0) {
+            throw new Error('Médico não encontrado.');
+        }
+        const medicoId = medicos[0].idMedico;
+
+        const consulta = {
+            queixaPrincipal,
+            diagnostico,
+            paciente: pacienteId,
+            medico: medicoId
+        };
+
+        const response = await fetch('/consulta/criar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(consulta)
+        });
+
+        if (response.ok) {
+            const mensagemSucesso = `Consulta do paciente "${nomePaciente}" salva com sucesso.`;
+            document.getElementById('mensagemSucesso').innerText = mensagemSucesso;
+            document.getElementById('mensagemSucesso').style.display = 'block';
+            document.getElementById('mensagemErro').style.display = 'none';
+        } else {
+            throw new Error('Erro ao salvar a consulta.');
+        }
+    } catch (error) {
+        document.getElementById('mensagemErro').innerText = error.message;
+        document.getElementById('mensagemErro').style.display = 'block';
+        document.getElementById('mensagemSucesso').style.display = 'none';
+    }
+}
