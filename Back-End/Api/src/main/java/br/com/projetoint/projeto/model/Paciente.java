@@ -1,6 +1,7 @@
 package br.com.projetoint.projeto.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -11,6 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -37,6 +39,10 @@ public class Paciente {
     @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL)
     @JsonManagedReference
     private IMC imc;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Consulta> consultas;
 
     public Long getIdPaciente() {
         return idPaciente;
