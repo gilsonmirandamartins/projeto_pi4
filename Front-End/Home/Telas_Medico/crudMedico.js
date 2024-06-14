@@ -37,8 +37,12 @@ function getAllMedico() {
         .then(response => response.json())
         .then(data => {
             const userNames = data.map(user => user.nomeMedico);
-            const userDataElement = document.getElementById('userAtt');
-            userDataElement.innerHTML = userNames.join("<br>");
+            const userIds = data.map(user => user.idMedico);
+            const elementoIdMedico = document.getElementById('IdMedico');
+            const elementoNomeMedico = document.getElementById('NomeMedico');
+
+            elementoIdMedico.innerHTML = userIds.join("<br>");
+            elementoNomeMedico.innerHTML = userNames.join("<br>");
         })
         .catch(error => console.error('Erro ao recuperar lista de medicos:', error));
 }
@@ -106,7 +110,7 @@ function fazerLogin() {
         })
         .then(data => {
             if (data.nomeMedico === nomeMedico) {
-                window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Crud_Medico.html';
+                window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Home_Medico/Home_Medico.html';
             } else {
                 alert('Nome do médico não corresponde ao ID fornecido.');
             }
