@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Médico</title>
+    <link rel="stylesheet" href="styleCad.css">
+    <script src="../crudMedico.js" defer></script>
+</head>
+
+<body>
+    <main class="Tela_login">
+        <div class="bloco_azul"></div>
+        <h1>Login Médico</h1>
+        <form id="formLoginMedico">
+            <div class="dados">
+                <label for="idMedico">ID do Médico:</label>
+                <div class="input_Nome input">
+                    <figure>
+                        <img src="../../../img/key_24dp.svg" alt="Imagem chave">
+                    </figure>
+                    <input type="text" id="idMedico" name="idMedico" required placeholder="ID">
+                </div>
+            </div>
+            <div class="dados">
+                <label for="nomeMedico">Nome do Médico:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../../../img/person_Black.svg" alt="Imagem person">
+                    </figure>
+                    <input type="text" id="nomeMedico" name="nomeMedico" placeholder="Documento:" required>
+                </div>
+            </div>
+
+            <button class="button_submit" type="button" onclick="fazerLogin()">Login</button>
+            <p class="section_cadastro">
+                Não tem uma conta?
+                <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_Cadastro(Medico)/paginaCadastro.html" class="Link_cadastro">Cadastre-se</a>
+            </p>
+        </form>
+        <p id="mensagem"></p>
+    </main>
+</body>
+</html>
