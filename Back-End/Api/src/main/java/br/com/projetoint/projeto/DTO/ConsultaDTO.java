@@ -2,10 +2,17 @@ package br.com.projetoint.projeto.DTO;
 
 public class ConsultaDTO {
 
+    private String nomePaciente;
     private String queixaPrincipal;
     private String diagnostico;
-    private String paciente;
-    private String medico;
+    private String nomeMedico;
+    
+    public String getNomePaciente() {
+        return nomePaciente;
+    }
+    public void setNomePaciente(String nomePaciente) {
+        this.nomePaciente = nomePaciente;
+    }
     public String getQueixaPrincipal() {
         return queixaPrincipal;
     }
@@ -18,19 +25,12 @@ public class ConsultaDTO {
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
-    public String getPaciente() {
-        return paciente;
+    public String getNomeMedico() {
+        return nomeMedico;
     }
-    public void setPaciente(String paciente) {
-        this.paciente = paciente;
+    public void setNomeMedico(String nomeMedico) {
+        this.nomeMedico = nomeMedico;
     }
-    public String getMedico() {
-        return medico;
-    }
-    public void setMedico(String medico) {
-        this.medico = medico;
-    }
-
     
-
+    
 }
