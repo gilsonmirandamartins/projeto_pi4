@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mensagem.textContent = respostaTexto;
                 mensagem.style.color = 'green';
                 localStorage.setItem('mensagemBoasVindas', respostaTexto);
-                window.location.href = 'Crud_Paciente.html';
+                window.location.href = 'http://127.0.0.1:5500/Front-End/Home/Telas_Paciente/Tela_Paciente/Tela_Paciente.html';
 
             } else {
                 mensagem.textContent = 'Falha ao realizar login.';
