@@ -5,39 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem Medico</title>
     <link rel="stylesheet" href="Tela_ListarMedico.css">
-    <script src="../../scriptMenu.js"></script>
     <script src="../crudMedico.js"></script>
 </head>
 <body>
     <header>
-        <button onclick="ClickMenu()" class="iconeMenu"></button>
-        <h1>Área do Médico</h1>
-        <button class="ButtonSair" onclick="logout()"><img src="../../img/menu/logout_black.svg" alt="Icone Logout">Logout</button>
+        <h1><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Home_Medico/Home_Medico.html">Área Médico</a></h1>
     </header>
     <main>
-        <div class="menu">
-            <nav>
-                <ul>
-                    <li><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_CriacaoAgendamento/Tela_CriacaoAgendamento.html">Agendar Atendimento</a></li>
-                    <li class="MenuAreaMedico">
-                        <a href="#">Área do Médico</a>
-                        <div class="SubMenu">
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_CriacaoMedico/Tela_CriacaoMedico.html">Criação Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_EditarMedico/Tela_EditarMedico.html">Edição Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_ListarMedico/Tela_ListarMedico.html">Listar Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_DeletarMedico/Tela_DeletarMedico.html">Excluir Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ListarAgendamento/Tela_ListarAgendamento.html">Consultar Agendamentos</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ExcluirAgendamento/Tela_ExcluirAgendamento.html">Deletar Agendamentos</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_EditarAgendamento/Tela_EditarAgendamento.html">Editar Agendamentos</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>   
         <section class="ListUsuarios">
             <div class="lista">
                 <h2>Lista de Médicos</h2>
-                <div id="userAtt"></div>
+                <div class="conteudoLista">
+                    <div class="IDLista">
+                        <h3>ID</h3>
+                        <div id="IdMedico"></div>
+                    </div>
+                    <div class="NomeLista">
+                        <h3>Nome Médico</h3>
+                        <div id="NomeMedico"></div>
+                    </div>
+                </div>
                 <button class="btn" type="button" onclick="getAllMedico()">Listar Médicos</button>
             </div>
         </section>   
