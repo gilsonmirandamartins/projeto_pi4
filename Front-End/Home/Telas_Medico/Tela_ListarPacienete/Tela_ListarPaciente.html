@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Pacientes - Clínica Vida</title>
+    <title>Listar Pacientes</title>
+    <link rel="stylesheet" href="Tela_ListarPaciente.css">
+
+    <script src="../crudMedico.js"></script>
 </head>
 <body>
     <header>
-        <h1>Listar Pacientes</h1>
+        <h1><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Home_Medico/Home_Medico.html">Área Médico</a></h1>
     </header>
     <main>
-        <button onclick="listarPacientes()">Listar Pacientes</button>
-        <ul id="pacientes"></ul>
+        <section class="ListPacientes">
+            <div class="lista">
+                <h2>Lista de Pacientes</h2>
+                <div class="conteudoLista">
+                    <h3>Nome do Paciente</h3>
+                    <div id="pacientes"></div>
+                </div>
+                <button class="btn" onclick="listarPacientes()">Listar Pacientes</button>
+            </div>
+        </section>
     </main>
     <footer>
-        <p class="fot">&copy;2025 - Equipe 5</p>
+        <p class="fot">&copy;2024 - Equipe 5</p>
     </footer>
-    <script src="../crudMedico.js"></script>
 </body>
 </html>
