@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Paciente</title>
+    <link rel="stylesheet" href="Tela_DeletarPaciente.css">
+    <script src="../crudPaciente.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Área Paciente</h1>
+    </header>
+    <main>
+        <div class="Back"><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Paciente/Tela_Paciente/Tela_Paciente.html"><img src="../../../img/arrow_back_24dp.svg" alt="Back"></a></div>
+        <div class="section_deletar">
+            <form class="deletar" id="formDeletarPaciente">
+                <div class="info">
+                    <h2>Deletar Conta ou Dependente</h2>
+                    <label for="nomePacienteDeletar">Nome do Paciente:</label>
+                    <input type="text" id="nomePacienteDeletar" name="nomePacienteDeletar" required>
+                </div>
+                <button class="btn" type="submit">Deletar Paciente</button>
+                <div id="mensagem" style="color: red;"></div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p class="fot">&copy;2024 - Equipe 5</p>
+    </footer>
+</body>
+</html>
