@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_cadastro.css">
+    <script src="../crudPaciente.js" defer></script>
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="Tela_Cadastro">
+        <div class="bloco_azul"></div>
+        <h1>Cadastro Paciente</h1>
+        <form id="formCadastroPaciente">
+            <div class="dados">
+                <label for="nome">Nome:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../../../img/person_Black.svg" alt="Imagem Perfil">
+                    </figure>
+                    <input type="text" class="nome" id="nome" name="nome" placeholder="Digite seu nome" maxlength="200" required>
+                </div>
+            </div>
+            
+            <div class="dados">
+                <label for="documento">Documento:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../../../img/lock_Black.svg" alt="Imagem cadeado">
+                    </figure>
+                    <input type="text" id="documento" name="documento" placeholder="Digite seu documento" required>
+                </div>
+            </div>
+
+            <div class="dados">
+                <label for="dataNascimento">Data de nascimento:</label>
+                <div class="input">
+                    <figure>
+                        <img src="../../../img/calendar_month_black.svg" alt="Imagem Calendario">
+                    </figure>
+                    <input type="date" id="dataNascimento" name="dataNascimento" value="" required>
+                </div>
+            </div>
+
+            <div class="dados">
+                <label for="sexo">Sexo:</label> 
+                <select id="sexo" name="sexo" required>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+            </div>
+
+            <button type="submit">Cadastrar Paciente</button>
+
+            <p class="section_login">
+                Já tem uma conta? 
+                <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Paciente/Tela_Login(Paciente)/index.html" class="Link_login">Entrar</a>
+            </p>
+        </form>
+        <p id="mensagem"></p>
+    </div>
+</body>
+</html>

@@ -35,11 +35,12 @@ h2{
 }
 
 header {
-    background-color: rgb(5, 135, 228);
+  background-color: rgb(5, 135, 228);
   color: white;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  gap: 450px;
+  text-align: center;
   align-items: center;
   height: 50px;
 }
@@ -156,41 +157,6 @@ html, body {
 
 .banner h1{
   padding: 10px;
-}
-
-.MenuAreaMedico {
-  position: relative;
-  display: block;
-}
-
-.SubMenu {
-  display: none;
-  position: absolute;
-  top: 0px;
-  left: 235px;
-  background-color: rgb(5, 135, 228);
-  box-shadow: 5px 0px 10px #1b1b1b;
-  width: 220px;
-  z-index: 1;
-}
-
-.SubMenu a {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.SubMenu a:hover {
-  border-left: white solid ;
-  background-color: #0a5cb8;
-  height:15px;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-
-.MenuAreaMedico:hover .SubMenu {
-  display: block;
 }
 
 .especialidades{

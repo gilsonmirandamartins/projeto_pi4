@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="crudMedico.js"></script>
+    <link rel="stylesheet" href="Tela_Consulta.css">
+    <title>CRUD de Consultas - Clínica Vida</title>
+</head>
+<body>
+    <header>
+        <h1><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Home_Medico/Home_Medico.html">Área Médico</a></h1>
+    </header>
+    <main>
+        <section class="section_consulta" id="criarConsulta">
+            <div class="consulta">
+                <h2>Criar Consulta</h2>
+                <form id="formCriarConsulta" onsubmit="return criarConsulta(event)">
+                    <div class="dados">
+                        <label for="nomePaciente">Nome do Paciente:</label>
+                        <input type="text" id="nomePaciente" name="nomePaciente" required>
+                    </div>
+                    <div class="dados">
+                        <label for="queixaPrincipal">Queixa Principal:</label>
+                        <input type="text" id="queixaPrincipal" name="queixaPrincipal" required>
+                    </div>
+                    <div class="dados">
+                        <label for="diagnostico">Diagnóstico:</label>
+                        <input type="text" id="diagnostico" name="diagnostico" required>
+                    </div>
+                    <div class="dados">
+                        <label for="medico">Médico:</label>
+                        <input type="text" id="medico" name="medico" required>
+                    </div>
+                    <button class="btn" type="submit">Criar</button>
+                </form>
+                <p id="mensagemSucesso" style="display:none; color: green;"></p>
+                <p id="mensagemErro" style="display:none; color: red;"></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;2024 - Equipe 5</p>
+    </footer>
+</body>
+</html>
