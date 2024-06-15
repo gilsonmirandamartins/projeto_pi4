@@ -4,40 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Medico</title>
-    <script src="../../scriptMenu.js"></script>
+    <link rel="stylesheet" href="Tela_CriacaoMedico.css">
     <script src="../crudMedico.js"></script>
 </head>
 <body>
     <header>
-        <button onclick="ClickMenu()" class="iconeMenu"></button>
-        <h1>Área do Médico</h1>
-        <!--Nome Do Usuario entre o Tecnologia e o botão de sair-->
-        <button class="ButtonSair" onclick="logout()"><img src="../../img/menu/logout_black.svg" alt="Icone Logout">Logout</button>
-        <!--Quando clicado ira redirecionar para tela de login-->
+        <h1><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Home_Medico/Home_Medico.html">Área Médico</a></h1>
     </header>
     <main>
-        <div class="menu">
-            <nav>
-                <ul>
-                    <li><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_CriacaoAgendamento/Tela_CriacaoAgendamento.html">Agendar Atendimento</a></li>
-                    <li class="MenuAreaMedico">
-                        <a href="#">Área do Médico</a>
-                        <div class="SubMenu">
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_CriacaoMedico/Tela_CriacaoMedico.html">Criação Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_EditarMedico/Tela_EditarMedico.html">Edição Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_ListarMedico/Tela_ListarMedico.html">Listar Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Medico/Tela_DeletarMedico/Tela_DeletarMedico.html">Excluir Médico</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ListarAgendamento/Tela_ListarAgendamento.html">Consultar Agendamentos</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_ExcluirAgendamento/Tela_ExcluirAgendamento.html">Deletar Agendamentos</a>
-                            <a href="http://127.0.0.1:5500/Front-End/Home/Telas_Agendamento/Tela_EditarAgendamento/Tela_EditarAgendamento.html">Editar Agendamentos</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>   
         <div class="section_cadastro">
             <form class="cadastro">
-                <h1>Cadastrar novo Medico</h1>
+                <h1>Cadastrar novo Médico</h1>
                 <input type="text" class="nome" name="nome" placeholder="Digite o nome completo do medico" required>
                 <button type="button" class="btn" onclick="createNewMedico()">Cadastrar</button>
             </form>

@@ -26,7 +26,7 @@ body {
   flex-direction: column;
 }
 
-h1 a{
+h1{
   font-family: minha_fonte;
 }
 
@@ -34,15 +34,14 @@ h2{
   font-family: minha_fonte2;
 }
 
-header a{
-  background-color: rgb(5, 135, 228);
+header {
+    background-color: rgb(5, 135, 228);
   color: white;
   padding: 10px;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   height: 50px;
-  text-decoration: none;
 }
 
 footer {
@@ -74,16 +73,15 @@ html, body {
   overflow-x: hidden;
 }
 
-.section_edit{
+.section_deletar{
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.edit{
+.deletar{
   border: 2px solid rgb(5, 135, 228);
   border-radius: 10px;
   padding: 20px;
@@ -102,4 +100,20 @@ html, body {
   background-color: rgb(5, 135, 228);
   color: white;
   padding: 10px;
+}
+
+.Back{
+    border-radius: 10px;
+    border: 2px solid #0587e4;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    margin: 10px;
+}
+
+.Back img{
+    width: 40px;
+    height: 40px;
 }

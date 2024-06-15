@@ -39,7 +39,7 @@ header a{
   color: white;
   padding: 10px;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   height: 50px;
   text-decoration: none;
@@ -50,6 +50,9 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 40px;
 }
@@ -74,16 +77,16 @@ html, body {
   overflow-x: hidden;
 }
 
-.section_edit{
+.section_consulta{
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
-.edit{
+.consulta{
   border: 2px solid rgb(5, 135, 228);
   border-radius: 10px;
   padding: 20px;
@@ -92,14 +95,16 @@ html, body {
   gap: 10px;
 }
 
-.info{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.dados{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
 }
 
 .btn{
   background-color: rgb(5, 135, 228);
   color: white;
   padding: 10px;
+  width: 100%;
 }

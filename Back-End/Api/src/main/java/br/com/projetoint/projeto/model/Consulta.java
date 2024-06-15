@@ -1,7 +1,5 @@
 package br.com.projetoint.projeto.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +15,7 @@ public class Consulta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idConsulta;
+    private int idConsulta;
 
     @Column(name = "queixaPrincipal", nullable = false)
     private String queixaPrincipal;
@@ -26,20 +24,22 @@ public class Consulta {
     private String diagnostico;
 
     @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false)
-    @JsonBackReference
-    private Medico medico;
-
-    @ManyToOne
     @JoinColumn(name = "paciente_id", nullable = false)
-    @JsonBackReference
     private Paciente paciente;
 
-    public Long getIdConsulta() {
+    @ManyToOne
+    @JoinColumn(name = "agendamento_id")
+    private Agendamento agendamento;
+
+    @ManyToOne
+    @JoinColumn(name = "medico_id", nullable = false)
+    private Medico medico;
+
+    public int getIdConsulta() {
         return idConsulta;
     }
 
-    public void setIdConsulta(Long idConsulta) {
+    public void setIdConsulta(int idConsulta) {
         this.idConsulta = idConsulta;
     }
 
@@ -59,14 +59,6 @@ public class Consulta {
         this.diagnostico = diagnostico;
     }
 
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
     public Paciente getPaciente() {
         return paciente;
     }
@@ -75,4 +67,24 @@ public class Consulta {
         this.paciente = paciente;
     }
 
+    public Agendamento getAgendamento() {
+        return agendamento;
+    }
+
+    public void setAgendamento(Agendamento agendamento) {
+        this.agendamento = agendamento;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Object getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
 }

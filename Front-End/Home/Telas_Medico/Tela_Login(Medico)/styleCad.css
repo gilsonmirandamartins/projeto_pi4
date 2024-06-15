@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 91%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.Tela_login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  width: 400px;
+  height: 500px;
+  color: black;
+  border-radius: 10px;
+  box-shadow: black 0px 0px 20px;
+}
+
+.bloco_azul{
+  background-color: rgb(5, 135, 228);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  width: 100%;
+  height: 30px;
+}
+
+.dados{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+figure{
+  padding: 10px;
+}
+
+figure img{
+  width: 30px;
+  height: 30px;
+}
+
+label{
+  font-size: 20px;
+}
+
+.input{
+  width: 350px;
+  height: 60px;
+  background-color: #fff;
+  border: 2px solid #d6dce7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #fff;
+  color: black;
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: black !important;
+}
+
+.input_Nome input{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.input button{
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border: 0;
+  background: none;
+}
+
+input::placeholder{
+  font-size: 16px;
+  color: #d6dce7;
+}
+
+input:focus{
+  outline: none;
+}
+
+#icon{
+  background-image: url('../img/visibility_off_Black.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+#icon.hide{
+  background-image: url('../img/visibility_Black.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form .Esqueceu_Senha{
+  text-decoration: none;
+  color: black;
+  width: 160px;
+}
+
+.button_submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 0px;
+  color: aliceblue;
+  background-color: rgb(5, 135, 228);
+  cursor: pointer;
+}
+
+.button_submit:hover{
+  background-color: rgb(3, 78, 133);
+}
+
+.section_cadastro{
+  text-align: center;
+  width: 100%;
+}
+
+.Link_cadastro{
+  text-decoration: none;
+  color: rgb(5, 135, 228);
+}

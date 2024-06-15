@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Paciente</title>
+    <link rel="stylesheet" href="Tela_CriacaoPaciente.css">
+    <script src="../crudPaciente.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Área Paciente</h1>
+    </header>
+    <main>
+        <div class="Back"><a href="http://127.0.0.1:5500/Front-End/Home/Telas_Paciente/Tela_Paciente/Tela_Paciente.html"><img src="../../../img/arrow_back_24dp.svg" alt="Back"></a></div>
+        <div class="section_cadastro">
+            <form class="cadastro" id="formCadastroPaciente">
+                <h2>Cadastro de Dependente</h2>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+        
+                <label for="documento">Documento:</label>
+                <input type="text" id="documento" name="documento" required>
+        
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+        
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" required>
+        
+                <button class="btn" type="submit">Cadastrar Paciente</button>
+                <div id="mensagem" style="color: red;"></div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p class="fot">&copy;2024 - Equipe 5</p>
+    </footer>
+</body>
+</html>
